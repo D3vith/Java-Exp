@@ -1,0 +1,107 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "grindstone_ui",
+
+  "grindstone_screen_panel@container_ui.container_panel": {
+    "$container_bg": "grindstone_ui.grindstone_bg",
+    "$specified_content": "grindstone_ui.grindstone_content_panel"
+  },
+
+  "grindstone_content_panel": {
+    "type": "panel",
+    "$container_title": "container.repairAndDisenchant",
+    "controls": [
+      { "title@container_ui.title": { "offset": [8, 5] } },
+      { "input@grindstone_ui.input_slot": {} },
+      { "additional@grindstone_ui.additional_slot": {} },
+      { "yields@grindstone_ui.yields": {} },
+      { "result@grindstone_ui.result_slot": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "grindstone_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/grindstone",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($grindstone_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($grindstone_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($grindstone_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($grindstone_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($grindstone_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+
+  "grindstone_arrow_cross_out@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/grindstone",
+    "variables":[
+      { "requires":"($grindstone_resolution = 256x)", "$uv": [176, 0], "$uv_size": [28, 21] },
+      { "requires":"($grindstone_resolution = 512x)", "$uv": [352, 0], "$uv_size": [220, 32] },
+      { "requires":"($grindstone_resolution = 1024x)", "$uv": [704, 0], "$uv_size": [440, 64] },
+      { "requires":"($grindstone_resolution = 2048x)", "$uv": [1408, 0], "$uv_size": [880, 128] },
+      { "requires":"($grindstone_resolution = 4096x)", "$uv": [2816, 0], "$uv_size": [1760, 256] }
+    ]
+  },
+
+  "grindstone_slot@container_ui.slot": {
+    "anchor_to": "top_left",
+    "anchor_from": "top_left"
+  },
+
+  "input_slot@grindstone_ui.grindstone_slot": {
+    "offset": [48, 18],
+    "$item_collection_name": "grindstone_input_items",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "grindstone_input",
+    "$focus_override_down_binding_type": "none",
+    "$focus_override_down": "grindstone_additional",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_right": "grindstone_result"
+  },
+
+  "additional_slot@grindstone_ui.grindstone_slot": {
+    "offset": [48, 39],
+    "$item_collection_name": "grindstone_additional_items",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "grindstone_additional",
+    "$focus_override_up_binding_type": "none",
+    "$focus_override_up": "grindstone_input",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_right": "grindstone_result"
+  },
+
+  "yields": {
+    "type": "panel",
+    "size": [28, 21],
+    "offset": [92, 31],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [ { "cross_out@grindstone_ui.grindstone_arrow_cross_out": { "layer": 1 } } ],
+    "bindings": [
+      {
+        "binding_name": "#cross_out_icon",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "result_slot@grindstone_ui.grindstone_slot": {
+    "offset": [128, 33],
+    "$item_collection_name": "grindstone_result_items",
+    "$button_ref": "grindstone_ui.grindstone_output_slot_button",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "grindstone_result",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_left": "grindstone_additional"
+  },
+
+  "grindstone_output_slot_button@grindstone.grindstone_output_slot_button": {
+    "pressed_control": "pressed",
+    "$highlight_control|default": "container_ui.slot_highlight",
+    "controls": [
+      { "hover@$highlight_control": {} },
+      { "pressed@$highlight_control": {} }
+    ]
+  }
+}

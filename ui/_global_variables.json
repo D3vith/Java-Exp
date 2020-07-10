@@ -1,0 +1,38 @@
+{
+  "$force_close_on_player_hurt": false,
+
+  // Settings
+  "$edition_name": "java",
+  "$show_title_wrongly_spelled": false,
+
+  // Text Color
+  "$primary_text_color": [1.0, 1.0, 1.0],
+
+  // Button Text Color
+  "$button_default_text_color": [1.0, 1.0, 1.0],
+  "$button_hover_text_color": [1.0, 1.0, 1.0],
+  "$button_pressed_text_color": [1.0, 1.0, 1.0],
+  "$button_locked_text_color": [0.62745, 0.62745, 0.62745],
+
+  // In-game
+  "$container_text_color": [0.25, 0.25, 0.25],
+  "$selected_item_stack_text_color": [1.0, 1.0, 1.0],
+  "$slot_highlight_color": [1.0, 1.0, 1.0],
+  "$slot_highlight_alpha": 0.5,
+
+  // Resolutions
+  "$title_resolution": "256x",
+  "$widgets_resolution": "256x",
+  "$options_background_resolution": "256x",
+
+  "$grindstone_resolution": "256x",
+  "$smithing_table_resolution": "256x",
+
+  // Static Text
+  "$minecraft_text": "Minecraft",
+  "$version_text": "#version",
+  "$additional_text": "/Java UI (FMarquesPTO) ",
+  "$trial_version_text": "Trial",
+  "$development_version_text": "#development_version",
+  "$copyright_text": "Copyright Mojang AB. Do not distribute!"
+}

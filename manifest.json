@@ -1,0 +1,21 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Java Exp",
+    "description": "Credits: @FMarquesPTO",
+    "uuid": "d34b8bb6-9fcd-44b4-ac44-7fe9e025c432",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 14, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "73b06b9d-9bfe-4527-aad4-9b91bd7addfc",
+      "version": [0, 1, 0]
+    }
+  ],
+  "metadata": {
+    "authors": ["FMarquesPTO"],
+    "url": "https://www.twitter.com/FMarquesPTO"
+  }
+}

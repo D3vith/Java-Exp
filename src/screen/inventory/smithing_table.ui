@@ -1,0 +1,105 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "smithing_table_ui",
+
+  "smithing_table_screen_panel@container_ui.container_panel": {
+    "$container_bg": "smithing_table_ui.smithing_table_bg",
+    "$specified_content": "smithing_table_ui.smithing_table_content_panel"
+  },
+
+  "smithing_table_content_panel": {
+    "type": "panel",
+    "$container_title": "container.smithing_table.upgrade",
+    "controls": [
+      { "title@container_ui.title": { "offset": [60, 19] } },
+      { "input@smithing_table_ui.input_slot": {} },
+      { "material@smithing_table_ui.material_slot": {} },
+      { "yields@smithing_table_ui.yields": {} },
+      { "result@smithing_table_ui.result_slot": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "smithing_table_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/smithing",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($smithing_table_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($smithing_table_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($smithing_table_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($smithing_table_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($smithing_table_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+
+  "smithing_table_arrow_cross_out@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/smithing",
+    "variables":[
+      { "requires":"($smithing_table_resolution = 256x)", "$uv": [176, 0], "$uv_size": [28, 21] },
+      { "requires":"($smithing_table_resolution = 512x)", "$uv": [352, 0], "$uv_size": [220, 32] },
+      { "requires":"($smithing_table_resolution = 1024x)", "$uv": [704, 0], "$uv_size": [440, 64] },
+      { "requires":"($smithing_table_resolution = 2048x)", "$uv": [1408, 0], "$uv_size": [880, 128] },
+      { "requires":"($smithing_table_resolution = 4096x)", "$uv": [2816, 0], "$uv_size": [1760, 256] }
+    ]
+  },
+
+  "smithing_table_item_slot@container_ui.slot": {
+    "anchor_to": "top_left",
+    "anchor_from": "top_left"
+  },
+
+  "input_slot@smithing_table_ui.smithing_table_item_slot": {
+    "offset": [26, 46],
+    "$item_collection_name": "smithing_table_input_items",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "smithing_table_input",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_right": "smithing_table_material"
+  },
+
+  "material_slot@smithing_table_ui.smithing_table_item_slot": {
+    "offset": [75, 46],
+    "$item_collection_name": "smithing_table_material_items",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "smithing_table_material",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_left": "smithing_table_input",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_right": "smithing_table_result"
+  },
+
+  "yields": {
+    "type": "panel",
+    "size": [28, 21],
+    "offset": [99, 45],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [ { "cross_out@smithing_table_ui.smithing_arrow_cross_out": { "layer": 1 } } ],
+    "bindings": [
+      {
+        "binding_name": "#cross_out_icon",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "result_slot@smithing_table_ui.smithing_table_item_slot": {
+    "offset": [133, 46],
+    "$item_collection_name": "smithing_table_result_items",
+    "$button_ref": "smithing_table_ui.smithing_table_output_slot_button",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "smithing_table_result",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_left": "smithing_table_material"
+  },
+
+  "smithing_table_output_slot_button@smithing_table.smithing_table_output_slot_button": {
+    "pressed_control": "pressed",
+    "$highlight_control|default": "container_ui.slot_highlight",
+    "controls": [
+      { "hover@$highlight_control": {} },
+      { "pressed@$highlight_control": {} }
+    ]
+  }
+}

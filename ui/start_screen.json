@@ -1,0 +1,20 @@
+{
+  "start_screen@screen_ui.base_screen": {
+    "button_mappings": [
+      {
+        "ignored": "(not $can_quit)",
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "global"
+      },
+      {
+        "ignored": "(not $nx_os)",
+        "from_button_id": "button.controller_select",
+        "to_button_id": "button.menu_offline",
+        "mapping_type": "global"
+      }
+    ],
+    "$screen_content": "main_menu_ui.main_menu_screen_panel",
+    "$screen_background": "main_menu_ui.panorama_overlay"
+  }
+}

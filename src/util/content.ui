@@ -1,0 +1,82 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "content_ui",
+
+  "empty_panel": { "type": "panel" },
+
+  // Spaces/Paddings
+  "space": { "type": "panel" },
+  "v1px@content_ui.space": { "size": [0, 1] },
+  "v2px@content_ui.space": { "size": [0, 2] },
+  "v4px@content_ui.space": { "size": [0, 4] },
+  "v5px@content_ui.space": { "size": [0, 5] },
+  "v6px@content_ui.space": { "size": [0, 6] },
+  "v8px@content_ui.space": { "size": [0, 8] },
+  "v10px@content_ui.space": { "size": [0, 10] },
+  "vfill@content_ui.space": { "size": [0, "fill"] },
+  "h2px@content_ui.space": { "size": [2, 0] },
+  "h4px@content_ui.space": { "size": [4, 0] },
+  "h5px@content_ui.space": { "size": [5, 0] },
+  "h8px@content_ui.space": { "size": [8, 0] },
+  "h10px@content_ui.space": { "size": [10, 0] },
+  "hfill@content_ui.space": { "size": ["fill", 0] },
+
+  //Resolution Textures
+  "resizing_texture_panel": {
+    "type": "panel",
+    "size": ["100% + 2px", 20],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$texture_location|default": "",
+    "controls": [
+      {
+        "left_panel": {
+          "type": "panel",
+          "size": ["50%", 21],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "clips_children": true,
+          "controls": [
+            {
+              "left@content_ui.resource_image": {
+                "texture": "$texture_location",
+                "offset": [1, 0],
+                "size": "$side_size",
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "right_panel": {
+          "type": "panel",
+          "size": ["50%", 21],
+          "clips_children": true,
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "controls": [
+            {
+              "right@content_ui.resource_image": {
+                "texture": "$texture_location",
+                "offset": [-1, 0],
+                "size": "$side_size",
+                "anchor_from": "right_middle",
+                "anchor_to": "right_middle"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "resource_image": {
+    "type": "image",
+    "uv": "$uv",
+    "uv_size": "$uv_size",
+    "$uv|default": [0, 0],
+    "$uv_size|default": [0, 0]
+  }
+}

@@ -1,0 +1,459 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "main_menu_ui",
+
+  "main_menu_screen_panel": {
+    "type": "panel",
+    "controls": [
+      { "title_panel@main_menu_ui.title_panel": {} },
+      { "splash_text@main_menu_ui.splash_text": { "offset": ["50% + 90px", 60] } },
+      { "menu_panel@main_menu_ui.menu_panel": {} },
+      { "bottom_panel@main_menu_ui.bottom_panel": {} }
+    ]
+  },
+
+  "title_panel": {
+    "type": "panel",
+    "size": [274, 44],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": ["50% - 137px", 30],
+    "controls": [
+      { "title@main_menu_ui.title_stack": { "offset": [0, 0], "layer": 2, "$color": "" } },
+      { "top@main_menu_ui.title_stack": { "offset": [0, -1] } },
+      { "bottom@main_menu_ui.title_stack": { "offset": [0, 1] } },
+      { "right@main_menu_ui.title_stack": { "offset": [-1, 0] } },
+      { "left@main_menu_ui.title_stack": { "offset": [1, 0] } },
+      {
+        "edition@$edition_image": {
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [0, 7],
+          "layer": 4
+        }
+      }
+    ],
+    "$edition_image|default": "",
+    "variables": [
+      {
+        "requires": "($edition_name = java)",
+        "$edition_image": "main_menu_ui.edition_java"
+      },
+      {
+        "requires": "($edition_name = cpp)",
+        "$edition_image": "main_menu_ui.edition_cpp"
+      },
+      {
+        "requires": "($edition_name = none)",
+        "$edition_image": "content_ui.v2px"
+      }
+    ]
+  },
+
+  "title_stack": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "$color|default": "black",
+    "controls": [
+      { "left@main_menu_ui.minecraft_title_left": { "color": "$color" } },
+      { "right@main_menu_ui.minecraft_title_right": { "color": "$color" } }
+    ]
+  },
+
+  "minecraft_title_left@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/title/minecraft",
+    "size": [155, 44],
+    "variables": [
+      { "requires": "($title_resolution = 256x)", "$uv_size": [155, 44] },
+      { "requires": "($title_resolution = 512x)", "$uv_size": [310, 88] },
+      { "requires": "($title_resolution = 1024x)", "$uv_size": [620, 176] },
+      { "requires": "($title_resolution = 2048x)", "$uv_size": [1240, 352] },
+      { "requires": "($title_resolution = 4096x)", "$uv_size": [2480, 704] }
+    ]
+  },
+
+  "minecraft_title_right@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/title/minecraft",
+    "size": [119, 44],
+    "variables": [
+      { "requires": "($title_resolution = 256x)", "$uv": [0, 45], "$uv_size": [119, 44] },
+      { "requires": "($title_resolution = 512x)", "$uv": [0, 90], "$uv_size": [238, 88] },
+      { "requires": "($title_resolution = 1024x)", "$uv": [0, 180], "$uv_size": [476, 176] },
+      { "requires": "($title_resolution = 2048x)", "$uv": [0, 360], "$uv_size": [952, 352] },
+      { "requires": "($title_resolution = 4096x)", "$uv": [0, 720], "$uv_size": [1904, 704] }
+    ]
+  },
+  
+  "edition_java@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/title/edition",
+    "size": [98, 14],
+    "variables": [
+      { "requires": "($title_resolution = 256x)", "$uv_size": [98, 14] },
+      { "requires": "($title_resolution = 512x)", "$uv_size": [196, 28] },
+      { "requires": "($title_resolution = 1024x)", "$uv_size": [392, 56] },
+      { "requires": "($title_resolution = 2048x)", "$uv_size": [784, 112] },
+      { "requires": "($title_resolution = 4096x)", "$uv_size": [1568, 224] }
+    ]
+  },
+
+  "edition_cpp": {
+    "type": "image",
+    "texture": "assets/fmarquespto/textures/gui/title/cpp_edition",
+    "size": [88, 14]
+  },
+
+  "splash_text": {
+    "type": "custom",
+    "renderer": "splash_text_renderer",
+    "size": [0.1, 0.1],
+    "layer": 20,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$splash_text_visible|default": true,
+    "visible": "$splash_text_visible"
+  },
+
+  "menu_panel": {
+    "type": "panel",
+    "controls": [
+      { "play_button@main_menu_ui.play_button": { "offset": ["50% - 100px", "25% + 48px"] } },
+      { "realms_pending_invite_button@main_menu_ui.realms_pending_invite_button": { "offset": ["50% + 80px", "25% + 48px + 4px"] } },
+      { "course_button@main_menu_ui.course_button": { "offset": ["50% - 100px", "25% + 48px"] } },
+      { "profile_button@main_menu_ui.profile_button": { "offset": ["50% - 100px", "25% + 72px"] } },
+      { "change_skin_button@main_menu_ui.change_skin_button": { "offset": ["50% - 100px", "25% + 72px"] } },
+      { "store_button@main_menu_ui.store_button": { "offset": ["50% - 100px", "25% + 96px"] } },
+      { "settings_button@main_menu_ui.settings_button": { "offset": ["50% - 100px", "25% + 48px + 72px + 12px"] } },
+      { "quit_button@main_menu_ui.quit_button": { "offset": ["50% + 2px", "25% + 48px + 72px + 12px"] } },
+      { "feedback_button@main_menu_ui.feedback_panel": { "offset": ["50% - 100px - 23px", "25% + 48px + 72px + 12px"] } },
+      {
+        "extra": {
+          "type": "stack_panel",
+          "size": [200, "100%c"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["50% - 100px", "25% + 48px + 72px + 36px"],
+          "controls": [
+            { "switch_accounts_button@main_menu_ui.switch_accounts_button": {} },
+            { "space@content_ui.v4px": { "ignored": "(not $education_edition) or $education_edition_china" } },
+            { "launch_editions_button@main_menu_ui.launch_editions_button": {} },
+            { "space@content_ui.v2px": { "controls": [ { "gamepad_helpers@start.gamepad_helpers": { "offset": [0, 36] } } ] } }
+          ]
+        }
+      }
+    ],
+    "$feedback_ignored|default": false,
+    "$store_ignored|default": false,
+    "variables": [
+      {
+        "requires": "$education_edition",
+        "$store_ignored|default": true
+      },
+      {
+        "requires": "$gear_vr",
+        "$feedback_ignored": true
+      },
+      {
+        "requires": "$fire_tv",
+        "$feedback_ignored": true
+      },
+      {
+        "requires": "$nx_os",
+        "$feedback_ignored": true
+      },
+      {
+        "requires": "(not $supports_xbl_achievements)",
+        "$feedback_ignored": true
+      }
+    ]
+  },
+
+  // Buttons
+  "play_button@button_ui.button": {
+    "default_focus_precedence": 1,
+    "$button_text": "menu.play",
+    "ignored": "$education_edition_china",
+    "$focus_id": "play_btn",
+    "$focus_override_right": "invites_btn",
+    "$pressed_button_name": "button.menu_edu_play",
+    "variables": {
+      "requires": "(not $education_edition)",
+      "$pressed_button_name": "button.menu_play"
+    }
+  },
+
+  "realms_pending_invite_button@button_ui.button": {
+    "$pressed_button_name": "button.menu_invite_notification",
+    "$button_tts_header": "realmsInvitationScreen.shareTitle",
+    "size": [15, 12],
+    "$focus_id": "invites_btn",
+    "$focus_override_right": "play_btn",
+    "layer": 10,
+    "$default_button_bg": "main_menu_ui.realms_invs_button_default",
+    "$hover_button_bg": "main_menu_ui.realms_invs_button_hover",
+    "$pressed_button_bg": "main_menu_ui.realms_invs_button_hover",
+    "$locked_button_bg": "main_menu_ui.realms_invs_button_default",
+    "bindings": [
+      {
+        "binding_name": "#realms_notification_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  
+  "realms_invs_button_default@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/widgets",
+    "size": [15, 12],
+    "variables": [
+      { "requires": "($widgets_resolution = 256x)", "$uv": [182, 24], "$uv_size": [15, 12] },
+      { "requires": "($widgets_resolution = 512x)", "$uv": [364, 48], "$uv_size": [30, 24] },
+      { "requires": "($widgets_resolution = 1024x)", "$uv": [728, 96], "$uv_size": [60, 48] },
+      { "requires": "($widgets_resolution = 2048x)", "$uv": [1456, 192], "$uv_size": [120, 96] },
+      { "requires": "($widgets_resolution = 4096x)", "$uv": [2912, 384], "$uv_size": [240, 192] }
+    ]
+  },
+
+  "realms_invs_button_hover@main_menu_ui.realms_invs_button_default": {
+    "variables": [
+      { "requires": "($widgets_resolution = 256x)", "$uv": [166, 24], "$uv_size": [15, 12] },
+      { "requires": "($widgets_resolution = 512x)", "$uv": [332, 48], "$uv_size": [30, 24] },
+      { "requires": "($widgets_resolution = 1024x)", "$uv": [664, 96], "$uv_size": [60, 48] },
+      { "requires": "($widgets_resolution = 2048x)", "$uv": [1328, 192], "$uv_size": [120, 96] },
+      { "requires": "($widgets_resolution = 4096x)", "$uv": [2656, 384], "$uv_size": [240, 192] }
+    ]
+  },
+    
+  "course_button@button_ui.button": {
+    "ignored": "(not $education_edition_china)",
+    "$pressed_button_name": "button.menu_courses",
+    "$button_text": "course.edu.courses"
+  },
+
+  "profile_button@button_ui.button": {
+    "$pressed_button_name": "button.to_profile_screen",
+    "$button_text": "profileScreen.header",
+    "bindings": [
+      {
+        "binding_name": "#persona_enabled",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "change_skin_button@button_ui.button": {
+    "$pressed_button_name": "button.menu_skins",
+    "$button_text": "menu.skins",
+    "bindings": [
+      {
+        "binding_name": "(not #persona_enabled)",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "store_button@button_ui.button": {
+    "$pressed_button_name": "button.menu_store",
+    "$button_text": "menu.store",
+    "enabled": "(not ($store_disabled or $store_ignored or $trial))",
+    //"$tooltip_name": "#marketplace_error_text",
+    "bindings": [
+      {
+        "binding_name": "(not #has_marketplace_errors)",
+        "binding_name_override": "#enabled"
+      }
+    ]//,
+    // "$tooltip_bindings": [
+    //   {
+    //     "binding_name": "#has_marketplace_errors",
+    //     "binding_name_override": "#visible"
+    //   }
+    // ]
+  },
+
+  "switch_accounts_button@button_ui.button": {
+    "ignored": "(not $education_edition) or $education_edition_china",
+    "$pressed_button_name": "button.switch_accounts",
+    "$button_text": "accounts.switch"
+  },
+
+  "launch_editions_button@button_ui.button": {
+    "ignored": "($trial or not $supports_launching_legacy_version)",
+    "$pressed_button_name": "button.launch_editions",
+    "$button_text": "menu.editions",
+    "bindings": [
+      {
+        "binding_name": "#editions_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "feedback_panel": {
+    "type": "panel",
+    "size": [20, 20],
+    "ignored": "$feedback_ignored",
+    "$default_button_bg": "main_menu_ui.feedback_button_default",
+    "$hover_button_bg": "main_menu_ui.feedback_button_hover",
+    "$pressed_button_bg": "main_menu_ui.feedback_button_hover",
+    "$locked_button_bg": "main_menu_ui.feedback_button_default",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      { "edu@main_menu_ui.edu_feedback_button": { "ignored": "(not $education_edition)" } },
+      { "release@main_menu_ui.release_feedback_button": { "ignored": "($pre_release or $education_edition)" } },
+      { "beta@main_menu_ui.pre_release_feedback_button": { "ignored": "(not $pre_release or $education_edition)" } }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#feedback_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "feedback_button_default@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/widgets",
+    "size": [20, 20],
+    "variables": [
+      { "requires": "($widgets_resolution = 256x)", "$uv": [0, 106], "$uv_size": [20, 20] },
+      { "requires": "($widgets_resolution = 512x)", "$uv": [0, 212], "$uv_size": [40, 40] },
+      { "requires": "($widgets_resolution = 1024x)", "$uv": [0, 424], "$uv_size": [80, 80] },
+      { "requires": "($widgets_resolution = 2048x)", "$uv": [0, 848], "$uv_size": [160, 160] },
+      { "requires": "($widgets_resolution = 4096x)", "$uv": [0, 1696], "$uv_size": [320, 320] }
+    ]
+  },
+
+  "feedback_button_hover@main_menu_ui.feedback_button_default": {
+    "variables": [
+      { "requires": "($widgets_resolution = 256x)", "$uv": [0, 126], "$uv_size": [20, 20] },
+      { "requires": "($widgets_resolution = 512x)", "$uv": [0, 252], "$uv_size": [40, 40] },
+      { "requires": "($widgets_resolution = 1024x)", "$uv": [0, 304], "$uv_size": [80, 80] },
+      { "requires": "($widgets_resolution = 2048x)", "$uv": [0, 608], "$uv_size": [160, 160] },
+      { "requires": "($widgets_resolution = 4096x)", "$uv": [0, 1216], "$uv_size": [320, 320] }
+    ]
+  },
+
+  "edu_feedback_button@button_ui.button": {
+    "size": [20, 20],
+    "$button_text": "",
+    "$pressed_button_name": "button.edu_feedback"
+  },
+
+  "release_feedback_button@link_button_ui.button": {
+    "size": [20, 20],
+    "$link": "https://aka.ms/minecraftfb",
+    "$button_text": ""
+  },
+
+  "pre_release_feedback_button@main_menu_ui.release_feedback_button": {
+    "size": [20, 20],
+    "$link": "https://aka.ms/minecraftfbbeta"
+  },
+
+  "settings_button@button_ui.button": {
+    "size": [98, 20],
+    "$pressed_button_name": "button.menu_settings",
+    "$button_text": "menu.options"
+  },
+
+  "quit_button@button_ui.button": {
+    "size": [98, 20],
+    "$pressed_button_name": "button.menu_exit",
+    "$button_text": "menu.quit"
+  },
+
+  // Bottom Texts
+  "bottom_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "minecraft": {
+          "type": "stack_panel",
+          "size": ["100%c", "100%cm"],
+          "orientation": "horizontal",
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "offset": [2, -0.25],
+          "controls": [
+            { "mc@main_menu_ui.mc_text": {} },
+            { "space@main_menu_ui.space_text": {} },
+            { "version@main_menu_ui.version_text": {} },
+            { "space@main_menu_ui.space_text": { "text": "$additional_text" } },
+            { "trial@main_menu_ui.trial_text": {} }
+          ]
+        }
+      },
+      { "development_version@main_menu_ui.development_version": { "offset": [0, -0.25] } },
+      { "copyright@main_menu_ui.copyright_text": { "offset": [-1.25, -0.25] } }
+    ]
+  },
+
+  "space_text": {
+    "type": "label",
+    "text": " ",
+    "color": "$primary_text_color",
+    "shadow": true
+  },
+
+  "base_text": {
+    "type": "label",
+    "color": "$primary_text_color",
+    "shadow": true
+  },
+
+  "mc_text@main_menu_ui.base_text": {
+    "text": "$minecraft_text"
+  },
+
+  "version_text": {
+    "type": "panel",
+    "size": ["100%c - 6px", "100%c"],
+    "clips_children": true,
+    "controls": [
+      {
+        "text@main_menu_ui.base_text": {
+          "text": "$version_text",
+          "anchor_from": "bottom_right",
+          "anchor_to": "bottom_right",
+          "bindings": [ { "binding_name": "$version_text" } ]
+        }
+      }
+    ]
+  },
+
+  "trial_text@main_menu_ui.base_text": {
+    "text": "$trial_version_text",
+    "bindings": [
+      {
+        "binding_name": "#trial_game_mode",
+        "binding_name_override": "#visible"
+      },
+      {
+        "binding_name": "#buy_game_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "development_version@main_menu_ui.base_text": {
+    "text": "$development_version_text",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "bindings": [ { "binding_name": "$development_version_text" } ]
+  },
+
+  "copyright_text@main_menu_ui.base_text": {
+    "text": "$copyright_text",
+    "anchor_from": "bottom_right",
+    "anchor_to": "bottom_right"
+  },
+
+  // Panorama Ovelay - I can't use the panorma_overlay.png, because it has white areas that I can remove with JSON
+  "panorama_overlay": {
+    "type": "custom",
+    "renderer": "gradient_renderer",
+    "color1": [0, 0, 0, 0],
+    "color2": [0, 0, 0, 0.215],
+    "size": ["100%", "100%"]
+  }
+}

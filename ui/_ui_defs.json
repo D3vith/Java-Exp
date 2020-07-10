@@ -1,0 +1,17 @@
+{
+  "ui_defs": [
+    // Components
+    "src/components/button/action_button.ui",
+    "src/components/button/button.ui",
+    "src/components/button/link_button.ui",
+    // Screens
+    "src/screen/main_menu.ui",
+    // Screens - Inventories
+    "src/screen/inventory/grindstone.ui",
+    "src/screen/inventory/smithing_table.ui",
+    // Utils
+    "src/util/container.ui",
+    "src/util/content.ui",
+    "src/util/screen.ui"
+  ]
+}
