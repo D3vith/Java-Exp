@@ -21,7 +21,19 @@
   "h10px@content_ui.space": { "size": [10, 0] },
   "hfill@content_ui.space": { "size": ["fill", 0] },
 
-  //Resolution Textures
+  // Common Title
+  "title": {
+    "type": "label",
+    "shadow": true,
+    "color": "$primary_text_color",
+    "anchor_from": "$tanchor",
+    "anchor_to": "$tanchor",
+    "$tanchor|default": "top_left",
+    "offset": [0, 12],
+    "layer": 12
+  },
+
+  // Resolution Textures
   "resizing_texture_panel": {
     "type": "panel",
     "size": ["100% + 2px", 20],
@@ -77,6 +89,8 @@
     "uv": "$uv",
     "uv_size": "$uv_size",
     "$uv|default": [0, 0],
-    "$uv_size|default": [0, 0]
+    "$uv_size|default": [0, 0],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
   }
 }

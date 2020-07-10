@@ -5,6 +5,13 @@
   "$edition_name": "java",
   "$show_title_wrongly_spelled": false,
 
+  "$tootlip_bg_alpha": 0.95,
+  "$custom_tooltip_bg": false,
+  // "$tooltip_border_color": [0, 0, 0],
+  // "$tooltip_background_color": [0, 0, 0],
+
+  "$use_default_java_block_model_and_shading_for_some_blocks": true,
+
   // Text Color
   "$primary_text_color": [1.0, 1.0, 1.0],
 
@@ -20,13 +27,32 @@
   "$slot_highlight_color": [1.0, 1.0, 1.0],
   "$slot_highlight_alpha": 0.5,
 
+  "$anvil_cost_success_text_color": [0.49, 0.99, 0.125],
+  "$anvil_cost_fail_text_color": [0.99, 0.35, 0.37],
+
+  "$enchanting_cost_success_text_color": [0.4941, 0.9882, 0.1254],
+  "$enchanting_cost_fail_text_color": [0.2470, 0.4901, 0.0627],
+
   // Resolutions
   "$title_resolution": "256x",
   "$widgets_resolution": "256x",
   "$options_background_resolution": "256x",
 
+  "$anvil_resolution": "256x",
+  "$beacon_resolution": "256x",
+  "$brewing_stand_resolution": "256x",
+  "$cartography_resolution": "256x",
+  "$dispenser_resolution": "256x",
+  "$enchanting_table_resolution": "256x",
+  "$furnace_resolution": "256x",
+  "$generic_54_resolution": "256x",
   "$grindstone_resolution": "256x",
+  "$hopper_resolution": "256x",
+  "$horse_resolution": "256x",
+  "$loom_resolution": "256x",
+  "$shulker_box_resolution": "256x",
   "$smithing_table_resolution": "256x",
+  "$stonecutter_resolution": "256x",
 
   // Static Text
   "$minecraft_text": "Minecraft",

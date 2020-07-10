@@ -1,0 +1,255 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "cartography_table_ui",
+
+  "cartography_table_screen_panel@container_ui.container_panel": {
+    "$container_bg": "cartography_table_ui.cartography_table_bg",
+    "$specified_content": "cartography_table_ui.cartography_table_content_panel",
+    "$show_invlabel": false
+  },
+
+  "cartography_table_content_panel": {
+    "type": "panel",
+    "$container_title": "tile.cartography_table.name",
+    "controls": [
+      { "title@container_ui.title": { "offset": [8, 3] } },
+      { "map_name_input@cartography_table_ui.map_name_box": {} },
+      { "input@cartography_table_ui.input_slot": {} },
+      { "additional@cartography_table_ui.additional_slot": {} },
+      { "result@cartography_table_ui.result_slot": {} },
+      { "cartography_maps_panel@cartography_table_ui.cartography_maps_panel": {} },
+      { "show_map_name_input@cartography_table_ui.show_map_name_input_button": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "cartography_table_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/cartography_table",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($cartography_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($cartography_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($cartography_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($cartography_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($cartography_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+
+  "locked_map_icon@cartography_table_ui.map": {
+    "$map_binding_name": "#is_locked_mode",
+    "layer": 4,
+    "variables": [
+      { "requires": "($cartography_resolution = 256x)", "$uv": [1, 167], "$uv_size": [66, 66] },
+      { "requires": "($cartography_resolution = 512x)", "$uv": [2, 334], "$uv_size": [132, 132] },
+      { "requires": "($cartography_resolution = 1024x)", "$uv": [4, 668], "$uv_size": [264, 264] },
+      { "requires": "($cartography_resolution = 2048x)", "$uv": [8, 1336], "$uv_size": [528, 528] },
+      { "requires": "($cartography_resolution = 4096x)", "$uv": [16, 2672], "$uv_size": [1056, 1056] }
+    ]
+  },
+
+  "cartography_maps_panel": {
+    "type": "panel",
+    "size": [66, 66],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [67, 13],
+    "controls": [
+      { "none@cartography_table_ui.none_map": {} },
+      { "copy@cartography_table_ui.clone_map": {} },
+      { "rename@cartography_table_ui.rename_map": {} },
+      { "default@cartography_table_ui.default_map": {} },
+      { "locator@cartography_table_ui.locator_map": {} },
+      { "zoom@cartography_table_ui.zoom_map": {} },
+      { "lock@cartography_table_ui.locked_map": {} },
+      { "locked_icon@cartography_table_ui.locked_map_icon": {} }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "map_name_input_view",
+        "source_property_name": "(not #toggle_state)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "map@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/cartography_table",
+    "size": [66, 66],
+    "variables": [
+      { "requires": "($cartography_resolution = 256x)", "$uv": [176, 0], "$uv_size": [66, 66] },
+      { "requires": "($cartography_resolution = 512x)", "$uv": [352, 0], "$uv_size": [132, 132] },
+      { "requires": "($cartography_resolution = 1024x)", "$uv": [704, 0], "$uv_size": [264, 264] },
+      { "requires": "($cartography_resolution = 2048x)", "$uv": [1408, 0], "$uv_size": [528, 528] },
+      { "requires": "($cartography_resolution = 4096x)", "$uv": [2816, 0], "$uv_size": [1056, 1056] }
+    ],
+    "bindings": [
+      {
+        "binding_name": "$map_binding_name",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "none_map@cartography_table_ui.map": {
+    "$map_binding_name": "#is_none_mode"
+  },
+
+  "default_map@cartography_table_ui.map": {
+    "$map_binding_name": "#is_basic_map_mode"
+  },
+
+  "rename_map@cartography_table_ui.map": {
+    "$map_binding_name": "#is_rename_mode"
+  },
+
+  "zoom_map@cartography_table_ui.map": {
+    "$map_binding_name": "#is_extend_mode",
+    "variables": [
+      { "requires": "($cartography_resolution = 256x)", "$uv": [176, 66], "$uv_size": [66, 66] },
+      { "requires": "($cartography_resolution = 512x)", "$uv": [352, 132], "$uv_size": [132, 132] },
+      { "requires": "($cartography_resolution = 1024x)", "$uv": [704, 264], "$uv_size": [264, 264] },
+      { "requires": "($cartography_resolution = 2048x)", "$uv": [1408, 528], "$uv_size": [528, 528] },
+      { "requires": "($cartography_resolution = 4096x)", "$uv": [2816, 1056], "$uv_size": [1056, 1056] }
+    ]
+  },
+
+  "clone_map": {
+    "type": "panel",
+    "variables": [
+      { "requires": "($cartography_resolution = 256x)", "$uv": [176, 132], "$uv_size": [50, 50] },
+      { "requires": "($cartography_resolution = 512x)", "$uv": [352, 264], "$uv_size": [100, 100] },
+      { "requires": "($cartography_resolution = 1024x)", "$uv": [704, 528], "$uv_size": [200, 200] },
+      { "requires": "($cartography_resolution = 2048x)", "$uv": [1408, 1056], "$uv_size": [400, 400] },
+      { "requires": "($cartography_resolution = 4096x)", "$uv": [2816, 2112], "$uv_size": [800, 800] }
+    ],
+    "controls": [
+      {
+        "0@cartography_table_ui.map": {
+          "size": [50, 50],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "layer": 0
+        }
+      },
+      {
+        "1@cartography_table_ui.map": {
+          "size": [50, 50],
+          "anchor_from": "bottom_left",
+          "anchor_to": "bottom_left",
+          "layer": 1
+        }
+      }
+    ],
+    "$map_binding_name": "#is_clone_mode"
+  },
+
+  "locator_map@cartography_table_ui.map": {
+    "$map_binding_name": "#is_locator_map_mode"
+  },
+
+  "locked_map@cartography_table_ui.map": {
+    "$map_binding_name": "#is_locked_mode"
+  },
+
+  "cartography_table_slot@container_ui.slot": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+
+  "input_slot@cartography_table_ui.cartography_table_slot": {
+    "offset": [14, 14],
+    "$item_collection_name": "cartography_input_items",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "cartography_input",
+    "$focus_override_down_binding_type": "none",
+    "$focus_override_down": "cartography_additional",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_left": "show_text_input_button",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_right": "cartography_result"
+  },
+
+  "additional_slot@cartography_table_ui.cartography_table_slot": {
+    "offset": [14, 51],
+    "$item_collection_name": "cartography_additional_items",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "cartography_additional",
+    "$focus_override_up_binding_type": "none",
+    "$focus_override_up": "cartography_input",
+    "$focus_override_left": "show_text_input_button",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_right": "cartography_result"
+  },
+
+  "result_slot@cartography_table_ui.cartography_table_slot": {
+    "offset": [144, 38],
+    "$item_collection_name": "cartography_result_items",
+    "$button_ref": "cartography_table_ui.cartography_table_output_slot_button",
+    "$focus_id_binding_type": "none",
+    "$focus_id": "cartography_result",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_left": "cartography_additional"
+  },
+
+  "cartography_table_output_slot_button@cartography.cartography_output_slot_button": {
+    "pressed_control": "pressed",
+    "$highlight_control|default": "container_ui.slot_highlight",
+    "controls": [
+      { "hover@$highlight_control": {} },
+      { "pressed@$highlight_control": {} }
+    ]
+  },
+
+  "map_name_box@text_box_ui.text_box": {
+    "offset": [65, 39],
+    "size": [55, 16],
+    "max_length": 30,
+    "text_box_name": "#text_box_name",
+    "$placeholder_text": "#text_box_placeholder_name",
+    "$text_edit_box_placeholder_content_binding_name": "#text_box_placeholder_name",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "map_name_input_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "show_map_name_input_button@toggle_button_ui.toggle_button": {
+    "$toggle_name": "cartography",
+    "$toggle_index": 1,
+    "$toggle_group": false,
+    "size": [17, 17],
+    "offset": [14, 33],
+    "$toggle_control_name": "map_name_input_view",
+    "$focus_id": "show_text_input_button",
+    "$toggle_state_panel": "cartography_table_ui.show_map_name_input_button_content",
+    "bindings": [
+      {
+        "binding_name": "(not #is_none_mode)",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+
+  "show_map_name_input_button_content": {
+    "type": "panel",
+    "size": [17, 17],
+    "layer": 2,
+    "controls": [
+      {
+        "border": {
+          "type": "image",
+          "texture": "assets/fmarquespto/textures/static/border",
+          "size": ["100%", "100%"],
+          "visible": "($state = checked_hover or $state = unchecked_hover)"
+        }
+      }
+    ]
+  }
+}

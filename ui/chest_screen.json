@@ -1,0 +1,31 @@
+{
+  "small_chest_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "chest_ui.chest_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  },
+
+  "large_chest_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "chest_ui.large_chest_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  },
+
+  "ender_chest_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "chest_ui.chest_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  },
+
+  "shulker_box_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "shulker_box_ui.shulker_box_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  },
+
+  "barrel_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "chest_ui.chest_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  }
+}

@@ -1,0 +1,247 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "toggle_ui",
+
+  "states_panel@common.toggle": {
+    "$toggle_state_panel|default": "toggle_ui.toggle_state_panel",
+    "$toggle_type_panel|default": "toggle_ui.toggle_label",
+    "$checked_toggle_bg|default": "button_ui.button_default",
+    "$unchecked_toggle_bg|default": "button_ui.button_default",
+    "$checked_hover_toggle_bg|default": "button_ui.button_hover",
+    "$unchecked_hover_toggle_bg|default": "button_ui.button_hover",
+    "$checked_locked_toggle_bg|default": "button_ui.button_locked",
+    "$unchecked_locked_toggle_bg|default": "button_ui.button_locked",
+    "$text_locked_color|default": "$button_locked_text_color",
+    "$state|default": "",
+    "controls": "$toggle_controls",
+    "$toggle_controls|default": [
+      {
+        "checked@$toggle_state_panel": {
+          "$toggle_bg|default": "$checked_toggle_bg",
+          "$state": "checked",
+          "$text_color|default": "$button_default_text_color",
+          "layer": 3
+        }
+      },
+      {
+        "unchecked@$toggle_state_panel": {
+          "$toggle_bg|default": "$unchecked_toggle_bg",
+          "$state": "unchecked",
+          "$text_color|default": "$button_default_text_color",
+          "layer": 3
+        }
+      },
+      {
+        "checked_hover@$toggle_state_panel": {
+          "$toggle_bg|default": "$checked_hover_toggle_bg",
+          "$state": "checked_hover",
+          "$text_color|default": "$button_hover_text_color",
+          "layer": 4
+        }
+      },
+      {
+        "unchecked_hover@$toggle_state_panel": {
+          "$toggle_bg|default": "$unchecked_hover_toggle_bg",
+          "$state": "unchecked_hover",
+          "$text_color|default": "$button_hover_text_color",
+          "layer": 4
+        }
+      },
+      {
+        "checked_locked@$toggle_state_panel": {
+          "$toggle_bg|default": "$checked_locked_toggle_bg",
+          "$state": "checked_locked",
+          "$text_color|default": "$button_locked_text_color",
+          "layer": 1
+        }
+      },
+      {
+        "unchecked_locked@$toggle_state_panel": {
+          "$toggle_bg|default": "$unchecked_locked_toggle_bg",
+          "$state": "unchecked_locked",
+          "$text_color|default": "$button_locked_text_color",
+          "layer": 1
+        }
+      },
+      {
+        "checked_locked_hover@$toggle_state_panel": {
+          "$toggle_bg|default": "$checked_locked_toggle_bg",
+          "$state": "checked_locked_hover",
+          "$text_color|default": "$button_locked_text_color",
+          "layer": 1
+        }
+      },
+      {
+        "unchecked_locked_hover@$toggle_state_panel": {
+          "$toggle_bg|default": "$unchecked_locked_toggle_bg",
+          "$state": "unchecked_locked_hover",
+          "$text_color|default": "$button_locked_text_color",
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  "toggle@toggle_ui.states_panel": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "sound_name": "ui.button.click",
+    "property_bag": "$toggle_property_bag",
+    "button_mappings": "$button_mappings",
+    "bindings": "$toggle_bindings",
+    "$toggle_bindings|default": [
+      {
+        "binding_type": "$toggle_binding_type",
+        "binding_condition": "$toggle_binding_condition",
+        "binding_collection_name": "$toggle_grid_collection_name",
+        "binding_name": "$toggle_state_binding_name",
+        "binding_name_override": "#toggle_state"
+      },
+      {
+        "binding_type": "$toggle_enabled_binding_type",
+        "binding_condition": "$toggle_enabled_binding_condition",
+        "binding_collection_name": "$toggle_grid_collection_name",
+        "binding_name": "$toggle_enabled_binding_name",
+        "binding_name_override": "#enabled"
+      },
+      {
+        "binding_type": "$toggle_collection_details_type",
+        "binding_collection_name": "$toggle_collection_detail_name"
+      },
+      {
+        "binding_type": "$toggle_collection_type",
+        "binding_collection_name": "$toggle_collection_name"
+      },
+      {
+        "binding_type": "$toggle_tts_header_binding_type",
+        "binding_condition": "$toggle_tts_header_binding_condition",
+        "binding_collection_name": "$toggle_tts_header_binding_collection_name",
+        "binding_name": "$toggle_tts_header"
+      },
+      {
+        "binding_type": "$toggle_tts_value_binding_type",
+        "binding_condition": "$toggle_tts_value_binding_condition",
+        "binding_collection_name": "$toggle_tts_value_binding_collection_name",
+        "binding_name": "$toggle_tts_override_toggle_value"
+      },
+      {
+        "binding_type": "$toggle_tts_enabled_binding_type",
+        "binding_name": "#tts_enabled",
+        "binding_name_override": "#focus_enabled"
+      }
+    ],
+    "$toggle_collection_type|default": "none",
+    "$toggle_collection_name|default": "",
+    "$toggle_property_bag|default": { "#toggle_state": true },
+    "$button_mappings|default": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "focused"
+      },
+      {
+        "ignored": "(not $cancel_mapping)",
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "global"
+      },
+      {
+        "ignored": "(not $double_mapping)",
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$double_mapping_id",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "ignored": "(not $double_mapping)",
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$double_mapping_id",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "ignored": "(not $custom_mapping)",
+        "from_button_id": "$custom_mapping_from_id",
+        "to_button_id": "$custom_mapping_to_id",
+        "mapping_type": "$custom_mapping_type",
+        "scope": "view"
+      },
+      {
+        "ignored": "(not $controller_mapping)",
+        "from_button_id": "$controller_mapping_from_id",
+        "to_button_id": "$controller_mapping_to_id",
+        "mapping_type": "$controller_mapping_type",
+        "scope": "$controller_mapping_scope"
+      },
+      {
+        "ignored": "(not $enable_directional_toggling)",
+        "from_button_id": "button.menu_left",
+        "to_button_id": "$toggle_off_button",
+        "mapping_type": "pressed",
+        "input_mode_condition": "gamepad_and_not_gaze"
+      },
+      {
+        "ignored": "(not $enable_directional_toggling)",
+        "from_button_id": "button.menu_right",
+        "to_button_id": "$toggle_on_button",
+        "mapping_type": "pressed",
+        "input_mode_condition": "gamepad_and_not_gaze"
+      }
+    ],
+    "$cancel_mapping|default": false,
+    "$double_mapping|default": false,
+    "$custom_mapping|default": false,
+    "$controller_mapping|default": false,
+    "$double_mapping_id|default": false,
+    "$custom_mapping_from_id|default": "",
+    "$custom_mapping_to_id|default": "",
+    "$custom_mapping_type|default": "global",
+    "$controller_mapping_from_id|default": "",
+    "$controller_mapping_to_id|default": "",
+    "$controller_mapping_type|default": "global",
+    "$controller_mapping_scope|default": "",
+    "radio_toggle_group": "$toggle_group",
+    "$toggle_group|default": false,
+    "toggle_name": "$toggle_name",
+    "$toggle_name|default": "this_toggle",
+    "toggle_default_state": "$toggle_default_state",
+    "$toggle_default_state|default": false,
+    "toggle_group_forced_index": "$toggle_index",
+    "$toggle_index|default": -1,
+    "toggle_group_default_selected": "$toggle_default_selected",
+    "$toggle_default_selected|default": 0
+    // "sound_name": "random.click",
+  },
+
+  "toggle_state_panel": {
+    "type": "panel",
+    "$tooltip_name|default": "null",
+    "controls": [
+      // {
+      //   "tooltip@tooltip_ui.tooltip": {
+      //     "visible": "($state = checked_hover or $state = unchecked_hover or $state = checked_locked_hover or $state = unchecked_locked_hover)",
+      //     "ignored": "($tooltip_name = null)"
+      //   }
+      // },
+      { "bg@$toggle_bg": {} },
+      {
+        "content_panel": {
+          "type": "panel",
+          "size": "$content_panel_size",
+          "$content_panel_size|default": ["100% - 2px", "100% - 2px"],
+          "layer": 4,
+          "controls": [ { "content@$toggle_type_panel": {} } ]
+        }
+      }
+    ]
+  },
+
+  "toggle_label@button_ui.button_label": {
+    "text": "$toggle_text",
+    "bindings": "$text_bindings",
+    "$text_bindings|default": []
+  }
+}

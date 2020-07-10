@@ -1,0 +1,189 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "anvil_ui",
+
+  "anvil_screen_panel@container_ui.container_panel": {
+    "$container_bg": "anvil_ui.anvil_bg",
+    "$specified_content": "anvil_ui.anvil_content_panel"
+  },
+
+  "anvil_content_panel": {
+    "type": "panel",
+    "$container_title": "container.repair",
+    "controls": [
+      { "title@container_ui.title": { "offset": [62, 5] } },
+      { "item@anvil_ui.item_name_input": {} },
+      { "input@anvil_ui.input_slot": {} },
+      { "material@anvil_ui.material_slot": {} },
+      { "result@anvil_ui.result_slot": {} },
+      { "yields@anvil_ui.yields": {} },
+      { "success@anvil_ui.success_cost_label": {} },
+      { "fail@anvil_ui.fail_cost_label": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "anvil_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/anvil",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($anvil_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($anvil_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($anvil_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($anvil_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($anvil_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+  
+  "anvil_text_box@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/anvil",
+    "size": [110, 16],
+    "variables": [
+      { "requires": "($anvil_resolution = 256x)", "$uv": [0, 166], "$uv_size": [110, 16] },
+      { "requires": "($anvil_resolution = 512x)", "$uv": [0, 332], "$uv_size": [220, 32] },
+      { "requires": "($anvil_resolution = 1024x)", "$uv": [0, 664], "$uv_size": [440, 64] },
+      { "requires": "($anvil_resolution = 2048x)", "$uv": [0, 1328], "$uv_size": [880, 128] },
+      { "requires": "($anvil_resolution = 4096x)", "$uv": [0, 2656], "$uv_size": [1760, 256] }
+    ]
+  },
+
+  "anvil_text_box_locked@anvil_ui.anvil_text_box": {
+    "variables": [
+      { "requires": "($anvil_resolution = 256x)", "$uv": [0, 182], "$uv_size": [110, 16] },
+      { "requires": "($anvil_resolution = 512x)", "$uv": [0, 364], "$uv_size": [220, 32] },
+      { "requires": "($anvil_resolution = 1024x)", "$uv": [0, 728], "$uv_size": [440, 64] },
+      { "requires": "($anvil_resolution = 2048x)", "$uv": [0, 1456], "$uv_size": [880, 128] },
+      { "requires": "($anvil_resolution = 4096x)", "$uv": [0, 2912], "$uv_size": [1760, 256] }
+    ]
+  },
+
+  "anvil_arrow_cross_out@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/anvil",
+    "size": [28, 21],
+    "variables": [
+      { "requires": "($anvil_resolution = 256x)", "$uv": [176, 0], "$uv_size": [28, 21] },
+      { "requires": "($anvil_resolution = 512x)", "$uv": [352, 0], "$uv_size": [220, 32] },
+      { "requires": "($anvil_resolution = 1024x)", "$uv": [704, 0], "$uv_size": [440, 64] },
+      { "requires": "($anvil_resolution = 2048x)", "$uv": [1408, 0], "$uv_size": [880, 128] },
+      { "requires": "($anvil_resolution = 4096x)", "$uv": [2816, 0], "$uv_size": [1760, 256] }
+    ]
+  },
+
+  "item_name_input@text_box_ui.text_box": {
+    "size": [110, 16],
+    "$default_box_bg": "anvil_ui.anvil_text_box",
+    "$hover_box_bg": "anvil_ui.anvil_text_box",
+    "$locked_box_bg": "anvil_ui.anvil_text_box_locked",
+    "offset": [59, 20],
+    "property_bag": { "#property_field": "#item_name" },
+    "max_length": 30,
+    "$text_edit_binding_name": "#text_box_item_name",
+    "$text_indent_size": ["100% - 6px", "100% - 2px"],
+    "$text_indent_offset": [3, 0],
+    "$text_color": [1.0, 1.0, 1.0]
+  },
+
+  "anvil_slot@container_ui.slot": {
+    "anchor_to": "top_left",
+    "anchor_from": "top_left"
+  },
+
+  "input_slot@anvil_ui.anvil_slot": {
+    "offset": [26, 46],
+    "$item_collection_name": "anvil_input_items",
+    "$focus_id": "anvil_input",
+    "$focus_override_right": "anvil_material"
+  },
+
+  "material_slot@anvil_ui.anvil_slot": {
+    "offset": [75, 46],
+    "$item_collection_name": "anvil_material_items",
+    "$focus_id": "anvil_material",
+    "$focus_override_left": "anvil_input",
+    "$focus_override_right": "anvil_result"
+  },
+
+  "yields": {
+    "type": "panel",
+    "size": [28, 21],
+    "offset": [99, 45],
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "controls": [ { "cross_out@anvil_ui.anvil_arrow_cross_out": { "layer": 1 } } ],
+    "bindings": [
+      {
+        "binding_name": "#cross_out_icon",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "result_slot@anvil_ui.anvil_slot": {
+    "offset": [133, 46],
+    "$item_collection_name": "anvil_result_items",
+    "$button_ref": "anvil_ui.anvil_output_slot_button",
+    "$focus_id": "anvil_result",
+    "$focus_override_left": "anvil_material"
+  },
+
+  "anvil_output_slot_button@anvil.anvil_output_slot_button": {
+    "pressed_control": "pressed",
+    "$highlight_control|default": "container_ui.slot_highlight",
+    "controls": [
+      { "hover@$highlight_control": {} },
+      { "pressed@$highlight_control": {} }
+    ]
+  },
+
+  "cost_label": {
+    "type": "label",
+    "shadow": true,
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [-10, 68],
+    "color": "$anvil_cost_success_text_color",
+    "text": "#text",
+    "text_alignment": "right",
+    "layer": 10,
+    "controls": [
+      {
+        "background": {
+          "type": "image",
+          "texture": "assets/fmarquespto/textures/static/white",
+          "layer": -5,
+          "color": [0.537, 0.537, 0.537],
+          "size": ["100% + 4px", "100% + 2px"]
+        }
+      }
+    ]
+  },
+
+  "fail_cost_label@anvil_ui.cost_label": {
+    "color": "$anvil_cost_fail_text_color",
+    "bindings": [
+      {
+        "binding_name": "#cost_text",
+        "binding_name_override": "#text"
+      },
+      {
+        "binding_name": "#cost_text_red",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "success_cost_label@anvil_ui.cost_label": {
+    "color": "$anvil_cost_success_text_color",
+    "bindings": [
+      {
+        "binding_name": "#cost_text",
+        "binding_name_override": "#text"
+      },
+      {
+        "binding_name": "#cost_text_green",
+        "binding_name_override": "#visible"
+      }
+    ]
+  }
+}

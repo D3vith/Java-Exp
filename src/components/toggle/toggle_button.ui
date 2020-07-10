@@ -1,0 +1,15 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "toggle_button_ui",
+
+  "toggle_button": {
+    "type": "panel",
+    "size": [150, 20],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$toggle_text|default": "$toggle_button_text",
+    "$toggle_button_text|default": "",
+    "$toggle_control_name|default": "this_thing",
+    "controls": [ { "$toggle_control_name@toggle_ui.toggle": {} } ]
+  }
+}

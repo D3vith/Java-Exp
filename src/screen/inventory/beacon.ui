@@ -1,0 +1,450 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "beacon_ui",
+
+  "beacon_screen_panel@container_ui.container_panel": {
+    "$container_size": [230, 219],
+    "$container_bg": "beacon_ui.beacon_bg",
+    "$specified_content": "beacon_ui.beacon_content_panel"
+  },
+
+  "inventory_slot_button@container_ui.slot_prototype_button": {
+    "focus_mapping": [
+      { "focus_identifier": "inventory_items8", "focus_change_right": "FOCUS_OVERRIDE_STOP" },
+      { "focus_identifier": "inventory_items17", "focus_change_right": "FOCUS_OVERRIDE_STOP" },
+      { "focus_identifier": "inventory_items26", "focus_change_right": "FOCUS_OVERRIDE_STOP" }
+    ]
+  },
+
+  "hotbar_slot_button@container_ui.slot_prototype_button": {
+    "focus_mapping": [ { "focus_identifier": "hotbar_items8", "focus_change_right": "FOCUS_OVERRIDE_STOP" } ]
+  },
+
+  "beacon_content_panel": {
+    "type": "panel",
+    "controls": [
+      { "powers_content_panel@beacon_ui.powers_content_panel": {} },
+      { "usable_items_panel@beacon_ui.usable_items_panel": {} },
+      { "ingredient_item@beacon_ui.ingredient_item": {} },
+      { "confirm_panel@beacon_ui.confirm_panel": {} },
+      { "cancel_panel@beacon_ui.cancel_panel": {} },
+      {
+        "player_inventory@container_ui.player_inventory": {
+          "$show_invlabel": false,
+          "offset": ["50% - 80px", "100% - 83px"],
+          "$button_ref": "beacon_ui.inventory_slot_button"
+        }
+      },
+      {
+        "player_hotbar@container_ui.player_hotbar": {
+          "offset": ["50% - 80px", "100% - 25px"],
+          "$button_ref": "beacon_ui.hotbar_slot_button"
+        }
+      }
+    ]
+  },
+
+  "beacon_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/beacon",
+    "size": [230, 219],
+    "variables": [
+      { "requires": "($beacon_resolution = 256x)", "$uv_size": [230, 219] },
+      { "requires": "($beacon_resolution = 512x)", "$uv_size": [460, 438] },
+      { "requires": "($beacon_resolution = 1024x)", "$uv_size": [920, 872] },
+      { "requires": "($beacon_resolution = 2048x)", "$uv_size": [1840, 1744] },
+      { "requires": "($beacon_resolution = 4096x)", "$uv_size": [3680, 3488] }
+    ]
+  },
+
+  "beacon_button@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/beacon",
+    "size": [22, 22],
+    "variables": [
+      { "requires": "($beacon_resolution = 256x)", "$uv": [0, 219], "$uv_size": [22, 22] },
+      { "requires": "($beacon_resolution = 512x)", "$uv": [0, 438], "$uv_size": [44, 44] },
+      { "requires": "($beacon_resolution = 1024x)", "$uv": [0, 872], "$uv_size": [88, 88] },
+      { "requires": "($beacon_resolution = 2048x)", "$uv": [0, 1744], "$uv_size": [176, 176] },
+      { "requires": "($beacon_resolution = 4096x)", "$uv": [0, 3488], "$uv_size": [352, 352] }
+    ]
+  },
+
+  "beacon_button_selected@beacon_ui.beacon_button": {
+    "variables": [
+      { "requires": "($beacon_resolution = 256x)", "$uv": [22, 219], "$uv_size": [22, 22] },
+      { "requires": "($beacon_resolution = 512x)", "$uv": [44, 438], "$uv_size": [44, 44] },
+      { "requires": "($beacon_resolution = 1024x)", "$uv": [88, 872], "$uv_size": [88, 88] },
+      { "requires": "($beacon_resolution = 2048x)", "$uv": [176, 1744], "$uv_size": [176, 176] },
+      { "requires": "($beacon_resolution = 4096x)", "$uv": [352, 3488], "$uv_size": [352, 352] }
+    ]
+  },
+
+  "beacon_button_locked@beacon_ui.beacon_button": {
+    "variables": [
+      { "requires": "($beacon_resolution = 256x)", "$uv": [44, 219], "$uv_size": [22, 22] },
+      { "requires": "($beacon_resolution = 512x)", "$uv": [88, 438], "$uv_size": [44, 44] },
+      { "requires": "($beacon_resolution = 1024x)", "$uv": [176, 872], "$uv_size": [88, 88] },
+      { "requires": "($beacon_resolution = 2048x)", "$uv": [352, 1744], "$uv_size": [176, 176] },
+      { "requires": "($beacon_resolution = 4096x)", "$uv": [704, 3488], "$uv_size": [352, 352] }
+    ]
+  },
+
+  "beacon_button_hover@beacon_ui.beacon_button": {
+    "variables": [
+      { "requires": "($beacon_resolution = 256x)", "$uv": [66, 219], "$uv_size": [22, 22] },
+      { "requires": "($beacon_resolution = 512x)", "$uv": [132, 438], "$uv_size": [44, 44] },
+      { "requires": "($beacon_resolution = 1024x)", "$uv": [264, 872], "$uv_size": [88, 88] },
+      { "requires": "($beacon_resolution = 2048x)", "$uv": [528, 1744], "$uv_size": [176, 176] },
+      { "requires": "($beacon_resolution = 4096x)", "$uv": [1056, 3488], "$uv_size": [352, 352] }
+    ]
+  },
+  
+  "beacon_confirm_icon@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/beacon",
+    "size": [18, 19],
+    "offset": [0, 0.5],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "variables": [
+      { "requires": "($beacon_resolution = 256x)", "$uv": [90, 220], "$uv_size": [18, 19] },
+      { "requires": "($beacon_resolution = 512x)", "$uv": [180, 440], "$uv_size": [36, 38] },
+      { "requires": "($beacon_resolution = 1024x)", "$uv": [360, 880], "$uv_size": [72, 76] },
+      { "requires": "($beacon_resolution = 2048x)", "$uv": [720, 1760], "$uv_size": [144, 152] },
+      { "requires": "($beacon_resolution = 4096x)", "$uv": [1440, 3520], "$uv_size": [288, 304] }
+    ]
+  },
+
+  "beacon_cancel_icon@beacon_ui.beacon_confirm_icon": {
+    "variables": [
+      { "requires": "($beacon_resolution = 256x)", "$uv": [112, 220], "$uv_size": [18, 19] },
+      { "requires": "($beacon_resolution = 512x)", "$uv": [224, 440], "$uv_size": [36, 38] },
+      { "requires": "($beacon_resolution = 1024x)", "$uv": [448, 880], "$uv_size": [72, 76] },
+      { "requires": "($beacon_resolution = 2048x)", "$uv": [896, 1760], "$uv_size": [144, 152] },
+      { "requires": "($beacon_resolution = 4096x)", "$uv": [1792, 3520], "$uv_size": [288, 304] }
+    ]
+  },
+
+  "base_label": {
+    "type": "label",
+    "shadow": true,
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "color": [0.867, 0.867, 0.867],
+    "layer": 3
+  },
+
+  "powers_content_panel": {
+    "type": "panel",
+    "size": [210, 91],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "offset": [0, 7],
+    "controls": [
+      { "primary_content@beacon_ui.primary_content": {} },
+      { "secondary_content@beacon_ui.secondary_content": {} }
+    ]
+  },
+
+  "primary_content": {
+    "type": "panel",
+    "size": [107, 91],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      { "primary_label@beacon_ui.base_label": { "text": "tile.beacon.primary", "offset": [-1.5, 2] } },
+      { "button_panel@beacon_ui.button_panel": {} }
+    ]
+  },
+
+  "secondary_content": {
+    "type": "panel",
+    "size": [103, 91],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "$img_size": [18, 18],
+    "controls": [
+      { "secondary_label@beacon_ui.base_label": { "text": "tile.beacon.secondary", "offset": [0.5, 2] } },
+      {
+        "regen_panel@beacon_ui.panel_template": {
+          "offset": [27, 40],
+          "$button_name": "regen",
+          "$icon_location": "assets/minecraft/textures/mob_effect/regeneration"
+        }
+      },
+      {
+        "extra_panel@beacon_ui.panel_template": {
+          "offset": [51, 40],
+          "$button_name": "extra",
+          "$image_control": "beacon_ui.secondary_effect_images"
+        }
+      }
+    ]
+  },
+
+  "secondary_effect_images": {
+    "type": "panel",
+    "size": [18, 18],
+    "layer": 3,
+    "controls": [
+      { "speed_secondary@beacon_ui.speed_secondary": {} },
+      { "haste_secondary@beacon_ui.haste_secondary": {} },
+      { "resist_secondary@beacon_ui.resist_secondary": {} },
+      { "jump_secondary@beacon_ui.jump_secondary": {} },
+      { "strength_secondary@beacon_ui.strength_secondary": {} }
+    ]
+  },
+
+  "button_panel": {
+    "type": "panel",
+    "size": [46, 72],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [43, 15],
+    "controls": [
+      {
+        "speed_panel@beacon_ui.panel_template": {
+          "offset": [0, 0],
+          "$button_name": "speed",
+          "controls": [ { "toggle_template@beacon_ui.toggle_template": { "$icon_location": "assets/minecraft/textures/mob_effect/speed" } } ]
+        }
+      },
+      {
+        "haste_panel@beacon_ui.panel_template": {
+          "offset": [24, 0],
+          "$button_name": "haste",
+          "$icon_location": "assets/minecraft/textures/mob_effect/haste"
+        }
+      },
+      {
+        "resist_panel@beacon_ui.panel_template": {
+          "offset": [0, 25],
+          "$button_name": "resist",
+          "$icon_location": "assets/minecraft/textures/mob_effect/resistance"
+        }
+      },
+      {
+        "jump_panel@beacon_ui.panel_template": {
+          "offset": [24, 25],
+          "$button_name": "jump",
+          "$icon_location": "assets/minecraft/textures/mob_effect/jump_boost"
+        }
+      },
+      {
+        "strength_panel@beacon_ui.panel_template": {
+          "offset": [12, 50],
+          "$button_name": "strength",
+          "$icon_location": "assets/minecraft/textures/mob_effect/strength"
+        }
+      }
+    ]
+  },
+
+  "usable_items_panel": {
+    "offset": [42, 109],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "type": "panel",
+    "size": [82, 18],
+    "controls": [
+      { "netherite@beacon.item_renderer": { "offset": [-22, 0 ], "property_bag": { "#item_id_aux": 48627712 } } },
+      { "emerald@beacon.item_renderer": { "offset": [-1, 0], "property_bag": { "#item_id_aux": 25427968 } } },
+      { "diamond@beacon.item_renderer": { "offset": [21, 0], "property_bag": { "#item_id_aux": 17301504 } } },
+      { "gold@beacon.item_renderer": { "offset": [44, 0], "property_bag": { "#item_id_aux": 17432576 } } },
+      { "iron@beacon.item_renderer": { "offset": [66, 0], "property_bag": { "#item_id_aux": 17367040 } } }
+    ]
+  },
+
+  "ingredient_item@container_ui.slot": {
+    "$item_collection_name": "beacon_payment_items",
+    "offset": [135, 109],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+
+  "confirm_panel@beacon_ui.panel_template": {
+    "offset": [164, 107],
+    "$button_name": "confirm",
+    "$tooltip_text": "gui.confirm",
+    "$button_control": "beacon_ui.button_template",
+    "$icon_origin": "beacon_ui.beacon_confirm_icon",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+
+  "cancel_panel@beacon_ui.panel_template": {
+    "offset": [190, 107],
+    "$button_name": "cancel",
+    "$tooltip_text": "gui.cancel",
+    "$button_control": "beacon_ui.button_template",
+    "$icon_origin": "beacon_ui.beacon_cancel_icon",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+
+  // Components
+  "panel_template": {
+    "type": "panel",
+    "size": [22, 22],
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$button_control|default": "beacon_ui.toggle_template",
+    "bindings": [
+      {
+        "binding_type": "collection",
+        "binding_name": "#active",
+        "binding_collection_name": "$button_name",
+        "binding_name_override": "#enabled"
+      }
+    ],
+    "controls": [ { "$button_control@$button_control": {} } ]
+  },
+
+  "toggle_template": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$image_control|default": "beacon_ui.image_template",
+    "controls": [
+      { "toggle_button@beacon_ui.toggle_button": {} },
+      { "$image_control@$image_control": {} }
+    ]
+  },
+
+  "button_template@beacon_ui.toggle_template": {
+    "controls": [
+      { "active_button@beacon_ui.active_button": {} },
+      { "inactive_button@beacon_ui.inactive_button": {} },
+      { "image_template@$icon_origin": { "layer": 3 } }
+    ]
+  },
+
+  "active_button@beacon.base_button": {
+    "$button_active": "#active",
+    "controls": [
+      { "default@beacon_ui.beacon_button": {} },
+      { "hover@beacon_ui.beacon_button_hover": { "controls": [ { "tooltip@tooltip_ui.tooltip": {} } ] } }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+
+  "inactive_button@beacon.base_button": {
+    "$button_active": "#inactive",
+    "pressed_control": "",
+    "button_mappings": [],
+    "controls": [
+      { "default@beacon_ui.beacon_button_locked": {} },
+      { "hover@beacon_ui.beacon_button_locked": {} }
+    ]
+  },
+
+  "toggle_button@beacon.toggle_button": {
+    "size": [22, 22],
+    "controls": [
+      { "unchecked@beacon_ui.beacon_button": {} },
+      { "checked@beacon_ui.beacon_button_selected": {} },
+      { "unchecked_hover@beacon_ui.beacon_button_hover": { "controls": [ { "tooltip@beacon_ui.tooltip": {} } ] } },
+      { "checked_hover@beacon_ui.beacon_button_selected": { "controls": [ { "tooltip@beacon_ui.tooltip": {} } ] } },
+      { "unchecked_locked@beacon_ui.beacon_button_locked": {} },
+      { "checked_locked@beacon_ui.beacon_button_locked": {} },
+      { "unchecked_locked_hover@beacon_ui.beacon_button_locked": { "controls": [ { "tooltip@beacon_ui.tooltip": {} } ] } },
+      { "checked_locked_hover@beacon_ui.beacon_button_locked": { "controls": [ { "tooltip@beacon_ui.tooltip": {} } ] } }
+    ]
+  },
+
+  "tooltip@tooltip_ui.tooltip": {
+    "$tooltip_text_content": "beacon_ui.tooltip_text",
+    "bindings": [
+      {
+        "binding_name": "#button_hover",
+        "binding_name_override": "#hover_text",
+        "binding_collection_name": "$button_name",
+        "binding_type": "collection"
+      }
+    ]
+  },
+
+  "tooltip_text@container_ui.item_tooltip_text": {
+    "bindings": [
+      {
+        "binding_name": "#button_hover",
+        "binding_type": "collection",
+        "binding_collection_name": "$button_name",
+        "binding_name_override": "#hover_text"
+      }
+    ]
+  },
+
+  "image_template": {
+    "type": "panel",
+    "size": [18, 18],
+    "layer": 3,
+    "$icon_origin|default": "beacon_ui.effect_icon",
+    "controls": [
+      {
+        "base_image@$icon_origin": {
+          "bindings": [
+            {
+              "binding_name": "#button_visible",
+              "binding_name_override": "#visible",
+              "binding_collection_name": "$button_name",
+              "binding_type": "collection"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "effect_icon": {
+    "type": "image",
+    "texture": "$icon_location",
+    "$icon_location|default": "",
+    "size": [18, 18]
+  },
+
+  "secondary_effect_base@beacon_ui.effect_icon": {
+    "bindings": [
+      {
+        "binding_name": "#extra_image_selection",
+        "binding_name_override": "#visible",
+        "binding_collection_name": "$effect_name",
+        "binding_type": "collection"
+      }
+    ]
+  },
+
+  "speed_secondary@beacon_ui.secondary_effect_base": {
+    "$effect_name": "speed",
+    "$icon_location": "assets/minecraft/textures/mob_effect/speed"
+  },
+
+  "haste_secondary@beacon_ui.secondary_effect_base": {
+    "$effect_name": "haste",
+    "$icon_location": "assets/minecraft/textures/mob_effect/haste"
+  },
+
+  "resist_secondary@beacon_ui.secondary_effect_base": {
+    "$effect_name": "resist",
+    "$icon_location": "assets/minecraft/textures/mob_effect/resistance"
+  },
+
+  "jump_secondary@beacon_ui.secondary_effect_base": {
+    "$effect_name": "jump",
+    "$icon_location": "assets/minecraft/textures/mob_effect/jump_boost"
+  },
+
+  "strength_secondary@beacon_ui.secondary_effect_base": {
+    "$effect_name": "strength",
+    "$icon_location": "assets/minecraft/textures/mob_effect/strength"
+  }
+}

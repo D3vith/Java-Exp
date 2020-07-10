@@ -4,14 +4,38 @@
     "src/components/button/action_button.ui",
     "src/components/button/button.ui",
     "src/components/button/link_button.ui",
+    "src/components/toggle/toggle.ui",
+    "src/components/toggle/toggle_button.ui",
+    "src/components/text_box.ui",
     // Screens
     "src/screen/main_menu.ui",
     // Screens - Inventories
+    "src/screen/inventory/anvil.ui",
+    "src/screen/inventory/beacon.ui",
+    "src/screen/inventory/brewing_stand.ui",
+    "src/screen/inventory/cartography_table.ui",
+    "src/screen/inventory/chest.ui",
+    "src/screen/inventory/dispenser.ui",
+    "src/screen/inventory/enchanting_table.ui",
+    "src/screen/inventory/furnace.ui",
     "src/screen/inventory/grindstone.ui",
+    "src/screen/inventory/hopper.ui",
+    "src/screen/inventory/horse.ui",
+    "src/screen/inventory/loom.ui",
+    "src/screen/inventory/shulker_box.ui",
     "src/screen/inventory/smithing_table.ui",
+    "src/screen/inventory/stonecutter.ui",
+    // Screen - Menus
+    "src/screen/menu/death_screen.ui",
+    "src/screen/menu/edit_sign.ui",
+    "src/screen/menu/sleep_in_bed.ui",
     // Utils
     "src/util/container.ui",
     "src/util/content.ui",
-    "src/util/screen.ui"
+    "src/util/screen.ui",
+    "src/util/scrolling.ui",
+    "src/util/scrolling_container.ui",
+    "src/util/scrolling_dirt.ui",
+    "src/util/tooltip.ui"
   ]
 }

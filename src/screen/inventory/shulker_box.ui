@@ -1,0 +1,43 @@
+// By @FMarquesPTO. All rights reserved. */
+{
+  "namespace": "shulker_box_ui",
+
+  "shulker_box_screen_panel@container_ui.container_panel": {
+    "$container_bg": "shulker_box_ui.shulker_box_bg",
+    "$specified_content": "shulker_box_ui.shulker_box_content_panel"
+  },
+
+  "shulker_box_content_panel": {
+    "type": "panel",
+    "$invlabel_offset": [1, -12],
+    "controls": [
+      { "title@container_ui.title": { "offset": [8, 5] } },
+      { "grid@shulker_box_ui.shulker_box_grid": { "offset": [7, 17] } },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "shulker_box_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/shulker_box",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($shulker_box_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($shulker_box_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($shulker_box_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($shulker_box_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($shulker_box_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+
+  "shulker_box_grid": {
+    "type": "grid",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "collection_name": "container_items",
+    "size": [162, 54],
+    "grid_dimensions": [9, 3],
+    "grid_item_template": "container_ui.slot",
+    "$item_collection_name": "container_items"
+  }
+}

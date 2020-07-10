@@ -1,62 +1,79 @@
 // By @FMarquesPTO. All rights reserved.
-// {
-//   "namespace": "tooltip_ui",
+{
+  "namespace": "tooltip_ui",
 
-//   "itemTooltip": {
-//     "type": "button",
-//     "size": [0, 0],
-//     "layer": -10,
-//     "follows_cursor": true,
-//     "always_handle_pointer": true,
-//     "allow_clipping": false,
-//     "consume_hover_events": false,
-//     "controls": [ { "bg@tooltip.tooltipBg": {} } ],
-//     "$tooltipBg":  [
-//       {
-//         "text": {
-//           "type": "label",
-//           "size": ["default", "default"],
-//           "text": "#hover_text",
-//           "shadow": true,
-//           "layer": 10,
-//           "bindings": [
-//             {
-//               "binding_name": "#hover_text",
-//               "binding_type": "collection",
-//               "binding_collection_name": "$item_collection_name",
-//               "binding_name_override": "#hover_text"
-//             }
-//           ]
-//         }
-//       }
-//     ]
-//   },
+  "tooltip": {
+    "type": "button",
+    "size": [0, 0],
+    "layer": -10,
+    "focus_enabled": false,
+    "focus_magnet_enabled": false,
+    "follows_cursor": true,
+    "consume_hover_events": false,
+    "always_handle_pointer": true,
+    "allow_clipping": false,
+    "$tooltip_bg|default": "tooltip_ui.default_tooltip_bg",
+    "$tooltip_text_content|default": "tooltip_ui.tooltip_text",
+    "variables": {
+      "requires": "$custom_tooltip_bg",
+      "$tooltip_bg": "$custom_tooltip_bg"
+    },
+    "controls": [
+      {
+        "bg@$tooltip_bg": {
+          "size": ["100%c + 8px", "100%c + 6px"],
+          "offset": ["50%c + 12px", "50%c - 12px"],
+          "nineslice_size": 3,
+          "alpha": "$tootlip_bg_alpha",
+          "bindings": "$tooltip_bindings",
+          "$tooltip_bindings|default": [],
+          "variables": "$tooltip_variables",
+          "$tooltip_variables|default": [],
+          "layer": 110,
+          "controls": [ { "text@$tooltip_text_content": {} } ]
+        }
+      }
+    ]
+  },
 
-//   "tooltipBg": {
-//     "type": "image",
-//     "texture": "assets/fmarquespto/textures/gui/unchanged/tooltip_border",
-//     "color": "$tooltipBorderColor",
-//     "$border_color|default": [0.1441, 0, 0.3559],
-//     "size": ["100%c", "100%c"],
-//     "nineslice_size": 4,
-//     "offset": ["50%c + 12px", "50%c - 12px"],
-//     "follows_cursor": true,
-//     "alpha": "$tooltipAlpha",
-//     "layer": 100,
-//     "controls": [
-//       {
-//         "tooltipBg": {
-//           "type": "image",
-//           "texture": "assets/fmarquespto/textures/gui/unchanged/tooltip_background",
-//           "color": "$tooltipBackgroundColor",
-//           "nineslice_size": 4,
-//           "alpha": 0.90,
-//           "follows_cursor": true,
-//           "size": ["100%c + 8px", "100%c + 6px"],
-//           "layer": 2,
-//           "controls": "$tooltipBg"
-//         }
-//       }
-//     ]
-//   }
-// }
+  "default_tooltip_bg": {
+    "type": "image",
+    "texture": "assets/fmarquespto/textures/static/tooltip"
+  },
+
+  "tooltip_text": {
+    "type": "label",
+    "size": ["default", "default"],
+    "text": "$tooltip_text",
+    "shadow": true,
+    "layer": 10
+  },
+
+  "tooltipBg": {
+    "type": "image",
+    "texture": "assets/fmarquespto/textures/gui/unchanged/tooltip_border",
+    "color": "$tooltipBorderColor",
+    "$border_color|default": [0.1441, 0, 0.3559],
+    "size": ["100%c", "100%c"],
+    "nineslice_size": 4,
+    "offset": ["50%c + 12px", "50%c - 12px"],
+    "follows_cursor": true,
+    "alpha": "$tooltipAlpha",
+    "layer": 100,
+    "controls": [
+      {
+        "tooltipBg": {
+          "type": "image",
+          "texture": "assets/fmarquespto/textures/gui/unchanged/tooltip_background",
+          "color": "$tooltipBackgroundColor",
+          "nineslice_size": 4,
+          "alpha": 0.90,
+          "follows_cursor": true,
+          "size": ["100%c + 8px", "100%c + 6px"],
+          "layer": 2,
+          "controls": "$tooltipBg"
+        }
+      }
+    ]
+  }
+}

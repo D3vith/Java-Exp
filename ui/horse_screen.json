@@ -1,0 +1,7 @@
+{
+  "horse_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "horse_ui.horse_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  }
+}

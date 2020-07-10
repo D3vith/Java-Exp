@@ -1,0 +1,6 @@
+{
+  "enchanting_screen@screen_ui.inventory_screen": {
+    "$screen_content": "enchanting_table_ui.enchanting_table_screen_content_panel",
+    "$screen_background": "screen_ui.screen_background"
+  }
+}

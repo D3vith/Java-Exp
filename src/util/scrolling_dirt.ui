@@ -1,0 +1,49 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "dirt_scrolling_ui",
+
+  "scrolling_panel@scrolling_ui.scrolling_panel": {
+    "$scroll_viewport": "dirt_scrolling_ui.dirt_viewport"
+  },
+
+  "dirt_viewport": {
+    "type": "panel",
+    "size": "$view_port_size",
+    "offset": "$view_port_offset",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "clips_children": true,
+    "layer": 1,
+    "controls": [
+      {
+        "scrolling_view_port": {
+          "type": "panel",
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": "$scroll_view_port_offset",
+          "size": "$scroll_view_port_size",
+          "controls": [
+            { "top_shadow@scrolling_ui.shadow_top": { "visible": "$dirt_scroll" } },
+            { 
+              "scrolling_content@screen_ui.dark_dirt_background": {
+	              "anchor_from": "top_middle",
+                "anchor_to": "top_middle",
+                "size": "$scrolling_view_size",
+                "min_size": ["100%", "100%"],
+                "controls": [
+                  {
+                    "content@$scrolling_content": {
+                      "anchor_to": "top_middle",
+                      "anchor_from": "top_middle"
+                    }
+                  }
+                ]
+		          }
+            },
+            { "bottom_shadow@scrolling_ui.shadow_bottom": { "visible": "$dirt_scroll" } }
+          ]
+	      }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+// By @FMarquesPTO. All rights reserved. */
+{
+  "namespace": "hopper_ui",
+
+  "hopper_screen_panel@container_ui.container_panel": {
+    "$container_size": [176, 133],
+    "$container_bg": "hopper_ui.hopper_bg",
+    "$specified_content": "hopper_ui.hopper_content_panel"
+  },
+
+  "hopper_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/hopper",
+    "size": [176, 133],
+    "variables": [
+      { "requires": "($hopper_resolution = 256x)", "$uv_size": [176, 133] },
+      { "requires": "($hopper_resolution = 512x)", "$uv_size": [352, 266] },
+      { "requires": "($hopper_resolution = 1024x)", "$uv_size": [704, 532] },
+      { "requires": "($hopper_resolution = 2048x)", "$uv_size": [1408, 1064] },
+      { "requires": "($hopper_resolution = 4096x)", "$uv_size": [2816, 2128] }
+    ]
+  },
+
+  "hopper_content_panel": {
+    "type": "panel",
+    "controls": [
+      { "title@container_ui.title": { "offset": [8, 5] } },
+      { "grid@hopper_ui.hopper_grid": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "hopper_grid": {
+    "type": "grid",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [90, 18],
+    "grid_dimensions": [5, 1],
+    "offset": [43, 19],
+    "collection_name": "container_items",
+    "grid_item_template": "container_ui.slot",
+    "$item_collection_name": "container_items"
+  }
+}

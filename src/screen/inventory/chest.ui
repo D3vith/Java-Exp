@@ -1,0 +1,101 @@
+// By @FMarquesPTO. All rights reserved. */
+{
+  "namespace": "chest_ui",
+
+  "chest_screen_panel@container_ui.container_panel": {
+    "$container_bg_type": "generic_9x3",
+    "$container_bg": "chest_ui.generic_bg",
+    "$specified_content": "chest_ui.chest_content_panel",
+    "$container_size": [176, 167],
+    "$grid_dimensions": [9, 3],
+    "$grid_size": [162, 54],
+    "$invlabel_offset": [1, -11]
+  },
+
+  "large_chest_screen_panel@chest_ui.chest_screen_panel": {
+    "$container_bg_type": "generic_9x6",
+    "$container_size": [176, 221],
+    "$grid_dimensions": [9, 6],
+    "$grid_size": [162, 108]
+  },
+
+  "chest_content_panel": {
+    "type": "panel",
+    "controls": [
+      { "title@container_ui.title": { "offset": [8, 5] } },
+      { "grid@chest_ui.chest_grid": { "offset": [7, 17] } },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "chest_grid": {
+    "type": "grid",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "collection_name": "container_items",
+    "size": "$grid_size",
+    "grid_dimensions": "$grid_dimensions",
+    "grid_item_template": "container_ui.slot",
+    "$item_collection_name": "container_items"
+  },
+
+  // Chest Bg
+  
+  "generic_bg": {
+    "type": "stack_panel",
+    "size": [176, "100%c"],
+    "$top_generic_bg|default": "",
+    "variables": [
+      { "requires": "($container_bg_type = generic_9x1)", "$top_generic_bg": "chest_ui.top_generic_9x1_bg" },
+      { "requires": "($container_bg_type = generic_9x2)", "$top_generic_bg": "chest_ui.top_generic_9x2_bg" },
+      { "requires": "($container_bg_type = generic_9x3)", "$top_generic_bg": "chest_ui.top_generic_9x3_bg" },
+      { "requires": "($container_bg_type = generic_9x4)", "$top_generic_bg": "chest_ui.top_generic_9x4_bg" },
+      { "requires": "($container_bg_type = generic_9x5)", "$top_generic_bg": "chest_ui.top_generic_9x5_bg" },
+      { "requires": "($container_bg_type = generic_9x6)", "$top_generic_bg": "chest_ui.top_generic_9x6_bg" }
+    ],
+    "controls": [
+      { "top@$top_generic_bg": {} },
+      { "bottom@chest_ui.bottom_generic_bg": {} }
+    ]
+  },
+
+  "top_generic_9x1_bg@chest_ui.top_generic_bg": { "size": [176, 45] },
+  "top_generic_9x2_bg@chest_ui.top_generic_bg": { "size": [176, 53] },
+  "top_generic_9x3_bg@chest_ui.top_generic_bg": { "size": [176, 71] },
+  "top_generic_9x4_bg@chest_ui.top_generic_bg": { "size": [176, 89] },
+  "top_generic_9x5_bg@chest_ui.top_generic_bg": { "size": [176, 107] },
+  "top_generic_9x6_bg@chest_ui.top_generic_bg": { "size": [176, 125] },
+
+  "top_generic_bg": {
+    "type": "panel",
+    "clips_children": true,
+    "controls": [
+      {
+        "top_bg@content_ui.resource_image": {
+          "texture": "assets/minecraft/textures/gui/container/generic_54",
+          "size": [176, 125],
+          "variables": [
+            { "requires": "($generic_54_resolution = 256x)", "$uv_size": [176, 125] },
+            { "requires": "($generic_54_resolution = 512x)", "$uv_size": [352, 250] },
+            { "requires": "($generic_54_resolution = 1024x)", "$uv_size": [704, 300] },
+            { "requires": "($generic_54_resolution = 2048x)", "$uv_size": [1408, 600] },
+            { "requires": "($generic_54_resolution = 4096x)", "$uv_size": [2816, 1200] }
+          ]
+        }
+      }
+    ]
+  },
+
+  "bottom_generic_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/generic_54",
+    "size": [176, 96],
+    "variables": [
+      { "requires": "($generic_54_resolution = 256x)", "$uv": [0, 126], "$uv_size": [176, 96] },
+      { "requires": "($generic_54_resolution = 512x)", "$uv": [0, 252], "$uv_size": [352, 192] },
+      { "requires": "($generic_54_resolution = 1024x)", "$uv": [0, 304], "$uv_size": [704, 384] },
+      { "requires": "($generic_54_resolution = 2048x)", "$uv": [0, 608], "$uv_size": [1408, 768] },
+      { "requires": "($generic_54_resolution = 4096x)", "$uv": [0, 1216], "$uv_size": [2816, 1536] }
+    ]
+  }
+}

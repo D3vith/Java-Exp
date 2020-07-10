@@ -1,0 +1,18 @@
+{
+  "in_bed_screen@screen_ui.base_screen": {
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.wake_up_button",
+        "mapping_type": "global"
+      },
+      {
+        "from_button_id": "button.menu_exit",
+        "to_button_id": "button.wake_up_button",
+        "mapping_type": "global"
+      }
+    ],
+    "$screen_content": "sleep_in_bed_ui.sleep_in_bed_screen_panel",
+    "$screen_background": "sleep_in_bed_ui.screen_background"
+  }
+}

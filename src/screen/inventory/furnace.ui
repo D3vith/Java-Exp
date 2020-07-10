@@ -1,0 +1,125 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "furnace_ui",
+
+  "abstract_furnace_screen_panel@container_ui.container_panel": {
+    "$container_bg": "furnace_ui.furnace_bg",
+    "$specified_content": "furnace_ui.furnace_content_panel"
+  },
+
+  "furnace_screen_panel@furnace_ui.abstract_furnace_screen_panel": { "$furnace_name": "furnace" },
+  "blast_furnace_screen_panel@furnace_ui.abstract_furnace_screen_panel": { "$furnace_name": "blast_furnace" },
+  "smoker_screen_panel@furnace_ui.abstract_furnace_screen_panel": { "$furnace_name": "smoker" },
+
+  "furnace_content_panel": {
+    "type": "panel",
+    "$tanchor": "top_middle",
+    "controls": [
+      { "title@container_ui.title": { "offset": [0, 5] } },
+      { "ingredient@furnace_ui.ingredient_item": {} },
+      {
+        "arrow@furnace_ui.furnace_full_arrow": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [79, 34],
+          "clip_direction": "left",
+          "bindings": [
+            {
+              "binding_name": "#furnace_arrow_ratio",
+              "binding_name_override": "#clip_ratio",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      { "fuel@furnace_ui.fuel_item": {} },
+      {
+        "flame@furnace_ui.furnace_full_flame": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [56, 36],
+          "clip_direction": "down",
+          "bindings": [
+            {
+              "binding_name": "#furnace_flame_ratio",
+              "binding_name_override": "#clip_ratio",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      { "output@furnace_ui.output_item": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "furnace_bg@content_ui.resource_image": {
+    "texture": "('assets/minecraft/textures/gui/container/' + $furnace_name)",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($furnace_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($furnace_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($furnace_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($furnace_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($furnace_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+
+  "furnace_full_arrow@furnace_ui.furnace_bg": {
+    "size": [24, 17],
+    "variables": [
+      { "requires": "($furnace_resolution = 256x)", "$uv": [176, 14], "$uv_size": [24, 17] },
+      { "requires": "($furnace_resolution = 512x)", "$uv": [352, 28], "$uv_size": [48, 34] },
+      { "requires": "($furnace_resolution = 1024x)", "$uv": [704, 56], "$uv_size": [96, 68] },
+      { "requires": "($furnace_resolution = 2048x)", "$uv": [1408, 112], "$uv_size": [192, 136] },
+      { "requires": "($furnace_resolution = 4096x)", "$uv": [2816, 224], "$uv_size": [384, 272] }
+    ]
+  },
+
+  "furnace_full_flame@furnace_ui.furnace_bg": {
+    "size": [14, 14],
+    "variables": [
+      { "requires": "($furnace_resolution = 256x)", "$uv": [176, 0], "$uv_size": [14, 14] },
+      { "requires": "($furnace_resolution = 512x)", "$uv": [352, 0], "$uv_size": [28, 28] },
+      { "requires": "($furnace_resolution = 1024x)", "$uv": [704, 0], "$uv_size": [56, 56] },
+      { "requires": "($furnace_resolution = 2048x)", "$uv": [1408, 0], "$uv_size": [112, 112] },
+      { "requires": "($furnace_resolution = 4096x)", "$uv": [2816, 0], "$uv_size": [224, 224] }
+    ]
+  },
+
+  "furnace_slot@container_ui.slot": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left"
+  },
+
+  "ingredient_item@furnace_ui.furnace_slot": {
+    "offset": [55, 16],
+    "$item_collection_name": "furnace_ingredient_items",
+    "$focus_id": "furnace_ingredient_item",
+    "$focus_override_left": "FOCUS_OVERRIDE_STOP",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_up": "FOCUS_OVERRIDE_STOP",
+    "$focus_override_up_binding_type": "none"
+  },
+
+  "fuel_item@furnace_ui.furnace_slot": {
+    "offset": [55, 52],
+    "$item_collection_name": "furnace_fuel_items",
+    "$focus_id": "furnace_fuel_item",
+    "$focus_override_right": "furnace_output_item",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_left": "FOCUS_OVERRIDE_STOP",
+    "$focus_override_left_binding_type": "none"
+  },
+
+  "output_item@furnace_ui.furnace_slot": {
+    "offset": [115, 34],
+    "$item_collection_name": "furnace_output_items",
+    "$focus_id": "furnace_output_item",
+    "$focus_override_right_binding_type": "none",
+    "$focus_override_right": "FOCUS_OVERRIDE_STOP",
+    "$focus_override_left_binding_type": "none",
+    "$focus_override_left": "furnace_fuel_item"
+  }
+}

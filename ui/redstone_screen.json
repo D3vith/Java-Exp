@@ -1,0 +1,19 @@
+{
+  "dispenser_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "dispenser_ui.dispenser_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  },
+
+  "dropper_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "dispenser_ui.dispenser_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  },
+
+  "hopper_screen@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "hopper_ui.hopper_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  }
+}

@@ -50,13 +50,6 @@
           ]
         }
       }
-    ],
-    "button_mappings": [
-      {
-        "from_button_id": "button.menu_cancel",
-        "to_button_id": "button.menu_exit",
-        "mapping_type": "global"
-      }
     ]
   },
 
@@ -180,7 +173,7 @@
   "popup_dialog_factory": {
     "type": "factory",
     "control_ids": {
-      "modal_dialog_popup": "@popup.modal_dialog_popup",
+      "modal_dialog_popup": "@popup_dialog.modal_dialog_popup",
       "storage_dependency_popup": "@storage_management_popup.storage_dependency_modal",
       "storage_sharing_popup": "@storage_management_popup.sharing_popup_content"
     }

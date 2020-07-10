@@ -1,0 +1,14 @@
+{
+  "sign_screen@screen_ui.base_screen": {
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "global"
+      }
+    ],
+    "$screen_content": "edit_sign_ui.edit_sign_screen_panel",
+    "$screen_background": "screen_ui.screen_background",
+    "close_on_player_hurt": "$force_close_on_player_hurt"
+  }
+}

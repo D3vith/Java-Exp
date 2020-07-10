@@ -1,0 +1,7 @@
+{
+  "death_screen@screen_ui.base_screen": {
+    "load_screen_immediately": true,
+    "$screen_content": "death_screen_ui.death_screen_content_panel",
+    "$screen_background": "death_screen_ui.background_gradient"
+  }
+}

@@ -448,7 +448,7 @@
     "anchor_to": "bottom_right"
   },
 
-  // Panorama Ovelay - I can't use the panorma_overlay.png, because it has white areas that I can remove with JSON
+  // Panorama Ovelay - I can't use the panorma_overlay.png, because it has white areas I can't remove with JSON
   "panorama_overlay": {
     "type": "custom",
     "renderer": "gradient_renderer",

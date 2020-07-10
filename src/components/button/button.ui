@@ -93,19 +93,19 @@
     "type": "panel",
     "$tooltip_name|default": "null",
     "controls": [
-      {
-        "tooltip@tooltip_ui.tooltip": {
-          "visible": "($state = hover)",
-          "ignored": "($tooltip_name = null)"
-        }
-      },
+      // {
+      //   "tooltip@tooltip_ui.tooltip": {
+      //     "visible": "($state = hover)",
+      //     "ignored": "($tooltip_name = null)"
+      //   }
+      // },
       { "bg@$button_bg": {} },
       {
         "content_panel": {
           "type": "panel",
           "size": "$content_panel_size",
           "$content_panel_size|default": ["100% - 2px", "100% - 2px"],
-          "layer": 3,
+          "layer": 4,
           "controls": [ { "content@$button_type_panel": {} } ]
         }
       }

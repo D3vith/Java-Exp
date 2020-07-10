@@ -3,15 +3,15 @@
   "header": {
     "name": "Java Exp",
     "description": "Credits: @FMarquesPTO",
-    "uuid": "d34b8bb6-9fcd-44b4-ac44-7fe9e025c432",
-    "version": [0, 1, 0],
+    "uuid": "5ea28edd-9edd-4e35-a487-5b6cb7fbb7de",
+    "version": [0, 2, 0],
     "min_engine_version": [1, 14, 0]
   },
   "modules": [
     {
       "type": "resources",
-      "uuid": "73b06b9d-9bfe-4527-aad4-9b91bd7addfc",
-      "version": [0, 1, 0]
+      "uuid": "c5672386-ee91-4fe8-80ec-c541cf60007d",
+      "version": [0, 2, 0]
     }
   ],
   "metadata": {
