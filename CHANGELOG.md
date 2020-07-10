@@ -11,4 +11,4 @@
 -Java treasure map cross.\
 -Main menu screen.\
 -Grindstone screen.\
--Smithing table screen.\
+-Smithing table screen.
