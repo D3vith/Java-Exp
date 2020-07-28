@@ -3,6 +3,7 @@
   "namespace": "dirt_scrolling_ui",
 
   "scrolling_panel@scrolling_ui.scrolling_panel": {
+    "$scrolling_view_size|default": ["100%", "100%c"],
     "$scroll_viewport": "dirt_scrolling_ui.dirt_viewport"
   },
 
@@ -23,9 +24,10 @@
           "offset": "$scroll_view_port_offset",
           "size": "$scroll_view_port_size",
           "controls": [
-            { "top_shadow@scrolling_ui.shadow_top": { "visible": "$dirt_scroll" } },
+            { "top_shadow@dirt_scrolling_ui.shadow_top": {} },
+            { "overlay@screen_ui.screen_background": { "alpha": 0.875, "layer": 2 } },
             { 
-              "scrolling_content@screen_ui.dark_dirt_background": {
+              "scrolling_content@screen_ui.dirt": {
 	              "anchor_from": "top_middle",
                 "anchor_to": "top_middle",
                 "size": "$scrolling_view_size",
@@ -34,16 +36,35 @@
                   {
                     "content@$scrolling_content": {
                       "anchor_to": "top_middle",
-                      "anchor_from": "top_middle"
+                      "anchor_from": "top_middle",
+                      "layer": 4
                     }
                   }
                 ]
 		          }
             },
-            { "bottom_shadow@scrolling_ui.shadow_bottom": { "visible": "$dirt_scroll" } }
+            { "bottom_shadow@dirt_scrolling_ui.shadow_bottom": {} }
           ]
 	      }
       }
     ]
+  },
+
+  "shadow_top": {
+    "type": "custom",
+    "renderer": "gradient_renderer",
+    "size": ["100%", 4],
+    "color1": [0, 0, 0, 0.95],
+    "color2": [0, 0, 0, 0.0],
+    "anchor_to": "top_middle",
+    "anchor_from": "top_middle",
+    "layer": 20
+  },
+
+  "shadow_bottom@dirt_scrolling_ui.shadow_top": {
+    "color1": [0, 0, 0, 0.0],
+    "color2": [0, 0, 0, 0.95],
+    "anchor_to": "bottom_middle",
+    "anchor_from": "bottom_middle"
   }
 }

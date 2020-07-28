@@ -30,6 +30,9 @@ gui.recipebook.toggleRecipes.all=Showing all
 gui.recipebook.toggleRecipes.reset=Reset
 gui.recipebook.toggleRecipes.craftable=Showing craftable
 
+craftingScreen.tab.search=Search Items
+craftingScreen.tab.survival=Survival Inventory
+
 ##Containers
 merchant.trades=Trades
 
@@ -148,7 +151,7 @@ popup.resetSettings.controller=Are you sure yo want to reset the controller sett
 popup.resetSettings.touch=Dre you sure yo want to reset the touch settings?.unassigned= 
 
 ##Create New World & Edit World
-accessibility.play.editWorld=Edit World
+selectWorld.edit=Edit World
 selectWorld.settings=Game Settings
 selectWorld.resultFolder=Will be saved with:
 selectWorld.gameModePlayer=Personal GMode

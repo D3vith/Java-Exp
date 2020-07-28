@@ -1,0 +1,119 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "crafting_ui",
+
+  "crafting_screen_panel@container_ui.container_panel": {
+    "$container_bg": "crafting_ui.crafting_bg",
+    "variables": {
+      "requires": "$show_crafting_recipe_book",
+      "$root_panel": "inventory_ui.crafting_with_recipe_book"
+    },
+    "$specified_content": "crafting_ui.crafting_content_panel"
+  },
+
+  "crafting_content_panel": {
+    "type": "panel",
+    "$container_title": "container.crafting",
+    "controls": [
+      { "title@container_ui.title": { "offset": [29, 5] } },
+      { "recipe_book_button@crafting_recipe_book_ui.recipe_book_button": { "offset": [5, 34] } },
+      { "crafting_grid@crafting_ui.crafting_grid": {} },
+      { "output_slot@crafting_ui.output_slot": {} },
+      {
+        "player_inventory@container_ui.player_inventory": {
+          "$button_ref": "slot_crafting_ui.slot_button",
+          "$background_images": "slot_crafting_ui.slot_backgrounds"
+        }
+      },
+      {
+        "player_hotbar@container_ui.player_hotbar": {
+          "$button_ref": "slot_crafting_ui.slot_button",
+          "$background_images": "slot_crafting_ui.slot_backgrounds"
+        }
+      }
+    ]
+  },
+
+  "crafting_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/crafting_table",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($crafting_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($crafting_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($crafting_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($crafting_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($crafting_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+
+  "crafting_grid_item@slot_crafting_ui.slot": {
+    "$item_collection_name": "crafting_input_items",
+    "$item_renderer_binding_condition": "always",
+    "$slot_backgrounds_binding_condition": "always"
+  },
+
+  "crafting_grid": {
+    "type": "grid",
+    "size": [54, 54],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [29, 16],
+    "grid_dimensions": [ 3, 3 ],
+    "collection_name": "crafting_input_items",
+    "controls": [
+      {
+        "crafting_input_item_top_left@crafting_ui.crafting_grid_item": {
+          "grid_position": [0, 0],
+          "$focus_id_binding_type": "none",
+          "$focus_id": "crafting_input_top_left",
+          "$focus_left_binding_type": "none"
+        }
+      },
+      { "crafting_input_item_top_mid@crafting_ui.crafting_grid_item": { "grid_position": [1, 0] } },
+      { "crafting_input_item_top_right@crafting_ui.crafting_grid_item": { "grid_position": [2, 0] } },
+      {
+        "crafting_input_item_mid_left@crafting_ui.crafting_grid_item": {
+          "grid_position": [0, 1],
+          "$focus_id_binding_type": "none",
+          "$focus_id": "crafting_input_mid_left",
+          "$focus_left_binding_type": "none"
+        }
+      },
+      { "crafting_input_item_middle@crafting_ui.crafting_grid_item": {"grid_position": [1, 1] }  },
+      { "crafting_input_item_mid_right@crafting_ui.crafting_grid_item": { "grid_position": [2, 1] } },
+      { "crafting_input_item_bot_left@crafting_ui.crafting_grid_item": { "grid_position": [0, 2] } },
+      { "crafting_input_item_bot_mid@crafting_ui.crafting_grid_item": { "grid_position": [1, 2] } },
+      {
+        "crafting_input_item_bot_right@crafting_ui.crafting_grid_item": {
+          "grid_position": [2, 2],
+          "$focus_right_binding_type": "none",
+          "$focus_right": "crafting_output_item"
+        }
+      }
+    ]
+  },
+
+  "output_slot": {
+    "type": "grid",
+    "grid_dimensions": [1, 1],
+    "collection_name": "crafting_output_items",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [123, 34],
+    "size": [18, 18],
+    "controls": [
+      {
+        "work_bench_output@container_ui.slot": {
+          "$item_collection_name": "crafting_output_items",
+          "$stack_count_binding_condition": "always",
+          "$item_renderer_binding_condition": "always",
+          "$focus_id_binding_type": "none",
+          // "$slot_size": [24, 24],
+          "$focus_id": "crafting_output_item",
+          "$focus_right_binding_type": "none",
+          "$focus_right": "FOCUS_OVERRIDE_STOP"
+        }
+      }
+    ]
+  }
+}

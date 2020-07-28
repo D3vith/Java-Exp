@@ -1,0 +1,97 @@
+// By @FMarquesPTO. All rights reserved,
+{
+  "namespace": "iteratable_toggle_ui",
+
+  "iteratable_toggle_panel": {
+    "type": "panel",
+    "size": [150, 20],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": "$options",
+    "$options|default": []
+  },
+
+  "iteratable_toggle": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$this_action|default": "",
+    "$next_action|default": "",
+    "$toggle_tts_header": "",
+    "$toggle_tts_name": "accessibility.dropdown.listItem",
+    "$toggle_tts_toggle_on_text": "accessibility.state.selected",
+    "$toggle_tts_toggle_off_text": "accessibility.state.unselected",
+    "$toggle_tts_type_priority": 50,
+    "$enabled|default": true,
+    "controls": [ { "control@iteratable_toggle_control": {} } ],
+    "bindings": [
+      {
+        "binding_name": "$this_action",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "iteratable_toggle_control@toggle_ui.toggle": {
+    "$toggle_type_panel": "iteratable_toggle_ui.toggle_text_panel",
+    "toggle_name": "$next_action",
+    "$toggle_binding_name": "$next_action",
+    /* "$toggle_state_binding_name": "$this_action", */
+    "$toggle_group": true,
+    "$toggle_enabled_binding_name": "$option_enabled_binding_name",
+    "enabled": "$enabled",
+    "$toggle_enabled_binding_type": "global",
+    "variables": [
+      {
+        "requires": "(not $option_enabled_binding_name or not $enabled)",
+        "$toggle_enabled_binding_name": "#not_data_bound",
+        "$toggle_enabled_binding_type": "none"
+      }
+    ]
+  },
+
+  "toggle_text_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": ["100%c", 10],
+    "offset": [1, 0],
+    "$button_text_max_size": ["default", "default"],
+    "$show_comma|default": true,
+    "$show_label|default": true,
+    "$action_text_color|default": "$text_color",
+    "$comma_text|default": "gui.comma.spaced",
+    "variables": {
+      "requires": "($widget_text = '')",
+      "$show_label": false,
+      "$show_comma": false
+    },
+    "controls": [
+      {
+        "option_toggle_label@button_ui.button_label": {
+          "text": "$widget_text",
+          "bindings": "$toggle_text_bindings",
+          "visible": "$show_label",
+          "$toggle_text_bindings|default": []
+        }
+      },
+      {
+        "space": {
+          "type": "label",
+          "text": "$comma_text",
+          "color": "$text_color",
+          "size": ["default", "default"],
+          "visible": "$show_comma",
+          "shadow": true,
+          "layer": 10
+        }
+      },
+      {
+        "option_toggle_action_text@button_ui.button_label": {
+          "text": "$option_toggle_action_text",
+          "color": "$action_text_color",
+          "bindings": "$toggle_action_text_bindings",
+          "$toggle_action_text_bindings|default": []
+        }
+      }
+    ]
+  }
+}

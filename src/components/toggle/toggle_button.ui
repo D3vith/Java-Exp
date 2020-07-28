@@ -2,14 +2,12 @@
 {
   "namespace": "toggle_button_ui",
 
-  "toggle_button": {
-    "type": "panel",
+  "toggle@widget_ui.widget": {
+    "$widget_text|default": "",
+    "$toggle_group": true,
     "size": [150, 20],
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "$toggle_text|default": "$toggle_button_text",
-    "$toggle_button_text|default": "",
-    "$toggle_control_name|default": "this_thing",
-    "controls": [ { "$toggle_control_name@toggle_ui.toggle": {} } ]
+    "$widget_right_on_text|default": "",
+    "$widget_right_off_text|default": "",
+    "$control_ref": "toggle_ui.toggle_control"
   }
 }

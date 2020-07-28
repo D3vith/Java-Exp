@@ -220,13 +220,13 @@
     ]
   },
 
-  "show_map_name_input_button@toggle_button_ui.toggle_button": {
+  "show_map_name_input_button@toggle_button_ui.toggle": {
     "$toggle_name": "cartography",
     "$toggle_index": 1,
     "$toggle_group": false,
     "size": [17, 17],
     "offset": [14, 33],
-    "$toggle_control_name": "map_name_input_view",
+    "$widget_control_name": "map_name_input_view",
     "$focus_id": "show_text_input_button",
     "$toggle_state_panel": "cartography_table_ui.show_map_name_input_button_content",
     "bindings": [

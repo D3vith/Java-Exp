@@ -1,0 +1,128 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "more_options_ui",
+
+  "more_options_screen_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "content": {
+          "type": "panel",
+          "controls": [
+            { "title@content_ui.title": { "offset": ["50% - 50%x", 19], "text": "selectWorld.create" } },
+            { "world_seed_label@option_text_box_ui.box_label": { "text": "selectWorld.enterSeed", "offset": ["50% - 100px", 46] } },
+            { "world_seed@more_options_ui.world_seed_box": { "offset": ["50% - 50%x", 59], "$header": "selectWorld.enterSeed" } },
+            {
+              "seed_picker@option_text_box_ui.button": {
+                "enabled": "$is_seeds_enabled",
+                "ignored": "($education_edition or not $is_pregame)",
+                "$pressed_button_name": "choose_ugc_level_seed",
+                "$button_tts_header": "accessibility.settings.chooseSeed",
+                "offset": ["50% + 103px", 60]
+              }
+            },
+            { "world_seed_info@world_create_ui.info_label": { "text": "selectWorld.seedInfo", "offset": ["50% - 100px", 84] } },
+            { "edu_world_seed@more_options_ui.edu_world_seed_box": { "offset": ["50% - 50%x", 59] } },
+            { "experimental_gameplay@more_options_ui.experimental_gameplay_toggle": { "offset": ["50% - 155px", 100] } },
+            { "experimental_gameplay_info@world_create_ui.info_label": { "text": "selectWorld.experimentalGameplay.info", "offset": ["50% - 151px", 122] } },
+            { "world_type@more_options_ui.world_type_iteratable": { "offset": ["50% + 5px", 100] } },
+            { "bonus_chest@more_options_ui.bonus_chest_toggle": { "offset": ["50% - 155px", 151] } },
+            { "bonus_map@more_options_ui.bonus_map_toggle": { "offset": ["50% + 5px", 151] } },
+            { "multiplayer@world_create_ui.multiplayer_button": { "offset": ["50% - 155px", 185] } },
+            { "back@world_create_ui.back_button": { "offset": ["50% + 5px", 185], "size": [150, 20] } },
+            { "create_world@world_create_ui.create_world_button": { "offset": ["50% - 155px", "100% - 28px"] } },
+            { "cancel@world_create_ui.cancel_button": { "offset": ["50% + 5px", "100% - 28px"] } }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "multiplayer_screen",
+              "source_property_name": "(not #visible)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "more_options_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  // Content
+  "world_seed_box@option_text_box_ui.text_box": {
+    "ignored": "$education_edition",
+    "enabled": "$is_seeds_enabled",
+    "$option_binding_name": "#world_seed",
+    "$option_enabled_binding_name": "#world_seed_enabled",
+    "$text_box_name": "world_seed_text_box"
+  },
+
+  "edu_world_seed_box@option_text_box_ui.text_box": {
+    "ignored": "(not $education_edition)",
+    "$option_binding_name": "#world_seed",
+    "$option_enabled_binding_name": "#world_seed_enabled",
+    "$text_box_name": "world_seed_text_box"
+  },
+
+  "world_type_iteratable@iteratable_toggle_ui.iteratable_toggle_panel": {
+    "$option_enabled_binding_name": "#world_type_dropdown_enabled",
+    "$widget_text": "selectWorld.mapType",
+    "$comma_text": " ",
+    "controls": [
+      {
+        "infinite@iteratable_toggle_ui.iteratable_toggle": {
+          "$option_toggle_action_text": "generator.default",
+          "$this_action": "#world_type_radio_infinite",
+          "$next_action": "#world_type_radio_old"
+        }
+      },
+      {
+        "flat@iteratable_toggle_ui.iteratable_toggle": {
+          "$option_toggle_action_text": "generator.flat",
+          "$this_action": "#world_type_radio_flat",
+          "$next_action": "#world_type_radio_old"
+        }
+      },
+      {
+        "small@iteratable_toggle_ui.iteratable_toggle": {
+          "$option_toggle_action_text": "generator.small",
+          "$this_action": "#world_type_radio_old",
+          "$next_action": "#world_type_radio_infinite"
+        }
+      }
+    ]
+  },
+
+  "experimental_gameplay_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "createWorldScreen.experimentalgameplay",
+    "$option_binding_name": "#experimental_gameplay",
+    "$option_enabled_binding_name": "#experimental_gameplay_enabled",
+    "$toggle_name": "experimental_gameplay",
+    "bindings": [
+      {
+        "binding_name": "#show_experimental_gameplay",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+
+  "bonus_chest_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "createWorldScreen.bonusChest",
+    "$option_binding_name": "#bonus_chest",
+    "$option_enabled_binding_name": "#bonus_chest_enabled",
+    "$toggle_name": "bonus_chest"
+  },
+
+  "bonus_map_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "createWorldScreen.startWithMap",
+    "$option_binding_name": "#start_with_map",
+    "$option_enabled_binding_name": "#start_with_map_enabled",
+    "$toggle_name": "start_with_map"
+  }
+}

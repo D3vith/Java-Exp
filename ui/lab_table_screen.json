@@ -1,0 +1,9 @@
+{
+  "namespace": "labtable",
+
+  "lab_table@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_background": "screen_ui.screen_background",
+    "$screen_content": "lab_table_ui.lab_table_screen_panel"
+  }
+}

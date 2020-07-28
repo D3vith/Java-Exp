@@ -1,0 +1,861 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "resource_packs_ui",
+
+  "resource_packs_content": {
+    "type": "panel",
+    "$type_prefix|default": "",
+    "controls": [
+      { "title@content_ui.title": { "text": "$title", "offset": ["50% - 50%x", 7] } },
+      { "subtitle@content_ui.title": { "text": "$subtitle", "color": "$subtitle_text_color", "visible": "$is_pregame", "offset": ["50% - 50%x", 19] } },
+      { "left@resource_packs_ui.side_list_panel": { "$scrolling_content": "resource_packs_ui.available_packs_scroll_content", "offset": ["50% - 4px - 200px", 32] } },
+      { "right@resource_packs_ui.side_list_panel": { "$scrolling_content": "resource_packs_ui.selected_packs_scroll_content", "offset": ["50% + 4px", 32] } },
+      { "force_user_agreement@resource_packs_ui.force_user_agreement_toggle": { "offset": ["50% - 154px", "100% - 48px"], "visible": "($type_prefix = level)" } },
+      { "back@$back_button_ref": { "offset": "$back_button_offset", "size": "$back_button_size" } }
+    ],
+    "$back_button_offset|default": ["50% - 100px", "100% - 48px"],
+    "$back_button_size|default": [200, 20],
+    "variables": {
+      "requires": "($type_prefix = level)",
+      "$back_button_offset": ["50% + 4px", "100% - 48px"],
+      "$back_button_size": [150, 20]
+    }
+  },
+
+  "side_list_panel": {
+    "type": "panel",
+    "size": [200, "100% - 83px"],
+    "$scroll_bar_offset": [97, 0],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 2,
+    "controls": [ { "scroll@dirt_scrolling_ui.scrolling_panel": {} } ]
+  },
+
+  "force_user_agreement_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "Force User Agreement",
+    "$tts_control_type_order_priority": 100,
+    "$tts_value_order_priority": 101,
+    "$toggle_enabled_binding_type": "global",
+    "$toggle_name": "force_user_agreement_level",
+    "$option_binding_name": "#force_user_agreement_level",
+    "$option_enabled_binding_name": "#force_user_agreement_level_enabled",
+    "$tooltip_text": "selectWorld.forceUser.info"
+  },
+
+  "available_packs_scroll_content": {
+    "type": "stack_panel",
+    "size": [200, "100%c" ],
+    "layer": 2,
+    "controls": [
+      { "list_header_panel@resource_packs_ui.list_header_panel": { "$text": "resourcePack.available.title"} },
+      { "available_packs_grid@resource_packs_ui.available_packs_grid": {} },
+      { "realms_packs_grid@resource_packs_ui.realms_packs_grid": {} },
+      { "unowned_packs_grid@resource_packs_ui.unowned_packs_grid": {} },
+      { "invalid_packs_grid@resource_packs_ui.invalid_packs_grid": { "$ignore_selected_bg": true } }
+    ]
+  },
+
+  "selected_packs_scroll_content": {
+    "type": "stack_panel",
+    "size": [200, "100%c"],
+    "layer": 2,
+    "controls": [
+      { "list_header_panel@resource_packs_ui.list_header_panel": { "$text": "resourcePack.selected.title"} },
+      { "selected_pack_grid@resource_packs_ui.selected_packs_grid": {} },
+      { "default_pack@resource_packs_ui.pack_content_panel": { "$pack_prefix": "default", "$ignore_selected_bg": true } }
+    ]
+  },
+
+  // List Header
+  "list_header_panel": {
+    "type": "panel",
+    "size": ["100%", 15],
+    "controls": [
+      { "list_title@content_ui.title": { "text": "$text", "offset": ["50% - 50%x", 2], "shadow": false } },
+      {
+        "underline": {
+          "type": "image",
+          "texture": "assets/fmarquespto/textures/static/white",
+          "size": ["100%sm + 2px", "1px"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": ["50% - 50%x", 11],
+          "layer": 2
+        }
+      }
+    ]
+  },
+
+   // Packs Grids
+
+  "common_pack_grid": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "factory": {
+      "name": "($pack_prefix + '_pack_factory')",
+      "control_name": "resource_packs_ui.pack_content_panel"
+    },
+    "collection_name": "('#' + $pack_prefix + '_pack_items_' + $type_prefix)",
+    "$grid_visible_binding_name|default": "",
+    "$grid_visible_binding_type|default": "none",
+    "bindings": [
+      {
+        "binding_name": "('#' + $pack_prefix + '_grid_dimensions_' + $type_prefix)",
+        "binding_name_override": "#collection_length"
+      },
+      {
+        "binding_name": "$grid_visible_binding_name",
+        "binding_name_override": "#visible",
+        "binding_type": "$grid_visible_binding_type"
+      }
+    ]
+  },
+
+  "selected_packs_grid@resource_packs_ui.common_pack_grid": { "$pack_prefix": "selected" },
+  "available_packs_grid@resource_packs_ui.common_pack_grid": { "$pack_prefix": "available" },
+  "invalid_packs_grid@resource_packs_ui.common_pack_grid": { "$pack_prefix": "invalid" },
+  "realms_packs_grid@resource_packs_ui.common_pack_grid": { "visible": false, "$pack_prefix": "realms" },
+  "unowned_packs_grid@resource_packs_ui.common_pack_grid": { "visible": false, "$pack_prefix": "unowned" },
+
+  // Common Pack Item Content
+  "pack_content_panel": {
+    "type": "panel",
+    "size": [ "100%", 36 ],
+    "$pack_prefix|default": "none",
+    "controls": [
+      {
+        "content_panel": {
+          "type": "panel",
+          "size": ["100% - 4px", "100%"],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "controls": [ { "pack_button@resource_packs_ui.pack_button": {} } ]
+        }
+      }
+    ]
+  },
+
+  "pack_button@common.button": {
+    "size": ["100%", "100%"],
+    "$default_state|default": false, 
+    "$pressed_state|default": false, 
+    "$hover_state|default": false,
+    "$button_collection_name|default": "",
+    "$pack_pressed_name|default": "('button.' + $pack_prefix + '_pack_' + $type_prefix)",
+    "$pack_collecion_name|default": "('#' + $pack_prefix + '_pack_items_' + $type_prefix)",
+    "$pressed_button_name": "$pack_pressed_name",
+    "controls": [
+      { "default@resource_packs_ui.pack_button_content": { "$default_state": true } },
+      { "pressed@resource_packs_ui.pack_button_content": { "$hover_state": true } },
+      { "hover@resource_packs_ui.pack_button_content": { "$hover_state": true } }
+    ],
+    "bindings": [
+      {
+        "binding_collection_name": "$pack_collecion_name",
+        "binding_type": "collection_details"
+      }
+    ]
+  },
+
+  "pack_button_content": {
+    "type": "panel",
+    "size": [ "100% - 4px", "100% - 4px" ],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "$pack_icon_name": "('resource_packs_ui.' + $pack_prefix + '_icon_image')",
+    "$pack_prefix_label": "('resource_packs_ui.' + $pack_prefix + '_pack_name_label')",
+    "$pack_description_label": "('resource_packs_ui.' + $pack_prefix + '_pack_description_label')",
+    "$input_button_panel": "('resource_packs_ui.' + $pack_prefix + '_input_button_panel')",
+    "$ignore_selected_bg|default": false,
+    "controls": [
+      { "icon_image@$pack_icon_name": {} },
+      {
+        "overlay@resource_packs_ui.overlay": {
+          "ignored": "(not $hover_state)",
+          "bindings": [
+            {
+              "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+              "binding_name": "(not #direction_button_visible)",
+              "binding_name_override": "#visible",
+              "binding_type": "collection"
+            }
+          ]
+        }
+      },
+      {
+        "overlay@resource_packs_ui.overlay": {
+          "visible": "($pack_prefix = invalid)",
+          "color": [0.47, 0, 0],
+          "alpha": 1,
+          "size": ["100% + 2px", "100% + 2px"],
+          "offset": [-1, -1],
+          "layer": 1
+        }
+      },
+      {
+        "hover@text_box_ui.box_default": {
+          "size": [ 196, 36 ],
+          "ignored": "$ignore_selected_bg",
+          "bindings": [
+            {
+              "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+              "binding_name": "#direction_button_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "collection"
+            }
+          ]
+        }
+      },
+      { "$input_button_panel@$input_button_panel": {} },
+      {
+        "text_panel": {
+          "type": "panel",
+          "size": [ "100% - 34px", "100%" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [34, 0],
+          "controls": [ { "text_panel@pack_text_panel": {} } ]
+        }
+      }
+    ]
+  },
+
+  "pack_text_panel": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": ["100%", "100%"],
+    "controls": [
+      {
+        "name_panel": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%", "10px" ],
+          "controls": [ { "pack_name_label@$pack_prefix_label": {} } ]
+        }
+      },
+      {
+        "full_panel": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": ["100%", "fill"],
+          "controls": [
+            {
+              "description_panel": {
+                "layer": 4,
+                "type": "panel",
+                "size": ["fill", 21],
+                "controls": [ { "pack_description_label@$pack_description_label": {} } ]
+              }
+            },
+            {
+              "space0@content_ui.h2px": {
+                "size": [18, "100%"],
+                "ignored": "(not ($pack_prefix = selected))",
+                "bindings": [
+                  {
+                    "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+                    "binding_name": "#direction_button_visible",
+                    "binding_name_override": "#visible",
+                    "binding_type": "collection"
+                  }
+                ]
+              }
+            },
+            {
+              "space1@content_ui.h2px": {
+                "size": [18, "100%"],
+                "bindings": [
+                  { "binding_name": "#direction_button_visible" },
+                  { "binding_name": "#can_go_to_store" },
+                  {
+                    "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+                    "binding_name": "(#direction_button_visible and #can_go_to_store)",
+                    "binding_name_override": "#visible",
+                    "binding_type": "collection"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "overlay": {
+    "type": "image",
+    "texture": "assets/fmarquespto/textures/static/white",
+    "color": [0.60, 0.6, 0.60],
+    "size": [32, 32],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "alpha": 0.35,
+    "layer": 8
+  },
+
+  "base_label": {
+    "type": "label",
+    "shadow": true,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 6
+  },
+
+  // Packs Icon Image
+  "icon_image": {
+    "type": "image",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [32, 32],
+    "layer": 2
+  },
+
+  "icon_image_system@resource_packs_ui.icon_image": {
+    "texture": "#icon_path",
+    "zip_folder": "#icon_zip",
+    "$icon_collection_name": "none",
+    "texture_file_system": "#icon_file_system",
+    "bindings": [
+      {
+        "binding_collection_name": "$icon_collection_name",
+        "binding_name": "#icon_path",
+        "binding_name_override": "#texture",
+        "binding_type": "collection"
+      },
+      {
+        "binding_collection_name": "$icon_collection_name",
+        "binding_name": "#icon_zip",
+        "binding_name_override": "#zip_folder",
+        "binding_type": "collection"
+      },
+      {
+        "binding_collection_name": "$icon_collection_name",
+        "binding_name": "#icon_file_system",
+        "binding_name_override": "#texture_file_system",
+        "binding_type": "collection"
+      }
+    ]
+  },
+
+  "none_icon_image@content_ui.empty_panel": {},
+  "default_icon_image@resource_packs_ui.icon_image": { "texture": "pack_icon" },
+  "available_icon_image@resource_packs_ui.icon_image_system": { "$icon_collection_name": "('#available_pack_items_' + $type_prefix)" },
+  "selected_icon_image@resource_packs_ui.icon_image_system": { "$icon_collection_name": "('#selected_pack_items_' + $type_prefix)" },
+  "invalid_icon_image@resource_packs_ui.icon_image": { "texture": "assets/minecraft/textures/misc/unknown_pack" },
+  "realms_icon_image@resource_packs_ui.icon_image_system": { "$icon_collection_name": "('#realms_pack_items_' + $type_prefix)" },
+  "unowned_icon_image@resource_packs_ui.icon_image_system": { "$icon_collection_name": "('#unowned_pack_items_' + $type_prefix)" },
+
+  // Packs Name
+  "pack_name_label@resource_packs_ui.base_label": {
+    "text": "#name",
+    "size": ["fill", 10],
+    "$name_collection_name|default": "none",
+    "bindings": [
+      {
+        "binding_collection_name": "$name_collection_name",
+        "binding_name": "#name",
+        "binding_type": "collection"
+      }
+    ]
+  },
+
+  "none_pack_name_label@content_ui.empty_panel": {},
+  "default_pack_name_label@resource_packs_ui.pack_name_label": { "text": "Default" },
+  "available_pack_name_label@resource_packs_ui.pack_name_label": { "$name_collection_name": "('#available_pack_items_' + $type_prefix)" },
+  "selected_pack_name_label@resource_packs_ui.pack_name_label": { "$name_collection_name": "('#selected_pack_items_' + $type_prefix)" },
+  "invalid_pack_name_label@resource_packs_ui.pack_name_label": { "$name_collection_name": "('#invalid_pack_items_' + $type_prefix)" },
+  "realms_pack_name_label@resource_packs_ui.pack_name_label": { "$name_collection_name": "('#realms_pack_items_' + $type_prefix)" },
+  "unowned_pack_name_label@resource_packs_ui.pack_name_label": { "$name_collection_name": "('#unowned_pack_items_' + $type_prefix)" },
+
+  // Packs Description
+  "pack_description_label@resource_packs_ui.base_label": {
+    "text": "#description",
+    "color": "$secondary_text_color",
+    "size": ["100%", "100%"],
+    "$desc_collection_name": "none",
+    "bindings": [
+      {
+        "binding_collection_name": "$desc_collection_name",
+        "binding_name": "#description",
+        "binding_type": "collection"
+      }
+    ]
+  },
+
+  "none_pack_description_label@content_ui.empty_panel": {},
+  "default_pack_description_label@resource_packs_ui.pack_description_label": { "text": "The default look and feel of Minecraft" },
+  "available_pack_description_label@resource_packs_ui.pack_description_label": { "$desc_collection_name": "('#available_pack_items_' + $type_prefix)" },
+  "selected_pack_description_label@resource_packs_ui.pack_description_label": { "$desc_collection_name": "('#selected_pack_items_' + $type_prefix)" },
+  "invalid_pack_description_label@resource_packs_ui.pack_description_label": { "$desc_collection_name": "('#invalid_pack_items_' + $type_prefix)" },
+  "realms_pack_description_label@resource_packs_ui.pack_description_label": { "$desc_collection_name": "('#realms_pack_items_' + $type_prefix)" },
+  "unowned_pack_description_label@resource_packs_ui.pack_description_label": { "$desc_collection_name": "('#unowned_pack_items_' + $type_prefix)" },
+
+  // Input Button Panels
+  "input_button_panel": {
+    "type": "input_panel",
+    "modal": true,
+    "inline_modal": true,
+    "focus_enabled": false,
+    "visible": false,
+    "layer": 4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": ["100%", "100%"],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "('button.deselected_pack_' + $type_prefix)",
+        "mapping_type": "global"
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "('button.deselected_pack_' + $type_prefix)",
+        "mapping_type": "global",
+        "consume_event": false
+      },
+      {
+        "from_button_id": "button.menu_left",
+        "to_button_id": "button.menu_left",
+        "mapping_type": "global",
+        "scope": "view"
+      },
+      {
+        "from_button_id": "button.menu_right",
+        "to_button_id": "button.menu_right",
+        "mapping_type": "global",
+        "scope": "view"
+      }
+    ],
+    "bindings": [
+      {
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_name": "#direction_button_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "collection"
+      },
+      {
+        "binding_name": "#is_using_gamepad",
+        "binding_name_override": "#modal",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+  "none_input_button_panel@content_ui.empty_panel": {},
+  "default_input_button_panel@content_ui.empty_panel": {},
+
+  "available_input_button_panel@resource_packs_ui.input_button_panel": {
+    "controls": [
+      {
+        "content": {
+          "type": "panel",
+          "size": [32, 32],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 2,
+          "controls": [ { "move_pack_right_button@resource_packs_ui.move_pack_right_button": {} } ]
+        }
+      }
+    ]
+  },
+
+  "selected_input_button_panel@resource_packs_ui.input_button_panel": {
+    "controls": [
+      {
+        "content": {
+          "type": "panel",
+          "size": [32, 32],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 2,
+          "$overlay_alpha": 0,
+          // "$button_collection_name": "('#' + $pack_prefix + '_pack_items_' + $type_prefix)",
+          "controls": [
+            { "overlay@resource_packs_ui.overlay": {} },
+            {
+              "minus_and_sort_buttons": {
+                "type": "stack_panel",
+                "size": ["100%", "100%"],
+                "orientation": "horizontal",
+                "controls": [
+                  { "selected_pack_minus@resource_packs_ui.move_pack_left_button": {} },
+                  {
+                    "horizontal_stack": {
+                      "type": "stack_panel",
+                      "size": ["100%cm", "100%"],
+                      "controls": [
+                        { "move_pack_up@resource_packs_ui.move_pack_up": {} },
+                        { "s@content_ui.vfill": {} },
+                        { "move_pack_down@resource_packs_ui.move_pack_down": {} }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "vertical_stack": {
+          "type": "stack_panel",
+          "size": [16, "100%c"],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle",
+          "offset": [0, 0],
+          "controls": [
+            { "pack_warning_button@resource_packs_ui.pack_warning_button": {} },
+            { "selected_pack_settings_button@resource_packs_ui.pack_options_button": {} }
+          ]
+        }
+      }
+    ]
+  },
+
+  "invalid_input_button_panel@content_ui.empty_panel": {},
+  "realms_input_button_panel@resource_packs_ui.available_input_button_panel": {},
+
+  "unowned_input_button_panel@resource_packs_ui.available_input_button_panel": {
+    "controls": [
+      {
+        "content": {
+          "type": "panel",
+          "size": [32, 32],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 2,
+          "controls": [ { "go_to_store_button@resource_packs_ui.go_to_store_button": {} } ]
+        }
+      }
+    ]
+  },
+
+  // Input Buttons
+  "move_pack_button@common.button": {
+    "$pressed_button_name": "('button.selected_pack_' + $type_prefix)",
+    "$visible_binding_name|default": "(not #is_selected)",
+    "$visible_binding_type|default": "collection",
+    "$enabled_binding_name|default": "#is_selected",
+    "$enabled_binding_type|default": "collection",
+    "$overlay_alpha|default": 0.4,
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 5,
+    "variables": {
+      "requires": "($visible_binding_name = '' and $visible_binding_type = collection)",
+      "$visible_binding_type": "none"
+    },
+    "$button_state_panel|default": "resource_packs_ui.move_pack_button_content",
+    "controls": [
+      { "default@$button_state_panel": { "$button_bg": "$default_button_bg" } },
+      { "hover@$button_state_panel": { "$button_bg": "$hover_button_bg" } },
+      { "pressed@$button_state_panel": { "$button_bg": "$hover_button_bg" } }
+    ],
+    "bindings": [
+      {
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_type": "collection_details"
+      },
+      {
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_name": "$visible_binding_name",
+        "binding_name_override": "#visible",
+        "binding_type": "$visible_binding_type"
+      },
+      {
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_name": "$enabled_binding_name",
+        "binding_name_override": "#enabled",
+        "binding_type": "$enabled_binding_type"
+      }
+    ]
+  },
+
+  "side_move_pack_button@common.button": {
+    "$button_state_panel": "resource_packs_ui.side_move_pack_button_content",
+    "layer": 5,
+    "controls": [
+      { "default@$button_state_panel": { "$button_bg": "$default_button_bg" } },
+      { "hover@$button_state_panel": { "$button_bg": "$hover_button_bg" } },
+      { "pressed@$button_state_panel": { "$button_bg": "$hover_button_bg" } }
+    ]
+  },
+
+  "move_pack_button_content": {
+    "type": "panel",
+    "controls": [
+      { "overlay@resource_packs_ui.overlay": { "alpha": "$overlay_alpha" } },
+      { "bg@$button_bg": { "layer": 10 } }
+    ]
+  },
+
+  "side_move_pack_button_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "icon@$button_bg": {
+          "size": "$bg_size",
+          "$bg_size|default": [11, 11],
+          "layer": 10
+        }
+      }
+    ]
+  },
+
+  "move_pack_right_button@resource_packs_ui.move_pack_button": {
+    "size": [32, 32],
+    "default_focus_precedence": 1,
+    "$pressed_button_name": "('button.move_left_' + $type_prefix)",
+    "$visible_binding_name": "#can_move",
+    "$enabled_binding_name": "(not ('#platform_locked_' + $type_prefix))",
+    "$default_button_bg": "resource_packs_ui.move_left_default",
+    "$hover_button_bg": "resource_packs_ui.move_left_hover"
+  },
+
+  "move_pack_left_button@resource_packs_ui.move_pack_button": {
+    "size": ["fill", 32],
+    "default_focus_precedence": 1,
+    "$pressed_button_name": "('button.move_left_' + $type_prefix)",
+    "$visible_binding_name": "#can_move",
+    "$default_button_bg": "resource_packs_ui.move_right_default",
+    "$hover_button_bg": "resource_packs_ui.move_right_hover"
+  },
+
+  "move_pack_up@resource_packs_ui.move_pack_button": {
+    "$pressed_button_name": "('button.sort_up_' + $type_prefix)",
+    "$visible_binding_name": "#can_sort_up",
+    "size": [15, 14],
+    "$default_button_bg": "resource_packs_ui.move_up_default",
+    "$hover_button_bg": "resource_packs_ui.move_up_hover"
+  },
+
+  "move_pack_down@resource_packs_ui.move_pack_button": {
+    "$pressed_button_name": "('button.sort_down_' + $type_prefix)",
+    "size": [15, 14],
+    "$visible_binding_name": "#can_sort_down",
+    "$default_button_bg": "resource_packs_ui.move_down_default",
+    "$hover_button_bg": "resource_packs_ui.move_down_hover"
+  },  
+
+  "go_to_store_button1@resource_packs.side_move_pack_button": {
+    "size": [16, 16],
+    "$tooltip_text": "gui.store",
+    "default_focus_precedence": 1,
+    "$pressed_button_name": "('button.store_' + $type_prefix)",
+    "$default_button_bg": "resource_packs_ui.pack_store_default",
+    "$hover_button_bg": "resource_packs_ui.pack_store_hover",
+    "$visible_binding_name": "#can_go_to_store"
+  },
+
+  "go_to_store_button@resource_packs_ui.move_pack_button": {
+    "size": [32, 32],
+    "default_focus_precedence": 1,
+    "$pressed_button_name": "('button.store_' + $type_prefix)",
+    "$default_button_bg": "resource_packs_ui.move_left_default",
+    "$hover_button_bg": "resource_packs_ui.move_left_hover",
+    "$visible_binding_name": "#can_go_to_store"
+  },
+
+  "pack_warning_button@resource_packs_ui.side_move_pack_button": {
+    "$pressed_button_name": "('button.report_errors_' + $type_prefix)",
+    "size": [16, 16],
+    "$default_button_bg": "resource_packs_ui.pack_manif_default",
+    "$hover_button_bg": "resource_packs_ui.pack_manif_hover",
+    "bindings": [
+      {
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_type": "collection_details"
+      },
+      {
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_name": "(not #report_generating)",
+        "binding_name_override": "#enabled",
+        "binding_type": "collection"
+      },
+      {
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_name": "#report_button_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "collection"
+      }
+    ]
+  },
+
+  "pack_options_button@resource_packs_ui.side_move_pack_button": {
+    "size": [16, 16],
+    "$pressed_button_name": "('button.pack_settings_' + $type_prefix)",
+    "$default_button_bg": "resource_packs_ui.pack_options_default",
+    "$hover_button_bg": "resource_packs_ui.pack_options_hover",
+    "bindings": [
+      {
+        "binding_type": "collection",
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+        "binding_name": "#has_pack_settings",
+        "binding_name_override": "#visible"
+      },
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)"
+      }
+    ]
+  },
+
+  // Left
+  // "$button.expand_selected": "('button.expand_selected_' + $type_prefix)",
+  // "$button.expand_available": "('button.expand_available_' + $type_prefix)",
+  // "$button.expand_realms": "('button.expand_realms_' + $type_prefix)",
+  // "$button.expand_unowned": "('button.expand_unowned_' + $type_prefix)",
+  // "$button.select_offer": "('button.select_offer_' + $type_prefix)",
+  // "$button.resource_pack_options_exit": "('button.resource_pack_options_exit_' + $type_prefix)",
+  // "$no_available_packs_visibility_binding": "('#no_available_packs_visibility_' + $type_prefix)",
+  // "$no_realms_packs_visibility_binding": "('#no_realms_packs_visibility_' + $type_prefix)",
+  // "$no_unowned_packs_visibility_binding": "('#no_unowned_packs_visibility_' + $type_prefix)",
+  // "$view_more_unowned_content_button_visibility_binding": "('#suggested_content_visible_' + $type_prefix)",
+  // "$total_size_binding": "('#total_size_binding_' + $type_prefix)",
+  // "$options_slider_name": "content_tier_slider_' + $type_prefix)",
+
+  // Icons
+
+  "move_right_default@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/resource_packs",
+    "size": [32, 32],
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv": [32, 0], "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv": [64, 0], "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv": [128, 0], "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv": [256, 0], "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv": [512, 0], "$uv_size": [512, 512] }
+    ]
+  },
+
+  "move_right_hover@resource_packs_ui.move_right_default": {
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv": [32, 32], "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv": [64, 64], "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv": [128, 128], "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv": [256, 256], "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv": [512, 512], "$uv_size": [512, 512] }
+    ]
+  },
+
+  "move_left_default@resource_packs_ui.move_right_default": {
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv_size": [512, 512] }
+    ]
+  },
+
+  "move_left_hover@resource_packs_ui.move_right_default": {
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv": [0, 32], "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv": [0, 64], "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv": [0, 128], "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv": [0, 256], "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv": [0, 512], "$uv_size": [512, 512] }
+    ]
+  },
+
+  "move_up_default@resource_packs_ui.move_right_default": {
+    "offset": [-17, 1],
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv": [96, 0], "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv": [192, 0], "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv": [384, 0], "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv": [768, 0], "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv": [1536, 0], "$uv_size": [512, 512] }
+    ]
+  },
+
+  "move_up_hover@resource_packs_ui.move_right_default": {
+    "offset": [-17, 1],
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv": [96, 32], "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv": [192, 64], "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv": [384, 128], "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv": [768, 256], "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv": [1536, 512], "$uv_size": [512, 512] }
+    ]
+  },
+
+  "move_down_default@resource_packs_ui.move_right_default": {
+    "offset": [-17, -19],
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv": [64, 0], "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv": [128, 0], "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv": [256, 0], "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv": [512, 0], "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv": [1024, 0], "$uv_size": [512, 512] }
+    ]
+  },
+
+  "move_down_hover@resource_packs_ui.move_right_default": {
+    "offset": [-17, -19],
+    "variables": [
+      { "requires": "($resource_packs_resolution = 256x)", "$uv": [64, 32], "$uv_size": [32, 32] },
+      { "requires": "($resource_packs_resolution = 512x)", "$uv": [128, 64], "$uv_size": [64, 64] },
+      { "requires": "($resource_packs_resolution = 1024x)", "$uv": [256, 128], "$uv_size": [128, 128] },
+      { "requires": "($resource_packs_resolution = 2048x)", "$uv": [512, 256], "$uv_size": [256, 256] },
+      { "requires": "($resource_packs_resolution = 4096x)", "$uv": [1024, 512], "$uv_size": [512, 512] }
+    ]
+  },
+
+  "pack_manif_default": {
+    "type": "panel",
+    "controls":  [
+      {
+        "no_errors": {
+          "type": "image",
+          "texture": "assets/fmarquespto/textures/icon/manif",
+          "bindings": [
+            {
+              "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+              "binding_name": "#error_free",
+              "binding_name_override": "#visible",
+              "binding_type": "collection"
+            }
+          ]
+        }
+      },
+      {
+        "errors": {
+          "type": "image",
+          "texture": "assets/fmarquespto/textures/icon/maniferrors",
+          "bindings": [
+            {
+              "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+              "binding_name": "#has_errors",
+              "binding_name_override": "#visible",
+              "binding_type": "collection"
+            }
+          ]
+        }
+      },
+      {
+        "warning": {
+          "type": "image",
+          "texture": "assets/fmarquespto/textures/icon/manifwarn",
+          "bindings": [
+            {
+              "binding_collection_name": "('#' + $pack_prefix + _pack_items_ + $type_prefix)",
+              "binding_name": "#has_warnings",
+              "binding_name_override": "#visible",
+              "binding_type": "collection"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "pack_manif_hover": { "type": "image", "texture": "assets/fmarquespto/textures/icon/manifhover" },
+  "pack_options_default": { "type": "image", "texture": "assets/fmarquespto/textures/icon/conf" },
+  "pack_options_hover": { "type": "image", "texture": "assets/fmarquespto/textures/icon/confhover" },
+  "pack_store_default": { "type": "image", "texture": "assets/fmarquespto/textures/icon/store" },
+  "pack_store_hover": { "type": "image", "texture": "assets/fmarquespto/textures/icon/storehover" }
+}

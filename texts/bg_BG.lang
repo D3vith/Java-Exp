@@ -22,6 +22,9 @@ gui.recipebook.toggleRecipes.all=\u041fо\u043aа\u0437ва се вси\u0447\u0
 gui.recipebook.toggleRecipes.reset=нулиране	#
 gui.recipebook.toggleRecipes.craftable=\u041fо\u043aа\u0437ва\u0442 се са\u043cо и\u0437ра\u0431о\u0442вае\u043cи \u043fре\u0434\u043cе\u0442и	#
 
+craftingScreen.tab.search=All
+craftingScreen.tab.survival=Inventory
+
 ##Containers
 container.repair=\u041fо\u043fрав\u043aа и и\u043cе\u043d\u0443ва\u043dе	#
 container.repair.cost=\u0426е\u043dа \u043dа о\u043cаг\u044cосва\u043dе: %1$d	#

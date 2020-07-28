@@ -14,6 +14,7 @@
   "v8px@content_ui.space": { "size": [0, 8] },
   "v10px@content_ui.space": { "size": [0, 10] },
   "vfill@content_ui.space": { "size": [0, "fill"] },
+  "h1px@content_ui.space": { "size": [1, 0] },
   "h2px@content_ui.space": { "size": [2, 0] },
   "h4px@content_ui.space": { "size": [4, 0] },
   "h5px@content_ui.space": { "size": [5, 0] },
@@ -92,5 +93,131 @@
     "$uv_size|default": [0, 0],
     "anchor_from": "top_left",
     "anchor_to": "top_left"
+  },
+
+  "hstack": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": ["100%", "100%cm"]
+  },
+
+  "grid_index_panel": {
+    "type": "stack_panel",
+    "size": ["100%", "0px"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$item_index|default": 0,
+    "$collection_name|default": "",
+    "collection_name": "$collection_name",
+    "controls": [
+      {
+        "item@$item_template": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "collection_index": "$item_index"
+        }
+      }
+    ]
+  },
+
+  // Screen with Scroll
+  "scroll_screen_panel": {
+    "type": "panel",
+    "size": ["100%", "100%"],
+    "$top_content_size|default": ["100%", 32],
+    "$middle_content_size|default": ["100%", "fill"],
+    "$bottom_content_size|default": ["100%", 32],
+    "$top_content|default": "content_ui.empty_panel",
+    "$middle_content|default": "content_ui.empty_panel",
+    "$bottom_content|default": "content_ui.empty_panel",
+    // "$no_clip_path|default": false,
+    "$top_content_layer|default": 2,
+    "$bottom_content_layer|default": 2,
+    // "variables": [
+    //   {
+    //     "requires": "$no_clip_path",
+    //     "$scroll_clip_path": false,
+    //     "$top_content_layer": 70,
+    //     "$bottom_content_layer": 70
+    //   }
+    // ],
+    "controls": [
+      {
+        "screen_stack": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": ["100%", "100%"],
+          "controls": [
+            {
+              "top_content_panel": {
+                "type": "panel",
+                "size": "$top_content_size",
+                "layer": "$top_content_layer",
+                "controls": [
+                  {
+                    "safezone": {
+                      "type": "stack_panel",
+                      "size": ["100%", "100%"],
+                      "orientation": "horizontal",
+                      "controls": [
+                        { "outer_left@common.left_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_outer_left" } },
+                        { "inner_left@common.left_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_inner_left", "anchor_from": "top_left", "anchor_to": "top_left" } },
+                        {
+                          "fill": {
+                            "type": "panel",
+                            "size": ["fill", "100%"],
+                            "controls": [ { "$top_content@$top_content": {} } ]
+                          }
+                        },
+                        { "inner_right@common.right_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_inner_right" } },
+                        { "outer_right@common.right_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_outer_right" } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "middle_content_panel": {
+                "type": "panel",
+                "size": "$middle_content_size",
+                "layer": 1,
+                "controls": [ { "scrolling@dirt_scrolling_ui.scrolling_panel": { "$scrolling_content": "$middle_content" } } ]
+              }
+            },
+            {
+              "bottom_content_panel": {
+                "type": "panel",
+                "size": "$bottom_content_size",
+                "layer": "$bottom_content_layer",
+                "controls": [
+                  {
+                    "safezone": {
+                      "type": "stack_panel",
+                      "size": ["100%", "100%"],
+                      "orientation": "horizontal",
+                      "controls": [
+                        { "outer_left@common.left_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_outer_left" } },
+                        { "inner_left@common.left_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_inner_left", "anchor_from": "bottom_left", "anchor_to": "bottom_left" } },
+                        {
+                          "fill": {
+                            "type": "panel",
+                            "size": ["fill", "100%"],
+                            "controls": [ { "$bottom_content@$bottom_content": {} } ]
+                          }
+                        },
+                        { "inner_right@common.right_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_inner_right" } },
+                        { "outer_right@common.right_safezone_horizontal_buffer": { "$safezone_binding_name": "#safezone_outer_right" } }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      { "popup_dialog_factory@$popup_factory": {} }
+    ]
   }
 }

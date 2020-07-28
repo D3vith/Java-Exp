@@ -1,0 +1,48 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "radio_toggle_ui",
+
+  "toggle": {
+    "type": "panel",
+    "size": [270, 18],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$enabled|default": true,
+    "controls": [ { "control@radio_toggle_ui.radio_toggle_control": {} } ]
+  },
+
+  "radio_toggle_control@toggle_ui.toggle": {
+    "$toggle_group": true,
+    "$toggle_name|default": "$toggle_state_binding_name",
+    "$toggle_enabled_binding_name": "$option_enabled_binding_name",
+    "enabled": "$enabled",
+    "$toggle_enabled_binding_type": "global",
+    "$checked_toggle_bg": "text_box_ui.box_default",
+    "$unchecked_toggle_bg": "content_ui.empty_panel",
+    "$checked_hover_toggle_bg": "text_box_ui.box_hover",
+    "$unchecked_hover_toggle_bg": "text_box_ui.box_hover",
+    "$checked_locked_toggle_bg": "text_box_ui.box_default",
+    "$unchecked_locked_toggle_bg": "content_ui.empty_panel",
+    "variables": [
+      {
+        "requires": "(not $option_enabled_binding_name or not $enabled)",
+        "$toggle_enabled_binding_name": "#not_data_bound",
+        "$toggle_enabled_binding_type": "none"
+      }
+    ]
+  }
+
+  
+/* 
+  "radio_button_label@button_ui.button_label": {
+    "text": "$radio_button_label",
+    "$text_color|default": "white",
+    "locked_color": "$locked_text_color",
+    "$locked_text_color|default": [0.62, 0.62, 0.62],
+    "bindings": "$text_bindings",
+    "offset": "$radio_text_offset",
+    "$radio_text_offset|default": [0, 0],
+    "layer": 10,
+    "$text_bindings|default": []
+  } */
+}

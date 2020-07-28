@@ -1,0 +1,31 @@
+{
+  "pause_screen@screen_ui.base_screen": {
+    "cache_screen": true,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_continue",
+        "mapping_type": "global"
+      },
+      {
+        "from_button_id": "button.controller_start",
+        "to_button_id": "button.menu_continue",
+        "mapping_type": "global"
+      },
+      {
+        "from_button_id": "button.menu_vr_realign",
+        "to_button_id": "button.menu_vr_realign",
+        "mapping_type": "global",
+        "scope": "controller"
+      },
+      {
+        "from_button_id": "button.controller_select",
+        "to_button_id": "button.to_profile_or_skins_screen",
+        "mapping_type": "global",
+        "scope": "controller"
+      }      
+    ],
+    "$screen_content": "ingame_menu_ui.ingame_menu_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  }
+}

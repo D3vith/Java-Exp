@@ -2,62 +2,66 @@
 {
   "namespace": "button_ui",
 
-  "button@common.button": {
-    "anchor_from": "top_left",
-    "anchor_to": "top_left",
-    "sound_name": "ui.button.click",
-    "locked_control": "locked",
+  "button@widget_ui.widget": {
     "size": [200, 20],
-    "$button_state_panel|default": "button_ui.button_state_panel",
-    "$button_type_panel|default": "button_ui.button_label",
-    "$button_text_binding_type|default": "none",
-    "$button_binding_condition|default": "none",
-    "$button_text_grid_collection_name|default": "",
-    "$text_locked_color|default": "$button_locked_text_color",
+    "$widget_text": "$button_text",
+    "$button_text|default": "",
     "$default_button_bg|default": "button_ui.button_default",
     "$hover_button_bg|default": "button_ui.button_hover",
     "$pressed_button_bg|default": "button_ui.button_hover",
     "$locked_button_bg|default": "button_ui.button_locked",
-    "$state|default": "",
+    "$button_state_panel|default": "widget_ui.widget_state_panel",
+    "$widget_type_panel|default": "widget_ui.widget_text_panel",
+    "$control_ref": "button_ui.button_control"
+  },
+
+  "button_control@widget_ui.button": {
+    "$button_text_binding_type|default": "none",
+    "$button_binding_condition|default": "none",
+    "$button_text_grid_collection_name|default": "",
+    "$widget_text_bindings": [
+      {
+        "binding_type": "$button_text_binding_type",
+        "binding_condition": "$button_binding_condition",
+        "binding_collection_name": "$button_text_grid_collection_name",
+        "binding_name": "$widget_text",
+        "binding_name_override": "$widget_text"
+      }
+    ],
     "controls": [
       {
         "default@$button_state_panel": {
           "$state": "default",
-          "$button_bg|default": "$default_button_bg",
-          "$text_color|default": "$button_default_text_color",
+          "$widget_bg|default": "$default_button_bg",
           "layer": 2
         }
       },
       {
         "hover@$button_state_panel": {
           "$state": "hover",
-          "$button_bg|default": "$hover_button_bg",
-          "$text_color|default": "$button_hover_text_color",
+          "$widget_bg|default": "$hover_button_bg",
           "layer": 3
         }
       },
       {
         "pressed@$button_state_panel": {
           "$state": "pressed",
-          "$button_bg|default": "$pressed_button_bg",
-          "$text_color|default": "$button_pressed_text_color",
+          "$widget_bg|default": "$pressed_button_bg",
           "layer": 4
         }
       },
       {
         "locked@$button_state_panel": {
           "$state": "locked",
-          "$button_bg|default": "$locked_button_bg",
-          "$text_color|default": "$button_locked_text_color",
+          "$widget_bg|default": "$locked_button_bg",
           "layer": 1
         }
       }
     ]
   },
 
-  // Button Default Bg
   "button_default@content_ui.resizing_texture_panel": {
-    "$side_size": [200, 20],
+    "$side_size": [200, "20px"],
     "$texture_location": "assets/minecraft/textures/gui/widgets",
     "variables": [
       { "requires": "($widgets_resolution = 256x)", "$uv": [0, 66], "$uv_size": [200, 20] },
@@ -85,68 +89,6 @@
       { "requires": "($widgets_resolution = 1024x)", "$uv": [0, 184], "$uv_size": [800, 80] },
       { "requires": "($widgets_resolution = 2048x)", "$uv": [0, 368], "$uv_size": [1600, 160] },
       { "requires": "($widgets_resolution = 4096x)", "$uv": [0, 736], "$uv_size": [3200, 320] }
-    ]
-  },
-
-  // Button State Content
-  "button_state_panel": {
-    "type": "panel",
-    "$tooltip_name|default": "null",
-    "controls": [
-      // {
-      //   "tooltip@tooltip_ui.tooltip": {
-      //     "visible": "($state = hover)",
-      //     "ignored": "($tooltip_name = null)"
-      //   }
-      // },
-      { "bg@$button_bg": {} },
-      {
-        "content_panel": {
-          "type": "panel",
-          "size": "$content_panel_size",
-          "$content_panel_size|default": ["100% - 2px", "100% - 2px"],
-          "layer": 4,
-          "controls": [ { "content@$button_type_panel": {} } ]
-        }
-      }
-    ]
-  },
-
-  "button_label": {
-    "type": "label",
-    "text": "$button_text",
-    "$button_text|default": "",
-    "color": "$text_color",
-    "locked_color": "$text_locked_color",
-    "font_type": "$font_type",
-    "$font_type|default": "default",
-    "font_size": "$button_font_size",
-    "$button_font_size|default": "normal",
-    "font_scale_factor": "$button_font_scale_factor",
-    "$button_font_scale_factor|default": 1.0,
-    "offset": "$button_text_offset",
-    "$button_text_offset|default": [1, 0],
-    "anchor_from": "$anchor",
-    "anchor_to": "$anchor",
-    "$anchor|default": "center",
-    "shadow": "$text_shadow",
-    "$text_shadow|default": true,
-    "size": "$button_text_size",
-    "$button_text_size|default": ["default", "default"],
-    "max_size": "$button_text_max_size",
-    "$button_text_max_size|default": ["100%", 10],
-    "text_alignment": "$text_alignment",
-    "$text_alignment|default": "center",
-    "layer": 2,
-    "bindings": "$text_bindings",
-    "$text_bindings|default": [
-      {
-        "binding_type": "$button_text_binding_type",
-        "binding_condition": "$button_binding_condition",
-        "binding_collection_name": "$button_text_grid_collection_name",
-        "binding_name": "$button_text",
-        "binding_name_override": "$button_text"
-      }
     ]
   }
 }

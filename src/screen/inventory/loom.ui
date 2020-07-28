@@ -154,7 +154,7 @@
     "anchor_from": "top_left",
     "offset": [60, 13],
     "$scroll_bar_size": [12, "100%"],
-    "$scroll_bar_offset": [29.5, 0],
+    "$scroll_bar_offset": ["50% + 29.5px", 0],
     "$scroll_box_image": "loom_ui.scroll_box",
     "$scroll_track_image": "loom_ui.scroll_track",
     "controls": [
@@ -271,7 +271,7 @@
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "$item_collection_name": "loom_input_items",
-    "$cell_overlay_ref": "loom_ui.banner_empty_slot"
+    "$slot_overlay_ref": "loom_ui.banner_empty_slot"
   },
 
   "dye_slot@container_ui.slot": {
@@ -279,7 +279,7 @@
     "anchor_to": "top_left",
     "offset": [32, 25],
     "$item_collection_name": "loom_dye_items",
-    "$cell_overlay_ref": "loom_ui.dye_empty_slot"
+    "$slot_overlay_ref": "loom_ui.dye_empty_slot"
   },
 
   "material_slot@container_ui.slot": {
@@ -287,7 +287,7 @@
     "anchor_to": "top_left",
     "offset": [22, 44],
     "$item_collection_name": "loom_material_items",
-    "$cell_overlay_ref": "loom_ui.pattern_item_empty_slot",
+    "$slot_overlay_ref": "loom_ui.pattern_item_empty_slot",
     "$item_renderer_binding_condition": "always_when_visible",
     "$cell_images_binding_condition": "always_when_visible"
   },

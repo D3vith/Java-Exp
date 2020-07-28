@@ -1,0 +1,1199 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "debug_ui",
+
+  "debug_screen_panel@content_ui.scroll_screen_panel": {
+    "$top_content": "debug_ui.top_content",
+    "$middle_content": "debug_ui.debug_content",
+    "$bottom_content": "debug_ui.bottom_content",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "debug_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "top_content": {
+    "type": "panel",
+    "controls": [ { "title@content_ui.title": { "text": "options.debug", "offset": ["50% - 50%x", 15] } } ]
+  },
+
+  "debug_content": {
+    "type": "stack_panel",
+    "size": ["310px", "100%c"],
+    "enabled": "(not $is_publish)",
+    "controls": [
+      { "vtop@content_ui.v2px": {} },
+      {
+        "stack0@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.enable_debug_ui_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.default_font_overrides_toggle": {} }
+          ]
+        }
+      },
+      { "space0@content_ui.v4px": {} },
+      {
+        "stack0@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.render_bounding_box_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_find_mobs_toggle": {} }
+          ]
+        }
+      },
+      { "space1@content_ui.v4px": {} },
+      {
+        "stack1@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_render_attach_pos_slider": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_render_paths_toggle": {} }
+          ]
+        }
+      },
+      { "space2@content_ui.v4px": {} },
+      {
+        "stack2@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_render_goal_state_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_reset_client_id_toggle": {} }
+          ]
+        }
+      },
+      { "space3@content_ui.v4px": {} },
+      {
+        "stack3@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_show_chunk_map_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_render_mob_info_state_toggle": {} }
+          ]
+        }
+      },
+      { "space4@content_ui.v4px": {} },
+      {
+        "stack4@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_show_server_chunk_map_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_disable_render_terrain_toggle": {} }
+          ]
+        }
+      },
+      { "space5@content_ui.v5px": {} },
+      {
+        "stack5@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_disable_render_entities_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_disable_render_blockentities_toggle": {} }
+          ]
+        }
+      },
+      { "space6@content_ui.v4px": {} },
+      {
+        "stack6@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_disable_render_particles_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_disable_render_sky_toggle": {} }
+          ]
+        }
+      },
+      { "space7@content_ui.v4px": {} },
+      {
+        "stack7@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_disable_render_weather_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_disable_render_hud_toggle": {} }
+          ]
+        }
+      },
+      { "space8@content_ui.v4px": {} },
+      {
+        "stack8@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_disable_render_item_in_hand_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_show_build_info_toggle": {} }
+          ]
+        }
+      },
+     /*  { "space9@content_ui.v4px": {} }, */
+      /* {
+        "stack9@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_disable_render_item_in_hand_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.0000000000": {} }
+          ]
+        }
+      }, */
+      { "space10@content_ui.v4px": {} },
+      {
+        "stack10@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_assertions_debug_break_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_assertions_show_dialog_toggle": {} }
+          ]
+        }
+      },
+      { "space11@content_ui.v4px": {} },
+      {
+        "stack11@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.perf_turtle_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_show_dev_console_button_toggle": {} }
+          ]
+        }
+      },
+      { "space12@content_ui.v4px": { "ignored": "(not $education_edition)" } },
+      {
+        "stack12@content_ui.hstack": {
+          "ignored": "(not $education_edition)",
+          "controls": [
+            { "0@debug_ui.dev_edu_demo_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.ad_token_refresh_threshold": {} }
+          ]
+        }
+      },
+      { "space13@content_ui.v4px": {} },
+      {
+        "stack13@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.option_toggle_ad_debug_panel": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_game_tip_toggle": {} }
+          ]
+        }
+      },
+      { "space14@content_ui.v4px": {} },
+      {
+        "stack14@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_enable_mixer_interactive_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_show_tcui_replacement_toggle": {} }
+          ]
+        }
+      },
+      { "space15@content_ui.v4px": {} },
+      {
+        "stack15@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_enable_profiler_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_newParticleSystem_toggle": {} }
+          ]
+        }
+      },
+      { "space16@content_ui.v4px": {} },
+      {
+        "stack16@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_achievements_always_enabled_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_use_ipv6_only_toggle": {} }
+          ]
+        }
+      },
+      { "space17@content_ui.v4px": {} },
+      {
+        "stack17@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_disable_client_blob_cache_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_force_client_blob_cache_toggle": {} }
+          ]
+        }
+      },
+      { "space18@content_ui.v4px": {} },
+      {
+        "stack18@content_ui.hstack": {
+          "controls": [ { "0@debug_ui.dev_connection_quality_iteratable_toggle": {} } ]
+        }
+      },
+      { "space19@content_ui.v4px": {} },
+      {
+        "stack19@content_ui.hstack": {
+          "controls": [
+            { "0@debug_ui.dev_debug_hud_iteratable_toggle": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.dev_show_latency_graph_toggle": {} }
+          ]
+        }
+      },
+      { "space20@content_ui.v4px": {} },
+      {
+        "stack20@content_ui.hstack": {
+          "enabled": "(not $is_publish)",
+          "controls": [
+            { "0@debug_ui.display_override_xbox_sandbox_toggle_windows": {} },
+            { "hfill@content_ui.hfill": {} },
+            { "1@debug_ui.display_override_xbox_sandbox_toggle": {} }
+          ]
+        }
+      },
+      {
+        "space21@content_ui.v4px": {
+          "ignored": "$is_publish",
+          "bindings": [
+            {
+              "binding_name": "#override_xbox_sandbox_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "stack21@content_ui.hstack": {
+          "ignored": "$is_publish",
+          "controls": [ { "0@debug_ui.dev_xbox_environment_iteratable_toggle": {} } ],
+          "bindings": [
+            {
+              "binding_name": "#override_xbox_sandbox_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { "vbottom@content_ui.v2px": {} }
+    ]
+  },
+
+  "bottom_content": {
+    "type": "panel",
+    "controls": [
+      { "flighting_debug@settings_ui.open_button": { "offset": ["50% - 155px", 6], "enabled": "(not $is_publish)", "$toggle_text": "options.flighting_debug" } },
+      { "back@settings_ui.back_button": { "offset": ["50% + 5px", 6], "size": [150, 20] } }
+    ]
+  },
+
+  // Widgets
+
+  // Enable when the debug UI option is added
+  "enable_debug_ui_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_enableDebugUI",
+    "$option_binding_name": "#dev_enable_debug_ui",
+    "$option_enabled_binding_name": "#dev_enable_debug_ui_enabled",
+    "$toggle_name": "dev_enable_debug_ui"
+  },
+
+  "default_font_overrides_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_toggle_default_font_overrides",
+    "$option_binding_name": "#dev_toggle_default_font_overrides",
+    "$toggle_name": "dev_toggle_default_font_overrides",
+    // "$show_option_label": "#dev_toggle_default_font_overrides_visible",
+    "bindings": [
+      {
+        "binding_name": "#dev_toggle_default_font_overrides_visible",
+        "binding_condition": "always",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "render_bounding_box_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_renderBoundingBox",
+    "$option_binding_name": "#dev_render_bounding_box",
+    "$option_enabled_binding_name": "#dev_render_bounding_box_enabled",
+    "$toggle_name": "dev_render_bounding_box"
+  },
+
+  "dev_debug_hud_iteratable_toggle@iteratable_toggle_ui.iteratable_toggle_panel": {
+    "$widget_text": "options.dev_enableDebugHudOverlay",
+    "$option_enabled_binding_name": "#dev_debug_hud_dropdown_enabled",
+    "$options": [
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_off",
+          "$next_action": "#debug_hud_radio_basic",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.off"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_basic",
+          "$next_action": "#debug_hud_radio_imgui",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.basic"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_imgui",
+          "$next_action": "#debug_hud_radio_workerthreads",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.imgui"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_workerthreads",
+          "$next_action": "#debug_hud_radio_renderchunks",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.workerthreads"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_renderchunks",
+          "$next_action": "#debug_hud_radio_profiler",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.renderchunks"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_profiler",
+          "$next_action": "#debug_hud_radio_debugblocks",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.profiler"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_debugblocks",
+          "$next_action": "#debug_hud_radio_texturememory",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.debugBlocks"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_texturememory",
+          "$next_action": "#debug_hud_radio_imagememory",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.texturememory"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_imagememory",
+          "$next_action": "#debug_hud_radio_perimagememory",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.imagememory"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_perimagememory",
+          "$next_action": "#debug_hud_radio_buffer_memory",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.perimagememory"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_buffer_memory",
+          "$next_action": "#debug_hud_radio_camera",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.buffermemory"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_camera",
+          "$next_action": "#debug_hud_radio_audio",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.camera"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_audio",
+          "$next_action": "#debug_hud_radio_client_network",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.audio"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_client_network",
+          "$next_action": "#debug_hud_radio_server_network",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.client_network"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_server_network",
+          "$next_action": "#debug_hud_radio_lock_contention",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.server_network"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_lock_contention",
+          "$next_action": "#debug_hud_radio_hbui",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.lock_contention"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#debug_hud_radio_hbui",
+          "$next_action": "#debug_hud_radio_off",
+          "$option_toggle_action_text": "options.dev_enableDebugHudOverlay.hbui"
+        }
+      }
+    ]
+  },
+
+  "dev_find_mobs_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "find mobs",
+    "$option_binding_name": "#dev_find_mobs",
+    "$option_enabled_binding_name": "#dev_find_mobs_enabled",
+    "$toggle_name": "dev_find_mobs"
+  },
+
+  "dev_render_attach_pos_slider@option_slider_ui.slider": {
+    "$widget_text": "#dev_render_attach_pos_widget_text",
+    "$slider_name": "dev_render_attach_pos",
+    "$slider_value_binding_name": "#dev_render_attach_pos",
+    "$slider_tts_text_value": "#dev_render_attach_pos_text_value",
+    "$option_enabled_binding_name": "#dev_render_attach_pos_enabled",
+    "$slider_steps_binding_name": "#dev_render_attach_pos_steps",
+    "$widget_text_bindings": [ { "binding_name": "$widget_text" } ]
+  },
+
+  "dev_render_paths_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_renderPaths",
+    "$option_binding_name": "#dev_render_paths",
+    "$option_enabled_binding_name": "#dev_render_paths_enabled",
+    "$toggle_name": "dev_render_paths"
+  },
+
+  "dev_render_goal_state_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_renderGoalState",
+    "$option_binding_name": "#dev_render_goal_state",
+    "$option_enabled_binding_name": "#dev_render_goal_state_enabled",
+    "$toggle_name": "dev_render_goal_state"
+  },
+
+  "dev_reset_client_id_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_resetClientId",
+    "$option_binding_name": "#dev_reset_client_id",
+    "$option_enabled_binding_name": "#dev_reset_client_id_enabled",
+    "$toggle_name": "dev_reset_client_id"
+  },
+
+  "dev_show_chunk_map_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_showChunkMap",
+    "$option_binding_name": "#dev_show_chunk_map",
+    "$option_enabled_binding_name": "#dev_show_chunk_map_enabled",
+    "$toggle_name": "dev_show_chunk_map"
+  },
+
+  "dev_render_mob_info_state_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_renderMobInfoState",
+    "$option_binding_name": "#dev_render_mob_info_state",
+    "$option_enabled_binding_name": "#dev_render_mob_info_state_enabled",
+    "$toggle_name": "dev_render_mob_info_state"
+  },
+
+  "dev_show_server_chunk_map_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_showServerChunkMap",
+    "$option_binding_name": "#dev_show_server_chunk_map",
+    "$option_enabled_binding_name": "#dev_show_server_chunk_map_enabled",
+    "$toggle_name": "dev_show_server_chunk_map"
+  },
+
+  "dev_disable_render_terrain_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderTerrain",
+    "$option_binding_name": "#dev_disable_render_terrain",
+    "$option_enabled_binding_name": "#dev_disable_render_terrain_enabled",
+    "$toggle_name": "dev_disable_render_terrain"
+  },
+
+  "dev_disable_render_entities_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderEntities",
+    "$option_binding_name": "#dev_disable_render_entities",
+    "$option_enabled_binding_name": "#dev_disable_render_entities_enabled",
+    "$toggle_name": "dev_disable_render_entities"
+  },
+
+  "dev_disable_render_blockentities_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderBlockEntities",
+    "$option_binding_name": "#dev_disable_render_blockentities",
+    "$option_enabled_binding_name": "#dev_disable_render_blockentities_enabled",
+    "$toggle_name": "dev_disable_render_blockentities"
+  },
+
+  "dev_disable_render_particles_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderParticles",
+    "$option_binding_name": "#dev_disable_render_particles",
+    "$option_enabled_binding_name": "#dev_disable_render_particles_enabled",
+    "$toggle_name": "dev_disable_render_particles"
+  },
+
+  "dev_disable_render_sky_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderSky",
+    "$option_binding_name": "#dev_disable_render_sky",
+    "$option_enabled_binding_name": "#dev_disable_render_sky_enabled",
+    "$toggle_name": "dev_disable_render_sky"
+  },
+
+  "dev_disable_render_weather_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderWeather",
+    "$option_binding_name": "#dev_disable_render_weather",
+    "$option_enabled_binding_name": "#dev_disable_render_weather_enabled",
+    "$toggle_name": "dev_disable_render_weather"
+  },
+
+  "dev_disable_render_hud_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderHud",
+    "$option_binding_name": "#dev_disable_render_hud",
+    "$option_enabled_binding_name": "#dev_disable_render_hud_enabled",
+    "$toggle_name": "dev_disable_render_hud"
+  },
+
+  "dev_disable_render_item_in_hand_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disableRenderItemInHand",
+    "$option_binding_name": "#dev_disable_render_item_in_hand",
+    "$option_enabled_binding_name": "#dev_disable_render_item_in_hand_enabled",
+    "$toggle_name": "dev_disable_render_item_in_hand"
+  },
+
+  "dev_show_build_info_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_showBuildInfo",
+    "$option_binding_name": "#dev_show_build_info",
+    "$option_enabled_binding_name": "#dev_show_build_info_enabled",
+    "$toggle_name": "dev_show_build_info"
+  },
+
+  "dev_assertions_debug_break_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_assertions_debug_break",
+    "$option_binding_name": "#dev_assertions_debug_break",
+    "$option_enabled_binding_name": "#dev_assertions_debug_break_enabled",
+    "$toggle_name": "dev_assertions_debug_break"
+  },
+
+  "dev_assertions_show_dialog_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_assertions_show_dialog",
+    "$option_binding_name": "#dev_assertions_show_dialog",
+    "$option_enabled_binding_name": "#dev_assertions_show_dialog_enabled",
+    "$toggle_name": "dev_assertions_show_dialog"
+  },
+
+  "perf_turtle_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.perf_turtle",
+    "$option_binding_name": "#perf_turtle",
+    "$option_enabled_binding_name": "#perf_turtle_enabled",
+    "$toggle_name": "perf_turtle"
+  },
+
+  "dev_show_dev_console_button_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_showDevConsoleButton",
+    "$option_binding_name": "#dev_show_dev_console_button",
+    "$option_enabled_binding_name": "#dev_show_dev_console_button_enabled",
+    "$toggle_name": "dev_show_dev_console_button"
+  },
+
+  "dev_edu_demo_toggle@option_toggle_ui.toggle": {
+    "ignored": "(not $education_edition)",
+    "$widget_text": "options.dev_eduDemo",
+    "$option_binding_name": "#dev_edu_demo",
+    "$option_enabled_binding_name": "#dev_edu_demo_enabled",
+    "$toggle_name": "dev_edu_demo"
+  },
+
+  "option_toggle_ad_debug_panel@option_toggle_ui.toggle": {
+    "enabled": "$education_edition",
+    "$widget_text": "options.dev_ad_show_debug_panel",
+    "$option_binding_name": "#show_ad_debug_panel_button",
+    "$option_enabled_binding_name": "#show_ad_debug_panel_button_enabled",
+    "$toggle_name": "show_ad_debug_panel_button"
+  },
+
+  "ad_token_refresh_threshold@settings_common.option_slider": {
+    "ignored": "(not $education_edition)",
+    "$slider_text": "#ad_token_refresh_threshold_widget_text",
+    "$slider_name": "ad_token_refresh_threshold",
+    "$slider_value_binding_name": "#ad_token_refresh_threshold",
+    "$slider_tts_text_value": "#ad_token_refresh_threshold_text_value",
+    "$option_enabled_binding_name": "#ad_token_refresh_threshold_enabled",
+    "$slider_steps_binding_name": "#ad_token_refresh_threshold_steps",
+    "$widget_text_bindings": [ { "binding_name": "$slider_text" } ]
+  },
+
+  // -
+  "dev_game_tip_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_game_tip",
+    "enabled": "($is_pregame)",
+    "$option_binding_name": "#dev_game_tip",
+    "$option_enabled_binding_name": "#dev_game_tip_enabled",
+    "$toggle_name": "dev_game_tip"
+  },
+
+  "dev_enable_mixer_interactive_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_enableMixerInteractive",
+    "$option_binding_name": "#dev_enable_mixer_interactive",
+    "$option_enabled_binding_name": "#dev_enable_mixer_interactive_enabled",
+    "$toggle_name": "dev_enable_mixer_interactive"
+  },
+
+  "dev_show_tcui_replacement_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_show_tcui_replacement",
+    "$option_binding_name": "#dev_show_tcui_replacement",
+    "$option_enabled_binding_name": "#dev_show_tcui_replacement_enabled",
+    "$toggle_name": "dev_show_tcui_replacement"
+  },
+
+  "dev_enable_profiler_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_enableProfiler",
+    "$option_binding_name": "#dev_enable_profiler",
+    "$option_enabled_binding_name": "#dev_enable_profiler_enabled",
+    "$toggle_name": "dev_enable_profiler"
+  },
+
+  "dev_newParticleSystem_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_newParticleSystem",
+    "$option_binding_name": "#dev_newParticleSystem",
+    "$option_enabled_binding_name": "#dev_newParticleSystem_enabled",
+    "$toggle_name": "dev_newParticleSystem"
+  },
+
+  "dev_achievements_always_enabled_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_achievementsAlwaysEnabled",
+    "$option_binding_name": "#dev_achievements_always_enabled",
+    "$option_enabled_binding_name": "#dev_achievements_always_enabled_enabled",
+    "$toggle_name": "dev_achievements_always_enabled"
+  },
+
+  "dev_use_ipv6_only_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_useIPv6Only",
+    "$option_binding_name": "#dev_use_ipv6_only",
+    "$option_enabled_binding_name": "#dev_use_ipv6_only_enabled",
+    "$toggle_name": "dev_use_ipv6_only"
+  },
+
+  "dev_disable_client_blob_cache_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_disable_client_blob_cache",
+    "$option_binding_name": "#dev_disable_client_blob_cache",
+    "$option_enabled_binding_name": "#dev_disable_client_blob_cache_enabled",
+    "$toggle_name": "dev_disable_client_blob_cache"
+  },
+
+  "dev_force_client_blob_cache_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_force_client_blob_cache",
+    "$option_binding_name": "#dev_force_client_blob_cache",
+    "$option_enabled_binding_name": "#dev_force_client_blob_cache_enabled",
+    "$toggle_name": "dev_force_client_blob_cache"
+  },
+
+  "dev_connection_quality_iteratable_toggle@iteratable_toggle_ui.iteratable_toggle_panel": {
+    "size": [310, 20],
+    "$widget_text": "options.dev_connection_quality",
+    "$option_enabled_binding_name": "#dev_connection_quality_enabled",
+    "$options": [
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_connection_off",
+          "$next_action": "#dev_connection_nolimit",
+          "$option_toggle_action_text": "options.dev_connection_off",
+          "variables": {
+            "requires": "$is_publish",
+            "$option_toggle_action_text": "-"
+          }
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_connection_nolimit",
+          "$next_action": "#dev_connection_4g",
+          "$option_toggle_action_text": "options.dev_connection_nolimit",
+          "variables": {
+            "requires": "$is_publish",
+            "$option_toggle_action_text": "-"
+          }
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_connection_4g",
+          "$next_action": "#dev_connection_3g",
+          "$option_toggle_action_text": "options.dev_connection_4g",
+          "variables": {
+            "requires": "$is_publish",
+            "$option_toggle_action_text": "-"
+          }
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_connection_3g",
+          "$next_action": "#dev_connection_slow",
+          "$option_toggle_action_text": "options.dev_connection_3g",
+          "variables": {
+            "requires": "$is_publish",
+            "$option_toggle_action_text": "-"
+          }
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_connection_slow",
+          "$next_action": "#dev_connection_veryslow",
+          "$option_toggle_action_text": "options.dev_connection_slow",
+          "variables": {
+            "requires": "$is_publish",
+            "$option_toggle_action_text": "-"
+          }
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_connection_veryslow",
+          "$next_action": "#dev_connection_off",
+          "$option_toggle_action_text": "options.dev_connection_veryslow",
+          "variables": {
+            "requires": "$is_publish",
+            "$option_toggle_action_text": "-"
+          }
+        }
+      }
+    ]
+  },
+
+  "dev_show_latency_graph_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_show_latency_graph",
+    "$option_binding_name": "#dev_show_latency_graph",
+    "$option_enabled_binding_name": "#dev_show_latency_graph_enabled",
+    "$toggle_name": "dev_show_latency_graph"
+  },
+
+  // #region Xbox Sandbox
+  "display_override_xbox_sandbox_toggle_windows@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_overrideXboxEnvironmentWindows",
+    "$option_binding_name": "#dev_override_xbox_sandbox",
+    "$option_enabled_binding_name": "#dev_override_xbox_sandbox_enabled",
+    "$toggle_name": "dev_override_xbox_sandbox",
+    "bindings": [
+      {
+        "binding_name": "#override_xbox_sandbox_on_windows",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "display_override_xbox_sandbox_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.dev_overrideXboxEnvironment",
+    "$option_binding_name": "#dev_override_xbox_sandbox",
+    "$option_enabled_binding_name": "#dev_override_xbox_sandbox_enabled",
+    "$toggle_name": "dev_override_xbox_sandbox",
+    "bindings": [
+      {
+        "binding_name": "(not #override_xbox_sandbox_on_windows)",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "dev_xbox_environment_iteratable_toggle@iteratable_toggle_ui.iteratable_toggle_panel": {
+    "size": [310, 20],
+    "$widget_text": "options.dev_xboxEnvironment",
+    "$option_enabled_binding_name": "#dev_xbox_environment_dropdown_enabled",
+    "$options": [
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_xbox_environment_radio_retail",
+          "$this_next": "#dev_xbox_environment_radio_dev",
+          "$option_toggle_action_text": "options.dev_xbox_environment.retail"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_xbox_environment_radio_dev",
+          "$this_next": "#dev_xbox_environment_radio_dev_achievement",
+          "$option_toggle_action_text": "options.dev_xbox_environment.dev"
+        }
+      },
+      {
+        "@iteratable_toggle_ui.iteratable_toggle": {
+          "$this_action": "#dev_xbox_environment_radio_dev_achievement",
+          "$this_next": "#dev_xbox_environment_radio_retail",
+          "$option_toggle_action_text": "options.dev_xbox_environment.dev_achievement"
+        }
+      }
+    ]
+  }
+  // #endregion 
+}
+
+  // not being used
+
+//   "feature_toggles": {
+//     "type": "stack_panel",
+//     "orientation": "vertical",
+//     "size": [ "100%", "100%c" ],
+//     "factory": {
+//       "name": "feature_toggle_factory",
+//       "control_name": "general_section.feature_toggle"
+//     },
+
+//     "collection_name": "feature_toggles",
+//     "bindings": [
+//       {
+//         "binding_name": "#feature_toggle_count",
+//         "binding_name_override": "#collection_length"
+//       }
+//     ]
+//   }
+// }
+
+// {
+//   "leak_memory@settings_common.option_text_edit_with_text_button": {
+//     "$option_label": "Leak Memory",
+//     "$option_binding_name": "#leak_memory_value",
+//     "$option_enabled_binding_name": "#leak_memory_enabled",
+//     "$max_text_edit_length": 4,
+//     "$text_edit_box_text_type": "NumberChars",
+//     "$option_text_edit_control_size": [ "50%", "100%" ],
+//     "$text_box_name": "leak_memory_text_box",
+//     "$button_text": "Leak Memory",
+//     "$pressed_button_name": "button.leak_memory"
+//   }
+// },
+// {
+//   "select_windows_store_panel@general_section.debug_select_windows_store_panel": {}
+// },
+// {
+//   "date_options_panel@general_section.date_options_panel": {}
+// },
+// {
+//   "option_toggle_display_marketplace_document_id@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_displayMarketplaceDocumentId",
+//     "$option_binding_name": "#dev_show_doc_id",
+//     "$option_enabled_binding_name": "#dev_show_doc_id_enabled",
+//     "$toggle_name": "dev_show_doc_id"
+//   }
+// },
+// {
+//   "version_options_panel": {
+//     "type": "stack_panel",
+//     "size": [ "100%", "100%c" ],
+//     "orientation": "vertical",
+//     "controls": [
+//       {
+//         "option_version_override@option_toggle_ui.toggle": {
+//           "$option_label": "Xforge Client Version Override",
+//           "$option_binding_name": "#dev_use_version_override",
+//           "$option_enabled_binding_name": "#dev_use_version_override_enabled",
+//           "$toggle_name": "dev_use_version_override"
+//         }
+//       },
+//       {
+//         "override_version_options_panel@general_section.override_version_options_panel": {}
+//       }
+//     ]
+//   }
+// },
+// {
+//   "option_toggle_13@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_createRealmWithoutPurchase",
+//     "$option_binding_name": "#dev_create_realm_without_purchase",
+//     "$option_enabled_binding_name": "#dev_create_realm_without_purchase_enabled",
+//     "$toggle_name": "dev_create_realm_without_purchase"
+//   }
+// },
+// {
+//   "multithreaded_rendering_toggle@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_multithreadedRendering",
+//     "$option_binding_name": "#multithreaded_rendering",
+//     "$option_enabled_binding_name": "#multithreaded_rendering_enabled",
+//     "$toggle_name": "multithreaded_rendering",
+//     "bindings": [
+//       {
+//         "binding_name": "#show_multithreaded_rendering",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "async_texture_loads_toggle@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_asyncTextureLoads",
+//     "$option_binding_name": "#async_texture_loads",
+//     "$option_enabled_binding_name": "#async_texture_loads_enabled",
+//     "$toggle_name": "async_texture_loads",
+//     "bindings": [
+//       {
+//         "binding_name": "#show_async_texture_loads",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "show_async_missing_texture_toggle@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_showAsyncMissingTexture",
+//     "$option_binding_name": "#async_missing_texture",
+//     "$option_enabled_binding_name": "#async_missing_texture_enabled",
+//     "$toggle_name": "async_missing_texture",
+//     "bindings": [
+//       {
+//         "binding_name": "#show_async_missing_texture",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "gfx_max_dequeued_textures_per_frame_slider@settings_common.option_slider": {
+//     "$option_label": "#gfx_max_dequeued_textures_per_frame_widget_text",
+//     "$slider_name": "gfx_max_dequeued_textures_per_frame",
+//     "$slider_value_binding_name": "#gfx_max_dequeued_textures_per_frame",
+//     "$option_enabled_binding_name": "#gfx_max_dequeued_textures_per_frame_enabled",
+//     "$slider_steps_binding_name": "#gfx_max_dequeued_textures_per_frame_steps",
+//     "$slider_tts_text_value": "#gfx_max_dequeued_textures_per_frame_text_value",
+//     "$label_bindings": [
+//       {
+//         "binding_name": "$option_label"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "gfx_texture_load_delay_slider@settings_common.option_slider": {
+//     "$option_label": "#gfx_texture_load_delay_widget_text",
+//     "$slider_name": "gfx_texture_load_delay",
+//     "$slider_value_binding_name": "#gfx_texture_load_delay",
+//     "$option_enabled_binding_name": "#gfx_texture_load_delay_enabled",
+//     "$slider_steps_binding_name": "#gfx_texture_load_delay_steps",
+//     "$slider_tts_text_value": "#gfx_texture_load_delay_text_value",
+//     "$label_bindings": [
+//       {
+//         "binding_name": "$option_label"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "filewatcher_rendering_toggle@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_file_watcher",
+//     "$option_binding_name": "#file_watcher",
+//     "$option_enabled_binding_name": "#file_watcher_enabled",
+//     "$toggle_name": "file_watcher"
+//   }
+// },
+// {
+//   "texture_hot_reloader_toggle@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_texture_hot_reloader",
+//     "$option_binding_name": "#texture_hot_reloader",
+//     "$option_enabled_binding_name": "#texture_hot_reloader_enabled",
+//     "$toggle_name": "texture_hot_reloader"
+//   }
+// },
+// {
+//   "vsync_dropdown@settings_common.option_dropdown": {
+//     "$option_label": "options.vsync",
+//     "$dropdown_content": "general_section.vysnc_dropdown_content",
+//     "$dropdown_area": "content_area",
+//     "$dropdown_name": "vsync_dropdown",
+//     "$options_dropdown_toggle_label_binding": "#vsync_dropdown_toggle_label",
+//     "$option_enabled_binding_name": "#vsync_dropdown_enabled",
+//     "$dropdown_scroll_content_size": [ "100%", "200%" ]
+//   }
+// },
+// {
+//   "option_dropdown_1@settings_common.option_dropdown": {
+//     "$option_label": "options.dev_realmsEnvironment",
+//     "$dropdown_content": "general_section.dev_realms_environment_dropdown_content",
+//     "$dropdown_area": "content_area",
+//     "$dropdown_name": "dev_realms_environment_dropdown",
+//     "$options_dropdown_toggle_label_binding": "#dev_realms_environment_dropdown_toggle_label",
+//     "$option_enabled_binding_name": "#dev_realms_environment_dropdown_enabled",
+//     "$dropdown_scroll_content_size": [ "100%", "200%" ]
+//   }
+// },
+// {
+//   "identity_env_dropdown@settings_common.option_dropdown": {
+//     "$option_label": "options.dev_identity_environment",
+//     "$dropdown_content": "general_section.dev_identity_environment_dropdown_content",
+//     "$dropdown_area": "content_area",
+//     "$dropdown_name": "dev_identity_env_dropdown",
+//     "$options_dropdown_toggle_label_binding": "#dev_identity_env_dropdown_toggle_label",
+//     "$option_enabled_binding_name": "#dev_identity_env_dropdown_dropdown_enabled",
+//     "$dropdown_scroll_content_size": [ "100%", "200%" ]
+//   }
+// },
+// {
+//   "option_clear_store_cache_button@settings_common.action_button": {
+//     "$pressed_button_name": "dev_clear_store_cache_button",
+//     "$button_text": "options.dev_clearStoreCache"
+//   }
+// },
+// {
+//   "option_clear_all_cache_button@settings_common.action_button": {
+//     "$pressed_button_name": "dev_clear_all_cache_button",
+//     "$button_text": "options.dev_clearAllCache"
+//   }
+// },
+// {
+//   "option_delete_all_personas_button@settings_common.action_button": {
+//     "$pressed_button_name": "dev_delete_all_personas",
+//     "$button_text": "options.dev_deleteAllPersonas"
+//   }
+// },
+// {
+//   "option_delete_legacy_personas_button@settings_common.action_button": {
+//     "$pressed_button_name": "dev_delete_legacy_persona",
+//     "$button_text": "options.dev_deleteLegacyPersona"
+//   }
+// },
+// {
+//   "padding1": {
+//     "type": "panel",
+//     "size": [ "100%", 3 ]
+//   }
+// },
+// {
+//   "copy_internal_settings_folder_to_external@settings_common.action_button": {
+//     "visible": "($copy_interal_storage_button_enabled)",
+//     "$pressed_button_name": "button.port_internal_files",
+//     "$button_text": "options.dev_folders_portSettingsFolder"
+//   }
+// },
+// {
+//   "padding2": {
+//     "type": "panel",
+//     "size": [ "100%", 3 ]
+//   }
+// },
+// {
+//   "clear_purchase_inventory@settings_common.action_button": {
+//     "$pressed_button_name": "button.clear_puchase_inventory",
+//     "$button_text": "options.dev_clearPurchaseInventory"
+//   }
+// },
+// {
+//   "enable_coin_debug_switch_toggle@option_toggle_ui.toggle": {
+//     "$option_label": "options.dev_switch_coin_debug",
+//     "$option_binding_name": "#switch_coin_debug",
+//     "$option_enabled_binding_name": "#switch_coin_debug_enabled",
+//     "$toggle_name": "switch_coin_debug",
+//     "bindings": [
+//       {
+//         "binding_name": "#show_switch_coin_debug",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "add_coins@settings_common.action_button": {
+//     "$pressed_button_name": "button.add_coins",
+//     "$button_text": "options.dev_addCoins"
+//   }
+// },
+// {
+//   "padding_reset_day_one": {
+//     "type": "panel",
+//     "size": [ "100%", 3 ]
+//   }
+// },
+// {
+//   "reset_day_one_experience@settings_common.action_button": {
+//     "$pressed_button_name": "button.reset_day_one_experience",
+//     "$button_text": "options.dev_reset_day_one_experience"
+//   }
+// },
+// {
+//   "padding_core_ui": {
+//     "type": "panel",
+//     "size": [ "100%", 3 ]
+//   }
+// },
+// {
+//   "open_core_ui_tests@settings_common.action_button": {
+//     "$pressed_button_name": "button.open_core_ui_tests",
+//     "$button_text": "#dev_open_core_ui_tests_button_text",
+//     "$button_text_binding_type": "global",
+//     "$button_binding_condition": "visible",
+//     "bindings": [
+//       {
+//         "binding_name": "#show_core_ui_shortcuts",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "open_core_ui_docs@settings_common.action_button": {
+//     "$pressed_button_name": "button.open_core_ui_docs",
+//     "$button_text": "#dev_open_core_ui_docs_button_text",
+//     "$button_text_binding_type": "global",
+//     "$button_binding_condition": "visible",
+//     "bindings": [
+//       {
+//         "binding_name": "#show_core_ui_shortcuts",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "option_text_edit_0@settings_common.option_text_edit": {
+//     "$option_label": "options.dev_realmsEndpoint",
+//     "$text_box_name": "dev_realms_endpoint",
+//     "$option_binding_name": "#dev_realms_endpoint",
+//     "$option_enabled_binding_name": "#dev_realms_endpoint_enabled",
+//     "$max_text_edit_length": 50,
+//     "bindings": [
+//       {
+//         "binding_name": "#dev_realms_environment_radio_local",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "option_text_edit_1@settings_common.option_text_edit": {
+//     "$option_label": "options.dev_realmsEndpointPayment",
+//     "$text_box_name": "dev_realms_endpoint_payment",
+//     "$option_binding_name": "#dev_realms_endpoint_payment",
+//     "$option_enabled_binding_name": "#dev_realms_endpoint_payment_enabled",
+//     "$max_text_edit_length": 50,
+//     "bindings": [
+//       {
+//         "binding_name": "#dev_realms_environment_radio_local",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "option_text_edit_2@settings_common.option_text_edit": {
+//     "$option_label": "options.dev_realmsRelyingParty",
+//     "$text_box_name": "dev_realms_relying_party",
+//     "$option_binding_name": "#dev_realms_relying_party",
+//     "$option_enabled_binding_name": "#dev_realms_relying_party_enabled",
+//     "$max_text_edit_length": 50,
+//     "bindings": [
+//       {
+//         "binding_name": "#dev_realms_environment_radio_local",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "option_text_edit_3@settings_common.option_text_edit": {
+//     "$option_label": "options.dev_realmsRelyingPartyPayment",
+//     "$text_box_name": "dev_realms_relying_party_payment",
+//     "$option_binding_name": "#dev_realms_relying_party_payment",
+//     "$option_enabled_binding_name": "#dev_realms_relying_party_payment_enabled",
+//     "$max_text_edit_length": 50,
+//     "bindings": [
+//       {
+//         "binding_name": "#dev_realms_environment_radio_local",
+//         "binding_name_override": "#visible"
+//       }
+//     ]
+//   }
+// },
+// {
+//   "reset_online_safety_option@settings_common.action_button": {
+//     "$pressed_button_name": "button.dev_reset_online_safety_option",
+//     "$button_text": "Reset Online Safety Dialog Option"
+//   }
+// }
+// ]
+// },

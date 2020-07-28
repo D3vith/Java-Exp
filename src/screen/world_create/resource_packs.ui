@@ -1,0 +1,19 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "world_resource_packs_ui",
+
+  "resource_packs_screen_panel@resource_packs_ui.resource_packs_content": {
+    "$type_prefix": "level",
+    "$title": "options.resourcePacks.title",
+    "$subtitle": "resourcePacks.dropInfo",
+    "$back_button_ref": "world_create_ui.back_button",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "world_resource_packs_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  }
+}

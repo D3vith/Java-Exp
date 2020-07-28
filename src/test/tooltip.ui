@@ -1,0 +1,84 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "test_tooltip_ui",
+
+  "tooltip_text_panel": {
+    "type": "stack_panel",
+    "size": ["100%cm", "100%c"],
+    "$tooltip_text|default": "",
+    "$tooltip_desc|default": "",
+    "$tooltip_extra|default": "",
+    "$tooltip_label_color|default": [1, 1, 1],
+    "$tooltip_desc_color|default": [1, 1, 1],
+    "$tooltip_extra_color|default": [1, 1, 1],
+    "$tooltip_label_bindings|default": [],
+    "controls": [
+      {
+        "label": {
+          "type": "stack_panel",
+          "size": ["100%cm", "100%c"],
+          "controls": "$tooltip_label_controls",
+          "$tooltip_label_controls|default": [
+            { "label@test_tooltip_ui.tooltip_label": {} }
+          ]
+        }
+      },
+      {
+        "desc": {
+          "type": "stack_panel",
+          "size": ["100%cm", "100%c"],
+          "controls": "$tooltip_desc_controls",
+          "$tooltip_desc_controls|default": [
+            { "desc@test_tooltip_ui.tooltip_desc": {} },
+            { "extra@test_tooltip_ui.tooltip_extra": {} }
+          ]
+        }
+      }
+    ]
+  },
+
+  "tooltip_text": {
+    "type": "label",
+    "size": ["default", "default"],
+    "max_size": [180, "default"],
+    "min_size": [0, 0],
+    "shadow": true,
+    "layer": 10
+  },
+
+  "tooltip_label@test_tooltip_ui.tooltip_text": {
+    "color": "$tooltip_label_color",
+    "text": "$tooltip_text",
+    "visible": "(not $tooltip_text = '')",
+    "bindings": "$tooltip_label_bindings"
+  },
+
+  "tooltip_desc@test_tooltip_ui.tooltip_text": {
+    "color": "$tooltip_desc_color",
+    "text": "$tooltip_desc",
+    "visible": "(not $tooltip_desc = '')"
+  },
+  
+  "tooltip_extra@test_tooltip_ui.tooltip_text": {
+    "color": "$tooltip_extra_color",
+    "text": "$tooltip_extra",
+    "visible": "(not $tooltip_extra = '')"
+  },
+
+  // Locked State Tooltip
+  "locked_tooltip": {
+    "type": "button",
+    "focus_enabled": true,
+    "focus_magnet_enabled": false,
+    "allow_clipping": false,
+    "size": ["100%", "100%"],
+    "hover_control": "hover",
+    "pressed_control": "hover",
+    "locked_control": "",
+    "layer": 4,
+    "controls": [
+      /* { "@$button_state_panel": {} }, */
+      { "hover@tooltip_ui.tooltip": {} }
+    ]
+  }
+}

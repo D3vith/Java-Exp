@@ -1,0 +1,71 @@
+/* By @FMarquesPTO. All rights reserved. */
+{
+  "namespace": "world_edit_ui",
+
+  "world_edit_screen_panel": {
+    "type": "panel",
+    "controls": [
+      { "edit@world_edit_ui.world_edit_content_panel": {} },
+      {
+        "sections": {
+          "type": "panel",
+          "focus_container": true,
+          "use_last_focus": false,
+          "focus_nagivation_mode_down": "contained",
+          "focus_nagivation_mode_up": "contained",
+          "focus_nagivation_mode_left": "contained",
+          "focus_nagivation_mode_right": "contained",
+          "ttsSectionContainer": true,
+          "$is_world_edit": true,
+          "controls": [
+            { "behavior_packs_screen@behavior_packs_ui.behavior_packs_screen_panel": { "visible": false } },
+            { "gamerules_screen@gamerules_ui.gamerules_screen_panel": { "visible": false } },
+            { "more_options_screen@more_options_ui.more_options_screen_panel": { "visible": false } },
+            { "multiplayer_screen@multiplayer_ui.multiplayer_screen_panel": { "visible": false } },
+            { "resource_packs_screen@resource_packs_ui.resource_packs_screen_panel": { "visible": false } }
+          ]
+        }
+      }
+    ]
+  },
+
+  "world_edit_content_panel": {
+    "type": "panel",
+    "controls": [
+      { "title@content_ui.title": { "offset": ["50% - 50%x", 19], "text": "selectWorld.edit" } }
+    ],
+    "$education_ios": "($education_edition and $ios)",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "behavior_packs_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "gamerules_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "more_options_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "multiplayer_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "resource_packs_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      }
+    ]
+  }
+}

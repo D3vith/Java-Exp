@@ -99,7 +99,7 @@
     "anchor_from": "top_left",
     "offset": [52, 15],
     "$scroll_bar_size": [12, "100%"],
-    "$scroll_bar_offset": [34, 0],
+    "$scroll_bar_offset": ["50% + 34px", 0],
     "$scroll_box_image": "stonecutter_ui.scroll_box",
     "$scroll_track_image": "stonecutter_ui.scroll_track",
     "$scrolling_content": "stonecutter_ui.scroll_grid_panel",

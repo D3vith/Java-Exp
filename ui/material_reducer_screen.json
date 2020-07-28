@@ -1,0 +1,9 @@
+{
+  "namespace": "matreduce",
+  
+  "material_reducer@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "material_reducer_ui.material_reducer_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  }
+}

@@ -4,18 +4,77 @@
 
   "abstract_furnace_screen_panel@container_ui.container_panel": {
     "$container_bg": "furnace_ui.furnace_bg",
+    "variables": {
+      "requires": "$show_furnace_recipe_book",
+      "$root_panel": "furnace_ui.furnace_with_recipe_book"
+    },
     "$specified_content": "furnace_ui.furnace_content_panel"
   },
 
-  "furnace_screen_panel@furnace_ui.abstract_furnace_screen_panel": { "$furnace_name": "furnace" },
-  "blast_furnace_screen_panel@furnace_ui.abstract_furnace_screen_panel": { "$furnace_name": "blast_furnace" },
-  "smoker_screen_panel@furnace_ui.abstract_furnace_screen_panel": { "$furnace_name": "smoker" },
+  "furnace_with_recipe_book": {
+    "type": "stack_panel",
+    "size": [325, 166],
+    "orientation": "horizontal",
+    "$root_controls": [
+      { "fill@content_ui.hfill": {} },
+      {
+        "recipe_book@furnace_recipe_book_ui.furnace_recipe_book": {
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "($furnace_type + '_view')",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "with_rb": {
+          "type": "panel",
+          "size": [2, 0],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "($furnace_type + '_view')",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "furnace_root@common.root_panel": {
+          "size": [176, 166],
+          "controls": [
+            { "bg@$container_bg": {} },
+            { "inventory@$specified_content": {} },
+            { "selected_item_button@container_ui.selected_item_button": {} }
+          ]
+        }
+      },
+      { "fill@content_ui.hfill": {} }
+    ]
+  },
+
+  "furnace_screen_panel@furnace_ui.abstract_furnace_screen_panel": {
+    "$furnace_type": "furnace"
+  },
+
+  "blast_furnace_screen_panel@furnace_ui.abstract_furnace_screen_panel": {
+    "$furnace_type": "blast_furnace"
+  },
+
+  "smoker_screen_panel@furnace_ui.abstract_furnace_screen_panel": {
+    "$furnace_type": "smoker"
+  },
 
   "furnace_content_panel": {
     "type": "panel",
     "$tanchor": "top_middle",
     "controls": [
       { "title@container_ui.title": { "offset": [0, 5] } },
+      { "recipe_book_button@furnace_recipe_book_ui.furnace_recipe_book_button": {} },
       { "ingredient@furnace_ui.ingredient_item": {} },
       {
         "arrow@furnace_ui.furnace_full_arrow": {
@@ -55,7 +114,7 @@
   },
 
   "furnace_bg@content_ui.resource_image": {
-    "texture": "('assets/minecraft/textures/gui/container/' + $furnace_name)",
+    "texture": "('assets/minecraft/textures/gui/container/' + $furnace_type)",
     "size": [176, 166],
     "variables": [
       { "requires": "($furnace_resolution = 256x)", "$uv_size": [176, 166] },

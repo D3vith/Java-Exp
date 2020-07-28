@@ -1,0 +1,83 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "option_toggle_ui",
+
+  "toggle@widget_ui.widget": {
+    "size": [150, 20],
+    "$widget_control_name": "boolean_option",
+    "$widget_right_on_text": "options.on",
+    "$widget_right_off_text": "options.off",
+    "$control_ref": "option_toggle_ui.toggle_control"
+  },
+
+  "toggle_control@toggle_ui.toggle": {
+    "$toggle_enabled_binding_type|default": "global",
+    "$toggle_state_binding_name|default": "$option_binding_name",
+    "$toggle_enabled_binding_name|default": "$option_enabled_binding_name",
+    "$option_enabled_binding_type|default": "global",
+    "$binding_type": "global",
+    "$binding_condition": "once",
+    "enabled": "$enabled",
+    "$enabled|default": true,
+    "variables": [
+      {
+        "requires": "(not $option_enabled_binding_name or not $enabled)",
+        "$option_enabled_binding_name": "#not_data_bound",
+        "$option_enabled_binding_type": "none"
+      }
+    ],
+    "$enable_directional_toggling": false/* ,
+    "$toggle_type_panel": "option_toggle_ui.toggle_text_panel",
+    "$option_toggle_unchecked_text|default": "options.off",
+    "$option_toggle_checked_text|default": "options.on" */
+  },
+
+  "toggle_text_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": ["100%c", 10],
+    "offset": [1, 0],
+    "$button_text_max_size": ["default", "default"],
+    "$show_comma|default": true,
+    "$state_text_color|default": "$text_color",
+    "controls": [
+      {
+        "option_toggle_label@button_ui.button_label": {
+          "text": "$widget_text",
+          "bindings": "$toggle_text_bindings",
+          "visible": "$show_comma",
+          "$toggle_text_bindings|default": []
+        }
+      },
+      {
+        "space": {
+          "type": "label",
+          "text": "gui.comma.spaced",
+          "color": "$text_color",
+          "size": ["default", "default"],
+          "visible": "$show_comma",
+          "shadow": true,
+          "layer": 10
+        }
+      },
+      {
+        "option_toggle_state_text@button_ui.button_label": {
+          "text": "$option_toggle_state_text",
+          "color": "$state_text_color",
+          "bindings": "$toggle_state_text_bindings",
+          "$toggle_state_text_bindings|default": [],
+          "variables": [
+            {
+              "requires": "($state = unchecked or $state = unchecked_hover or $state = unchecked_locked or $state = unchecked_locked_hover)",
+              "$option_toggle_state_text": "$option_toggle_unchecked_text"
+            },
+            {
+              "requires": "($state = checked or $state = checked_hover or $state = checked_locked or $state = checked_locked_hover)",
+              "$option_toggle_state_text": "$option_toggle_checked_text"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

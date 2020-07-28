@@ -1,0 +1,25 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "option_slider_ui",
+
+  "slider@widget_ui.widget": {
+    "size": [150, 20],
+    "$control_ref": "option_slider_ui.slider_control"
+  },
+
+  "slider_control@slider_ui.slider_control": {
+    "variables": [
+      {
+        "requires": "(not $slider_enabled_binding_name or not $enabled)",
+        "$slider_enabled_binding_name": "#not_data_bound",
+        "$slider_enabled_binding_type": "none"
+      }
+    ],
+    "enabled": "$enabled",
+    "$enabled": true,
+    "$slider_tts_header": "$widget_text",
+    "$slider_tts_header_binding_type": "global",
+    "$slider_enabled_binding_name|default": "",
+    "$slider_enabled_binding_type": "global"
+  }
+}

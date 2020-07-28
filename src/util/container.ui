@@ -5,18 +5,19 @@
   "container_panel": {
     "type": "panel",
     "$container_size|default": [176, 166],
-    "$specified_content|default": "",
+    "$extra_content|default": "common.container_gamepad_helpers",
+    "$root_panel|default": "common.root_panel",
     "controls": [
-      { "container_gamepad_helpers@common.container_gamepad_helpers": {} },
+      { "extra@$extra_content": {} },
       { "invisible_exit_bg@container_ui.invisible_exit_bg": {} },
+      { "selected_item_button@container_ui.selected_item_button": {} },
       {
-        "root_panel@common.root_panel": {
+        "root_panel@$root_panel": {
           "size": "$container_size",
-          "controls": [
+          "controls": "$root_controls",
+          "$root_controls|default": [
             { "bg@$container_bg": {} },
-            { "inventory@$specified_content": { "layer": 2 } },
-            { "selected_item_button@container_ui.selected_item_button": {} },
-            { "gamepad_cursor@common.gamepad_cursor_button": {} }
+            { "inventory@$specified_content": { "layer": 2 } }
           ]
         }
       }
@@ -30,6 +31,7 @@
     "anchor_from": "top_right",
     "anchor_to": "top_right",
     "focus_enabled": false,
+    "focus_wrap_enabled": false,
     "button_mappings": [
       {
         "from_button_id": "button.menu_select",
@@ -41,12 +43,12 @@
         "to_button_id": "button.menu_exit",
         "mapping_type": "focused"
       }
-    // ],
-    // "bindings": [
-    //   {
-    //     "binding_name": "#using_touch",
-    //     "binding_name_override": "#visible"
-    //   }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#using_touch",
+        "binding_name_override": "#visible"
+      }
     ]
   },
 
@@ -65,205 +67,56 @@
   "slot@common.container_item": {
     "size": "$slot_size",
     "$slot_size|default": [18, 18],
-    "$slot_inner_size|default": ["100%", "100%"],
-    "$slot_highlight_size|default": [16, 16],
-    "$background_images|default": "common.empty_panel",
-    "$background_image_control_name|default": "bg",
-    "$item_renderer_panel_size|default": ["100%", "100%"],
-    "$item_renderer|default": "common.item_renderer",
-    "$item_renderer_size|default": [16, 16],
-    "$item_renderer_offset|default": [0, 0],
-    "$cell_overlay_ref|default": "common.empty_panel",
     "$button_ref|default": "container_ui.slot_prototype_button",
     "$highlight_slot_required|default": true,
-    "$stack_count_required|default": true,
+    // Slot Inner Panel
+    "$slot_inner_size|default": [18, 18],
+    "$slot_highlight_size|default": [16, 16],
+    "$slot_overlay_ref|default": "content_ui.empty_panel",
+    "$background_images_control_name|default": "bg",
+    "$background_images|default": "content_ui.empty_panel",
+    "$overlay_image_control_name|default": "overlay",
+    "$overlay_images|default": "content_ui.empty_panel",
     "$durability_bar_required|default": true,
-    "$durability_bar_offset": [0, 5.5],
+    "$durability_bar_offset|default": [0, 5.5],
+    // Item Renderer Panel
+    "$item_renderer_panel_size|default": [18, 18],
+    "$item_renderer_ref|default": "common.item_renderer",
+    "$item_renderer_size|default": [16, 16],
+    "$item_renderer_offset|default": [0, 0],
+    "$stack_count_required|default": true,
     "controls": [
       {
-        "item_cell": {
+        "slot_inner_panel": {
           "type": "panel",
           "size": "$slot_inner_size",
           "controls": [
-            { "$background_image_control_name@$background_images": { "layer": 1 } },
+            { "$background_images_control_name@$background_images": { "layer": 1 } },
             {
-              "item0@container_ui.not_3d_item": {
+              "item_renderer_panel": {
+                "type": "panel",
                 "size": "$item_renderer_panel_size",
-                "$item_renderer_binding_condition|default": "none",
-                "$item_condition": "(not (#item_id_aux = 3538944))",
                 "controls": [
                   {
-                    "item1@container_ui.not_3d_item": {
-                      "$item_condition": "(not (#item_id_aux = 8519680))",
-                      "controls": [
-                        {
-                          "item2@container_ui.not_3d_item": {
-                            "$item_condition": "(not (#item_id_aux = -720896))",
-                            "controls": [
-                              {
-                                "item3@container_ui.not_3d_item": {
-                                  "$item_condition": "(not (#item_id_aux = 7602176))",
-                                  "controls": [
-                                    {
-                                      "item4@container_ui.not_3d_item": {
-                                        "$item_condition": "(not (#item_id_aux = 5832704))",
-                                        "controls": [
-                                          {
-                                            "item5@container_ui.not_3d_item": {
-                                              "$item_condition": "(not (#item_id_aux = 5963776))",
-                                              "controls": [
-                                                {
-                                                  "item6@container_ui.not_3d_item": {
-                                                    "$item_condition": "(not (#item_id_aux = 13959168))",
-                                                    "controls": [
-                                                      {
-                                                        "item7@container_ui.not_3d_item": {
-                                                          "$item_condition": "(not (#item_id_aux = 11075584))",
-                                                          "controls": [
-                                                            {
-                                                              "item8@container_ui.not_3d_item": {
-                                                                "$item_condition": "(not (#item_id_aux = -15073280))",
-                                                                "controls": [
-                                                                  { "stack_count_label@common.stack_count_label": { "layer": 8 } },
-                                                                  {
-                                                                    "$item_renderer@$item_renderer": {
-                                                                      "size": "$item_renderer_size",
-                                                                      "offset": "$item_renderer_offset",
-                                                                      "anchor_to": "center",
-                                                                      "anchor_from": "center",
-                                                                      "layer": 3
-                                                                    }
-                                                                  }
-                                                                ]
-                                                              }
-                                                            }
-                                                          ]
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      ]
+                    "$item_renderer_ref@$item_renderer_ref": {
+                      "size": "$item_renderer_size",
+                      "offset": "$item_renderer_offset",
+                      "anchor_to": "center",
+                      "anchor_from": "center",
+                      "layer": 4
                     }
-                  }
+                  },
+                  { "stack_count_label@common.stack_count_label": { "layer": 8 } }
                 ]
               }
             },
-            {
-              "blue_ice@container_ui.3d_item": {
-                "$item": "blue_ice",
-                "$item_condition": "(#item_id_aux = -720896)"
-              }
-            },
-            {
-              "chest@container_ui.3d_item": {
-                "$item": "chest",
-                "$item_condition": "(#item_id_aux = 3538944)"
-              }
-            },
-            {
-              "enchanting_table@container_ui.3d_item": {
-                "$item": "enchanting_table",
-                "$item_condition": "(#item_id_aux = 7602176)"
-              }
-            },
-            {
-              "ender_chest@container_ui.3d_item": {
-                "$item": "ender_chest",
-                "$item_condition": "(#item_id_aux = 8519680)"
-              }
-            },
-            {
-              "glowstone@container_ui.3d_item": {
-                "$item": "glowstone",
-                "$item_condition": "(#item_id_aux = 5832704)"
-              }
-            },
-            {
-              "jack_o_lantern@container_ui.3d_item": {
-                "$item": "jack_o_lantern",
-                "$item_condition": "(#item_id_aux = 5963776)"
-              }
-            },
-            {
-              "magma@container_ui.3d_item": {
-                "$item": "magma",
-                "$item_condition": "(#item_id_aux = 13959168)"
-              }
-            },
-            {
-              "sea_lantern@container_ui.3d_item": {
-                "$item": "sea_lantern",
-                "$item_condition": "(#item_id_aux = 11075584)"
-              }
-            },
-            {
-              "shroomlight@container_ui.3d_item": {
-                "$item": "shroomlight",
-                "$item_condition": "(#item_id_aux = -15073280)"
-              }
-            },
-            { "durabilityBar@common.durability_bar": { "layer": 6 } }
+            { "$overlay_images_control_name@$overlay_images": { "layer": 7 } },
+            { "durability_bar@common.durability_bar": { "layer": 6 } },
+            { "slot_overlay_ref@$slot_overlay_ref": { "layer": 1 } }
           ]
         }
       },
-      { "item_cell_overlay_ref@$cell_overlay_ref": { "layer": 2 } },
-      { "itemButtonRef@$button_ref": { "layer": 4 } }
-    ]
-  },
-
-  "not_3d_item": {
-    "type": "panel",
-    "bindings": [
-      {
-        "ignored": "(not $use_default_java_block_model_and_shading_for_some_blocks)",
-        "binding_name": "$item_condition",
-        "binding_type": "collection",
-        "binding_collection_name": "$item_collection_name",
-        "binding_name_override": "#visible",
-        "binding_condition": "$item_renderer_binding_condition"
-      }
-    ]
-  },
-
-  "3d_item": {
-    "ignored": "(not $use_default_java_block_model_and_shading_for_some_blocks)",
-    "type": "panel",
-    "size": "$item_renderer_panel_size",
-    "$item_renderer_binding_condition|default": "none",
-    "controls": [
-      { "stack_count_label@common.stack_count_label": { "layer": 8 } },
-      {
-        "3d_item": {
-          "type": "image",
-          "texture": "('assets/fmarquespto/textures/3d/' + $item)",
-          "size": [16, 16],
-          "anchor_to": "center",
-          "anchor_from": "center",
-          "layer": 5
-        }
-      }
-    ],
-    "bindings": [
-      {
-        "binding_name": "$item_condition",
-        "binding_type": "collection",
-        "binding_collection_name": "$item_collection_name",
-        "binding_name_override": "#visible",
-        "binding_condition": "$item_renderer_binding_condition"
-      }
+      { "slot_button_ref@$button_ref": { "layer": 2 } }
     ]
   },
 
@@ -288,16 +141,16 @@
   // Slot Highlight - isHovered
   "slot_highlight": {
     "type": "panel",
-    "layer": 4,
+    "layer": 6,
     "controls": [
       { "highlightImage@container_ui.highlight_image": {} },
       {
         "item_tooltip@container_ui.item_tooltip": {
           "layer": 50,
-          "$hover_text_binding_name|default": "(not (#hover_text = ''))",
+          "$item_tooltip_binding_name|default": "(not (#hover_text = ''))",
           "bindings": [
             {
-              "binding_name": "$hover_text_binding_name",
+              "binding_name": "$item_tooltip_binding_name",
               "binding_name_override": "#visible",
               "binding_type": "collection",
               "binding_collection_name": "$item_collection_name"
@@ -344,9 +197,11 @@
         "inventory_grid": {
           "type": "grid", 
           "size": [162, 54],
-          "grid_dimensions": [9, 3],
-          "grid_item_template": "container_ui.grid_item_for_inventory",
+          "grid_rescaling_type": "horizontal",
+          "maximum_grid_items": 27,
+          "grid_item_template": "container_ui.slot",
           "collection_name": "inventory_items",
+          "$item_collection_name": "inventory_items",
           "layer": 2
         }
       }
@@ -356,21 +211,15 @@
   "player_hotbar": {
     "type": "grid",
     "size": [162, 18],
-    "grid_dimensions": [9, 1],
-    "grid_item_template": "container_ui.grid_item_for_hotbar",
+    "grid_rescaling_type": "horizontal",
+    "maximum_grid_items": 9,
+    "grid_item_template": "container_ui.slot",
+    "$item_collection_name": "hotbar_items",
     "collection_name": "hotbar_items",
     "anchor_from": "top_left",
     "anchor_to": "top_left",
     "offset": ["50% - 81px", "100% - 25px"],
     "layer": 2
-  },
-
-  "grid_item_for_inventory@container_ui.slot": {
-    "$item_collection_name": "inventory_items"
-  },
-
-  "grid_item_for_hotbar@container_ui.slot": {
-    "$item_collection_name": "hotbar_items"
   },
 
   // Selected Slot
@@ -387,70 +236,25 @@
     "type": "panel",
     "controls": [
       {
-        "item0@container_ui.not_3d_selected_item": {
-          "$item_condition": "(not (#inventory_selected_item = 3538944))",
-          "controls": [
+        "item": {
+          "type": "panel",
+          "controls": [ { "selected_item_icon@common.inventory_selected_icon": { "size": [16, 16], "offset": [0, 0] } } ]
+        }
+      },
+      {
+        "stack_size": {
+          "type": "panel",
+          "controls": [ { "selected_stack_size_text@common.inventory_selected_stack_size_text": { "offset": [1, 2], "color": "$selected_item_stack_text_color" } } ],
+          "bindings": [
+            { "binding_name": "#inventory_selected_item_stack_count" },
             {
-              "item1@container_ui.not_3d_selected_item": {
-                "$item_condition": "(not (#inventory_selected_item = 8519680))",
-                "controls": [
-                  {
-                    "item2@container_ui.not_3d_selected_item": {
-                      "$item_condition": "(not (#inventory_selected_item = -720896))",
-                      "controls": [
-                        {
-                          "item3@container_ui.not_3d_selected_item": {
-                            "$item_condition": "(not (#inventory_selected_item = 7602176))",
-                            "controls": [
-                              {
-                                "item4@container_ui.not_3d_selected_item": {
-                                  "$item_condition": "(not (#inventory_selected_item = 5832704))",
-                                  "controls": [
-                                    {
-                                      "item5@container_ui.not_3d_selected_item": {
-                                        "$item_condition": "(not (#inventory_selected_item = 5963776))",
-                                        "controls": [
-                                          {
-                                            "item6@container_ui.not_3d_selected_item": {
-                                              "$item_condition": "(not (#inventory_selected_item = 13959168))",
-                                              "controls": [
-                                                {
-                                                  "item7@container_ui.not_3d_selected_item": {
-                                                    "$item_condition": "(not (#inventory_selected_item = 11075584))",
-                                                    "controls": [
-                                                      {
-                                                        "item8@container_ui.not_3d_selected_item": {
-                                                          "$item_condition": "(not (#inventory_selected_item = -15073280))",
-                                                          "controls": [
-                                                            { "selected_item_icon@common.inventory_selected_icon": { "size": [16, 16], "offset": [0, 0] } }
-                                                          ]
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
+              "binding_type": "view",
+              "source_property_name": "(not (#inventory_selected_item_stack_count = '0'))",
+              "target_property_name": "#visible"
             }
           ]
         }
       },
-      { "selected_stack_size_text@common.inventory_selected_stack_size_text": { "offset": [1, 2], "color": "$selected_item_stack_text_color" } },
       {
         "item_tooltip@container_ui.item_tooltip": {
           "$item_collection_name": "",
@@ -462,102 +266,13 @@
             }
           ]
         }
-      },
-      {
-        "blue_ice@container_ui.3d_selected_item": {
-          "$item": "blue_ice",
-          "$item_condition": "(#inventory_selected_item = -720896)"
-        }
-      },
-      {
-        "chest@container_ui.3d_selected_item": {
-          "$item": "chest",
-          "$item_condition": "(#inventory_selected_item = 3538944)"
-        }
-      },
-      {
-        "enchanting_table@container_ui.3d_selected_item": {
-          "$item": "enchanting_table",
-          "$item_condition": "(#inventory_selected_item = 7602176)"
-        }
-      },
-      {
-        "ender_chest@container_ui.3d_selected_item": {
-          "$item": "ender_chest",
-          "$item_condition": "(#inventory_selected_item = 8519680)"
-        }
-      },
-      {
-        "glowstone@container_ui.3d_selected_item": {
-          "$item": "glowstone",
-          "$item_condition": "(#inventory_selected_item = 5832704)"
-        }
-      },
-      {
-        "jack_o_lantern@container_ui.3d_selected_item": {
-          "$item": "jack_o_lantern",
-          "$item_condition": "(#inventory_selected_item = 5963776)"
-        }
-      },
-      {
-        "magma@container_ui.3d_selected_item": {
-          "$item": "magma",
-          "$item_condition": "(#inventory_selected_item = 13959168)"
-        }
-      },
-      {
-        "sea_lantern@container_ui.3d_selected_item": {
-          "$item": "sea_lantern",
-          "$item_condition": "(#inventory_selected_item = 11075584)"
-        }
-      },
-      {
-        "shroomlight@container_ui.3d_selected_item": {
-          "$item": "shroomlight",
-          "$item_condition": "(#inventory_selected_item = -15073280)"
-        }
-      }
-    ]
-  },
-
-  "not_3d_selected_item": {
-    "type": "panel",
-    "bindings": [
-      {
-        "ignored": "(not $use_default_java_block_model_and_shading_for_some_blocks)",
-        "binding_name": "$item_condition",
-        "binding_name_override": "#visible"
-      }
-    ]
-  },
-
-  "3d_selected_item": {
-    "ignored": "(not $use_default_java_block_model_and_shading_for_some_blocks)",
-    "type": "panel",
-    "size": [16, 16],
-    "controls": [
-      {
-        "3d_item": {
-          "type": "image",
-          "texture": "('assets/fmarquespto/textures/3d/' + $item)",
-          "size": [16, 16],
-          "anchor_to": "center",
-          "anchor_from": "center",
-          "layer": 80
-        }
-      }
-    ],
-    "bindings": [
-      {
-        "ignored": "(not $use_default_java_block_model_and_shading_for_some_blocks)",
-        "binding_name": "$item_condition",
-        "binding_name_override": "#visible"
       }
     ]
   },
 
   // Slot Tooltip
   "item_tooltip@tooltip_ui.tooltip": {
+    "$item_tooltip_text_binding_name|default": "#hover_text",
     "$tooltip_text_content": "container_ui.item_tooltip_text"
   },
 
@@ -567,11 +282,10 @@
     "text": "#hover_text",
     "shadow": true,
     "layer": 10,
-    "$item_collection_type|default": "collection",
     "bindings": [
       {
-        "binding_name": "#hover_text",
-        "binding_type": "$item_collection_type",
+        "binding_name": "$item_tooltip_text_binding_name",
+        "binding_type": "collection",
         "binding_collection_name": "$item_collection_name",
         "binding_name_override": "#hover_text"
       }

@@ -1,0 +1,181 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "material_reducer_ui",
+
+  "material_reducer_screen_panel@container_ui.container_panel": {
+    "$container_size": [176, 195],
+    "$container_bg": "material_reducer_ui.material_reducer_bg",
+    "$specified_content": "material_reducer_ui.material_reducer_content_panel"
+  },
+
+  "material_reducer_content_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "title@container_ui.title": {
+          "text": "materialreducer.title",
+          "offset": [0, 4],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle"
+        }
+      },
+      { "input@material_reducer_ui.input_slot": {} },
+      { "output_slots@material_reducer_ui.output_slots": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "material_reducer_bg@content_ui.resource_image": {
+    "texture": "assets/fmarquespto/textures/gui/container/material_reducer",
+    "size": [176, 195],
+    "variables": [
+      { "requires": "($material_reducer_resolution = 256x)", "$uv_size": [176, 195] },
+      { "requires": "($material_reducer_resolution = 512x)", "$uv_size": [352, 390] },
+      { "requires": "($material_reducer_resolution = 1024x)", "$uv_size": [704, 780] },
+      { "requires": "($material_reducer_resolution = 2048x)", "$uv_size": [1408, 1560] },
+      { "requires": "($material_reducer_resolution = 4096x)", "$uv_size": [2816, 3120] }
+    ]
+  },
+
+  "input_slot": {
+    "type": "panel",
+    "size": [18, 18],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [79, 16],
+    "controls": [
+      {
+        "slot@container_ui.slot": {
+          "size": [18, 18],
+          "layer": 2,
+          "$item_collection_name": "matreduce_input",
+          "$button_ref": "material_reducer_ui.one_touch_button",
+          "bindings": [
+            {
+              "binding_name": "#input_enabled",
+              "binding_name_override": "#enabled"
+            }
+          ]
+        }
+      },
+      {
+        "locked_overlay": {
+          "type": "image",
+          "layer": 4,
+          "size": ["100% - 2px", "100% - 2px"],
+          "texture": "assets/fmarquespto/textures/static/white",
+          "color": "red",
+          "alpha": 0.35,
+          "bindings": [
+            {
+              "binding_name": "(not #input_enabled)",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "one_touch_button@container_ui.slot_prototype_button": {
+    "$take_all_place_all": "button.matreduce_take_all_place_all",
+    "$coalesce_stack": "button.matreduce_coalesce_stack",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$take_all_place_all",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$take_all_place_all",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_secondary_select",
+        "to_button_id": "button.container_take_half_place_one",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.controller_select",
+        "to_button_id": "button.container_take_half_place_one",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_auto_place",
+        "to_button_id": "button.container_auto_place",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.controller_secondary_select",
+        "to_button_id": "button.container_auto_place",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_inventory_drop",
+        "to_button_id": "button.drop_one",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_inventory_drop_all",
+        "to_button_id": "button.drop_all",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$coalesce_stack",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$coalesce_stack",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "to_button_id": "button.shape_drawing",
+        "mapping_type": "pressed"
+      },
+      {
+        "to_button_id": "button.container_slot_hovered",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+
+  "output_slots": {
+    "type": "grid",
+    "size": [130, 50],
+    "offset": [4, 51],
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "grid_dimensions": [5, 2],
+    "collection_name": "matreduce_output",
+    "controls": [
+      { "a@material_reducer_ui.output_slot": { "$grid_position": [ 0, 0 ] } },
+      { "b@material_reducer_ui.output_slot": { "$grid_position": [ 1, 0 ] } },
+      { "c@material_reducer_ui.output_slot": { "$grid_position": [ 2, 0 ] } },
+      { "d@material_reducer_ui.output_slot": { "$grid_position": [ 3, 0 ] } },
+      { "e@material_reducer_ui.output_slot": { "$grid_position": [ 4, 0 ] } },
+      { "f@material_reducer_ui.output_slot": { "$grid_position": [ 0, 1 ], "$offset": [ 13, 0 ] } },
+      { "g@material_reducer_ui.output_slot": { "$grid_position": [ 1, 1 ], "$offset": [ 13, 0 ] } },
+      { "h@material_reducer_ui.output_slot": { "$grid_position": [ 2, 1 ], "$offset": [ 13, 0 ] } },
+      { "i@material_reducer_ui.output_slot": { "$grid_position": [ 3, 1 ], "$offset": [ 13, 0 ] } }
+    ]
+  },
+
+  "output_slot": {
+    "type": "panel",
+    "grid_position": "$grid_position",
+    "size": [18, 18],
+    "controls": [
+      {
+        "slot@container_ui.slot": {
+          "$offset|default": [0, 0],
+          "offset": "$offset",
+          "$item_collection_name": "matreduce_output"
+        }
+      }
+    ]
+  }
+}

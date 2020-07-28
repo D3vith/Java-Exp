@@ -1,0 +1,166 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "slot_recipe_book_ui",
+
+  "no_coalesce_slot_button@slot_crafting_ui.no_coalesce_slot_button": {
+    "$button_take_all_place_all": "button.recipe_select",
+    "$button_take_half_place_one": "button.recipe_secondary",
+    "$button_auto_place": "button.recipe_tertiary"
+  },
+
+  "slot_backgrounds": {
+    "type": "image",
+    "$cell_images_binding_condition|default": "visible",
+    "size": [25, 25],
+    "controls": [
+      { "slot_default@slot_recipe_book_ui.slot_recipe_default": {} },
+      { "slot_collapsed@slot_recipe_book_ui.slot_recipe_collapsed": {} },
+      { "slot_expanded@slot_recipe_book_ui.slot_recipe_expanded": {} },
+      { "slot_group_item@slot_recipe_book_ui.slot_recipe_item": {} },
+      { "slot_selected@slot_recipe_book_ui.slot_recipe_selected": {} },
+      { "slot_red@slot_recipe_book_ui.slot_recipe_red": {} },
+      {
+        "recipe_tip@game_tip.recipe_item_tip": {
+          "bindings": [
+            {
+              "binding_name": "#recipe_search_tip_chevron_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "collection",
+              "binding_collection_name": "recipe_book"
+            }
+          ]
+        }
+      },
+      {
+        "recipe_tip1@game_tip.recipe_item_tip_box": {
+          "bindings": [
+            {
+              "binding_name": "#recipe_search_tip_box_visible",
+              "binding_name_override": "#visible",
+              "binding_type": "collection",
+              "binding_collection_name": "recipe_book"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#container_item_background",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name",
+        "binding_condition": "$cell_images_binding_condition"
+      }
+    ]
+  },
+
+  "slot_recipe_default@slot_recipe_book_ui.default_slot": {
+    "size": [25, 25],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$background_image_control_name",
+        "resolve_sibling_scope": true,
+        "source_property_name": "(#container_item_background = 0)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "slot_recipe_collapsed@slot_recipe_book_ui.group_slot": {
+    "size": [25, 25],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$background_image_control_name",
+        "resolve_sibling_scope": true,
+        "source_property_name": "(#container_item_background = 1)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "slot_recipe_expanded@slot_recipe_book_ui.group_slot": {
+    "size": [25, 25],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$background_image_control_name",
+        "resolve_sibling_scope": true,
+        "source_property_name": "(#container_item_background = 2)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "slot_recipe_item@slot_recipe_book_ui.default_slot": {
+    "size": [25, 25],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$background_image_control_name",
+        "resolve_sibling_scope": true,
+        "source_property_name": "(#container_item_background = 3)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "slot_recipe_selected@slot_recipe_book_ui.default_slot": {
+    "size": [25, 25],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$background_image_control_name",
+        "resolve_sibling_scope": true,
+        "source_property_name": "(#container_item_background = 4)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "slot_recipe_red@slot_recipe_book_ui.red_slot": {
+    "size": [25, 25],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "$background_image_control_name",
+        "resolve_sibling_scope": true,
+        "source_property_name": "(#container_item_background = 5)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "default_slot@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/recipe_book",
+    "size": [25, 25],
+    "variables": [
+      { "requires": "($recipe_book_resolution = 256x)", "$uv": [29, 206], "$uv_size": [25, 25] },
+      { "requires": "($recipe_book_resolution = 512x)", "$uv": [58, 412], "$uv_size": [50, 50] },
+      { "requires": "($recipe_book_resolution = 1024x)", "$uv": [116, 824], "$uv_size": [100, 100] },
+      { "requires": "($recipe_book_resolution = 2048x)", "$uv": [232, 1648], "$uv_size": [200, 200] },
+      { "requires": "($recipe_book_resolution = 4096x)", "$uv": [464, 3296], "$uv_size": [400, 400] }
+    ]
+  },
+
+  "red_slot@slot_recipe_book_ui.default_slot": {
+    "variables": [
+      { "requires": "($recipe_book_resolution = 256x)", "$uv": [54, 206], "$uv_size": [25, 25] },
+      { "requires": "($recipe_book_resolution = 512x)", "$uv": [108, 412], "$uv_size": [50, 50] },
+      { "requires": "($recipe_book_resolution = 1024x)", "$uv": [216, 824], "$uv_size": [100, 100] },
+      { "requires": "($recipe_book_resolution = 2048x)", "$uv": [432, 1648], "$uv_size": [200, 200] },
+      { "requires": "($recipe_book_resolution = 4096x)", "$uv": [864, 3296], "$uv_size": [400, 400] }
+    ]
+  },
+
+  "group_slot@slot_recipe_book_ui.default_slot": {
+    "variables": [
+      { "requires": "($recipe_book_resolution = 256x)", "$uv": [29, 231], "$uv_size": [25, 25] },
+      { "requires": "($recipe_book_resolution = 512x)", "$uv": [58, 462], "$uv_size": [50, 50] },
+      { "requires": "($recipe_book_resolution = 1024x)", "$uv": [116, 924], "$uv_size": [100, 100] },
+      { "requires": "($recipe_book_resolution = 2048x)", "$uv": [232, 1848], "$uv_size": [200, 200] },
+      { "requires": "($recipe_book_resolution = 4096x)", "$uv": [464, 3696], "$uv_size": [400, 400] }
+    ]
+  }
+}

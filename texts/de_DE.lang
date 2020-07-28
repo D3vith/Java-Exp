@@ -23,6 +23,9 @@ gui.recipebook.toggleRecipes.all=Alles wird angezeigt
 gui.recipebook.toggleRecipes.reset=Reset
 gui.recipebook.toggleRecipes.craftable=Herstellbares wird angezeigt
 
+craftingScreen.tab.search=All
+craftingScreen.tab.survival=Inventory
+
 ##Containers
 merchant.trades=Angebote
 

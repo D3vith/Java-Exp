@@ -1,5 +1,21 @@
 # Changelogs
 
+## V2.0.0 - Pre3
+### Added
+-Resolutions can be change on "ui/_global_variables.json". I use variables because it's the best option.\
+-Inventory screen. Without recipe book.\
+-Crafting table screen. Without recipe book.\
+-Creative inventory screen.\
+-Merchant2 screen.\
+-Furnaces recipe book.\
+-Custom tooltip.\
+-Pause screen.\
+-Minecraft title wrongly spelled (Minceraft). "$show_title_wrongly_spelled" in "ui/_global_variables.json".\
+-Manifest validation screen.\
+-World Create/Edit and Gamerules.\
+### Modified
+-Dirt scrolling panel used shadows made with images. Now it uses gradient renderer.\
+
 ## V2.0.0 - Pre2
 ### Added
 -Brewing stand screen.\
@@ -32,3 +48,5 @@
 -Main menu screen.\
 -Grindstone screen.\
 -Smithing table screen.\
+
+#### Rewriting everthing

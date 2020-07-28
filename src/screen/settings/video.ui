@@ -1,0 +1,102 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "video_ui",
+
+  "video_screen_panel@content_ui.scroll_screen_panel": {
+    "$top_content": "video_ui.top_content",
+    "$middle_content": "video_ui.scroll_content",
+    "$bottom_content": "video_ui.bottom_content",
+    "$education_ios": "($education_edition and $ios)",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "video_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "top_content": {
+    "type": "panel",
+    "controls": [ { "title@content_ui.title": { "offset": ["50% - 50%x", 15], "text": "options.videoTitle" } } ]
+  },
+
+  "scroll_content": {
+    "type": "stack_panel",
+    "size": ["100%", "100%c"],
+    "controls": [
+      { "@option_toggle_screen_animations": {}},
+      { "@option_content_file_log": {}},
+      { "@option_content_gui_log": {}},
+      { "@open_content_log_history": {}}
+    ]
+  },
+
+  //
+  "option_content_file_log@option_toggle_ui.toggle": {
+    "$widget_text": "options.content_log_file",
+    "$option_binding_name": "#content_log_file",
+    "$option_enabled_binding_name": "#content_log_file_enabled",
+    "$toggle_name": "content_log_file"
+  },
+
+  "option_content_gui_log@option_toggle_ui.toggle": {
+    "$widget_text": "options.content_log_gui",
+    "$option_binding_name": "#content_log_gui",
+    "$option_enabled_binding_name": "#content_log_gui_enabled",
+    "$toggle_name": "content_log_gui"
+  },
+
+  "open_content_log_history@action_button_ui.button": {
+    "size": [150, 20],
+    "$pressed_button_name": "button.open_content_log_history",
+    "$button_text": "contentlog.history.title",
+    "bindings": [
+      {
+        "binding_name": "#content_log_gui_option_enabled",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+ 
+  //
+
+  "option_toggle_screen_animations@option_toggle_ui.toggle": {
+    "enabled": "(not $is_holographic)",
+    "$widget_text": "options.screenAnimations",
+    "$option_binding_name": "#screen_animations",
+    "$option_enabled_binding_name": "#screen_animations_enabled",
+    "$toggle_name": "screen_animations",
+    "bindings": [
+      {
+        "binding_name": "#screen_animations_visible",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+
+  "bottom_content": {
+    "type": "panel",
+    "controls": [
+      { "reset@video_ui.reset_button": { "offset": ["50% - 155px", "100% - 27px"] } },
+      { "back@settings_ui.back_button": { "offset": "$back_button_offset", "size": "$back_button_size" } }
+    ],
+    "$back_button_size|default": [150, 20],
+    "$back_button_offset|default": ["50% - 155px + 160px", "100% - 27px"],
+    "variables": {
+      "requires": "(not $is_pregame)",
+      "$back_button_size": [200, 20],
+      "$back_button_offset": ["50% - 100px", "100% - 27px"]
+    }
+  },
+
+  // Widgets
+  "reset_button@action_button_ui.button": {
+    "ignored": "(not $is_pregame)",
+    "$pressed_button_name": "button.reset_settings",
+    "$button_text": "options.resetSettings",
+    "size": [150, 20],
+    "property_bag": { "reset_group": "video" }
+  }
+}

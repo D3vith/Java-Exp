@@ -5,21 +5,31 @@
   "$edition_name": "java",
   "$show_title_wrongly_spelled": false,
 
-  "$tootlip_bg_alpha": 0.95,
-  "$custom_tooltip_bg": false,
-  // "$tooltip_border_color": [0, 0, 0],
-  // "$tooltip_background_color": [0, 0, 0],
+  "$tootlip_bg_alpha": 0.95, // Default 0.95
+  "$custom_tooltip_background": false,
+  "$tooltip_border_color": [0.1441, 0, 0.3559], // Default [0.1441, 0, 0.3559]
+  "$tooltip_background_color": [0.0862, 0.0039, 0.0862], // Default [0.0862, 0.0039, 0.0862]
 
-  "$use_default_java_block_model_and_shading_for_some_blocks": true,
+  "$show_crafting_recipe_book": true,
+  "$show_furnace_recipe_book": true,
+  "$recipe_book_pages": false,
+
+  "$better_mouse_keys_grid": true,
+  "$better_controller_keys_grid": true,
 
   // Text Color
   "$primary_text_color": [1.0, 1.0, 1.0],
+  "$secondary_text_color": [0.62745, 0.62745, 0.62745],
 
-  // Button Text Color
-  "$button_default_text_color": [1.0, 1.0, 1.0],
-  "$button_hover_text_color": [1.0, 1.0, 1.0],
-  "$button_pressed_text_color": [1.0, 1.0, 1.0],
-  "$button_locked_text_color": [0.62745, 0.62745, 0.62745],
+  "$subtitle_text_color": [0.333, 0.333, 0.333],
+
+  "$description_text_color": [0.5, 0.5, 0.5],
+
+  // (Buttons) Text Color
+  "$widget_default_text_color": [1.0, 1.0, 1.0],
+  "$widget_hover_text_color": [1.0, 1.0, 1.0],
+  "$widget_pressed_text_color": [1.0, 1.0, 1.0],
+  "$widget_locked_text_color": [0.62745, 0.62745, 0.62745],
 
   // In-game
   "$container_text_color": [0.25, 0.25, 0.25],
@@ -33,26 +43,44 @@
   "$enchanting_cost_success_text_color": [0.4941, 0.9882, 0.1254],
   "$enchanting_cost_fail_text_color": [0.2470, 0.4901, 0.0627],
 
+  "$creative_search_bar_text_color": [1.0, 1.0, 1.0],
+
   // Resolutions
   "$title_resolution": "256x",
+  
   "$widgets_resolution": "256x",
+  "$resource_packs_resolution": "256x",
   "$options_background_resolution": "256x",
+  "$toasts_resolution": "256x",
 
   "$anvil_resolution": "256x",
   "$beacon_resolution": "256x",
   "$brewing_stand_resolution": "256x",
   "$cartography_resolution": "256x",
+  "$compound_creator_resolution": "256x",
+  "$crafting_resolution": "256x",
+  "$creative_items_resolution": "256x",
+  "$creative_search_item_resolution": "256x",
+  "$creative_inventory_resolution": "256x",
+  "$creative_tabs_resolution": "256x",
   "$dispenser_resolution": "256x",
+  "$element_constructor_resolution": "256x",
   "$enchanting_table_resolution": "256x",
   "$furnace_resolution": "256x",
   "$generic_54_resolution": "256x",
   "$grindstone_resolution": "256x",
   "$hopper_resolution": "256x",
   "$horse_resolution": "256x",
+  "$inventory_resolution": "256x",
+  "$lab_table_resolution": "256x",
   "$loom_resolution": "256x",
+  "$material_reducer_resolution": "256x",
+  "$recipe_book_resolution": "256x",
+  "$recipe_button_resolution": "256x",
   "$shulker_box_resolution": "256x",
   "$smithing_table_resolution": "256x",
   "$stonecutter_resolution": "256x",
+  "$villager2_resolution": "256x",
 
   // Static Text
   "$minecraft_text": "Minecraft",
@@ -60,5 +88,12 @@
   "$additional_text": "/Java UI (FMarquesPTO) ",
   "$trial_version_text": "Trial",
   "$development_version_text": "#development_version",
-  "$copyright_text": "Copyright Mojang AB. Do not distribute!"
+  "$development_version_visible": "(not $is_publish)",
+  "$copyright_text": "Copyright Mojang AB. Do not distribute!",
+
+  // Touch this and break everything XD / ... this isn't used...
+  "$#state": "#toggle_state",
+  "$#visible": "#visible",
+  "$#nstate": "(not #toggle_state)",
+  "$#nvisible": "(not #visible)"
 }

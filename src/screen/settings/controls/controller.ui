@@ -1,0 +1,217 @@
+/* By @FMarquesPTO. All rights reserved. */
+{
+  "namespace": "controller_ui",
+
+  "controller_screen_panel@controls_ui.controls_panel": {
+    "$type_prefix": "controller",
+    "$binding_button_type_panel": "controller_ui.binding_button_content",
+    "$needTxtBind|default": false,
+    "$bindTextName|default": "",
+    "variables": [
+      {
+        "requires": "(not $better_controller_keys_grid)",
+        "$needTxtBind": false
+      }
+    ],
+    "$reset_button_bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "$keymapping_collection"
+      },
+      {
+        "ignored": "(not $better_controller_keys_grid)",
+        "binding_name": "$bindName",
+        "binding_type": "collection",
+        "binding_collection_name": "$keymapping_collection",
+        "binding_name_override": "#enabled"
+      },
+      {
+        "ignored": "(not $needTxtBind)",
+        "binding_name": "$bindTextName",
+        "binding_type": "collection",
+        "binding_collection_name": "$keymapping_collection",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+
+  "top_content": {
+    "type": "panel",
+    "controls": [
+      { "title@content_ui.title": { "offset": ["50% - 50%x", 7.5], "text": "controls.title" } },
+      { "controller_settings@controller_ui.controller_settings_button": { "offset": ["50% - 155px", 18] } },
+      { "auto_jump@controller_ui.auto_jump_toggle": { "offset": ["50% - 155px + 160px", 18] } }
+    ]
+  },
+
+  "faster_keymapping_content": {
+    "type": "stack_panel",
+    "size": [318, "100%c"],
+    "$keymapping_grid_dimension": "#gamepad_grid_dimension",
+    "$keymapping_collection": "gamepad_collection",
+    "controls": [
+      { "space_top@content_ui.vspace": {} },
+      { "grid@gamepad_mapping_grid": {} },
+      { "space_bottom@content_ui.vspace": {} }
+    ]
+  },
+
+  "gamepad_mapping_grid": {
+    "type": "grid",
+    "size": ["100%", "default"],
+    "layer": 1,
+    "grid_item_template": "controls_ui.keymapping_item",
+    "grid_dimension_binding": "$keymapping_grid_dimension",
+    "collection_name": "$keymapping_collection",
+    "anchor_to": "top_left",
+    "anchor_from": "top_left",
+    "bindings": [ { "binding_name": "$keymapping_grid_dimension" } ]
+  },
+
+  "better_keymapping_content": {
+    "type": "stack_panel",
+    "size": [328, "100%c"],
+    "$keymapping_grid_dimension": "#gamepad_grid_dimension",
+    "$keymapping_collection": "gamepad_collection",
+    "$item_template": "controller_ui.controller_keymapping_item",
+    "controls": [
+      { "movement@controls_ui.keymapping_title": { "$keys_title": "Movement" } },
+      { "zero@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_face_button_down'))", "$item_index": 0 } },
+      { "one@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_face_button_right'))", "$item_index": 9 } },
+      { "two@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_stick_left'))", "$item_index": 10 } },
+      { "three@controls_ui.keymapping_grid_item": { "$needTxtBind": true, "$bindName": "(not (#binding_icon_sprite = ''))", "$bindTextName": "(not (#binding_button_text = ''))", "$item_index": 16 } },
+      { "four@controls_ui.keymapping_grid_item": { "$needTxtBind": true, "$bindName": "(not (#binding_icon_sprite = ''))", "$bindTextName": "(not (#binding_button_text = ''))", "$item_index": 17 } },
+      { "five@controls_ui.keymapping_grid_item": { "$needTxtBind": true, "$bindName": "(not (#binding_icon_sprite = ''))", "$bindTextName": "(not (#binding_button_text = ''))", "$item_index": 18 } },
+      { "six@controls_ui.keymapping_grid_item": { "$needTxtBind": true, "$bindName": "(not (#binding_icon_sprite = ''))","$bindTextName": "(not (#binding_button_text = ''))", "$item_index": 19 } },
+      { "seven@controls_ui.keymapping_grid_item": { "$needTxtBind": true, "$bindName": "(not (#binding_icon_sprite = ''))", "$bindTextName": "(not (#binding_button_text = ''))", "$item_index": 11 } },
+      { "eight@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_stick_right'))", "$item_index": 12 } },
+      { "gameplay@controls_ui.keymapping_title": { "$keys_title": "Gameplay" } },
+      { "nine@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_right_trigger'))", "$item_index": 2 } },
+      { "ten@controls_ui.keymapping_grid_item": { "$needTxtBind": true, "$bindName": "(not (#binding_icon_sprite = ''))", "$bindTextName": "(not (#binding_icon_sprite = ''))", "$item_index": 20 } },
+      { "eleven@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_left_trigger'))", "$item_index": 3 } },
+      { "inventory@controls_ui.keymapping_title": { "$keys_title": "Inventory" } },
+      { "twelve@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_dpad_down'))", "$item_index": 1 } },
+      { "thirdteen@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_bumper_left'))", "$item_index": 6 } },
+      { "fourteen@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_bumper_right'))", "$item_index": 7 } },
+      { "fifteen@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_face_button_up'))", "$item_index": 5 } },
+      { "sixteen@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_face_button_left'))", "$item_index": 4 } },
+      { "multiplayer@controls_ui.keymapping_title": { "$keys_title": "Multiplayer" } },
+      { "seventeen@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_dpad_right'))", "$item_index": 15 } },
+      { "miscellaneous@controls_ui.keymapping_title": { "$keys_title": "Miscellaneous" } },
+      { "nineteen@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_dpad_up'))", "$item_index": 8 } },
+      { "twenty@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_select_button'))", "$item_index": 14 } },
+      { "twenty@controls_ui.keymapping_grid_item": { "$bindName": "(not (#binding_icon_sprite = 'textures/ui/xbox_dpad_left'))", "$item_index": 13 } },
+      { "space_bottom@content_ui.v2px": {} }
+    ]
+  },
+
+  "bottom_content": {
+    "type": "panel",
+    "controls": [
+      { "reset@mouse_ui.reset_button": { "offset": ["50% - 155px", "100% - 29px"] } },
+      { "back@settings_ui.back_button": { "size": [150, 20], "offset": ["50% - 155px + 160px", "100% - 29px"] } }
+    ]
+  },
+
+  // Widgets
+  "controller_settings_button@toggle_button_ui.toggle": {
+    "$toggle_index": 1,
+    "$toggle_name": "controller_settings",
+    "$widget_text": "options.controller_settings",
+    "$toggle_tts_toggle_on_text": "accessibility.state.selected",
+    "$toggle_tts_toggle_off_text": "accessibility.state.unselected",
+    "$widget_control_name": "controller_settings_view"
+  },
+
+  "auto_jump_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.autoJump",
+    "$option_binding_name": "#controller_autojump",
+    "$option_enabled_binding_name": "#controller_autojump_enabled",
+    "$toggle_name": "controller_autojump"
+  },
+
+  "reset_button@button_ui.action_button": {
+    "$pressed_button_name": "button.reset_gamepad_bindings",
+    "$button_text": "controls.resetAll",
+    "size": [150, 20]
+  },
+
+  "binding_button_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "base_icon_image": {
+          "type": "image",
+          "size": [19, 19],
+          "layer": 20,
+          "$gameplay_key_icon|default": "#binding_icon_sprite",
+          "bindings": [
+            {
+              "binding_name": "$gameplay_key_icon",
+              "binding_name_override": "#texture",
+              "binding_type": "collection",
+              "binding_collection_name": "$keymapping_collection"
+            }
+          ]
+        }
+      },
+      {
+        "default_label": {
+          "type": "label",
+          "text": "#binding_button_text",
+          "color": "$text_color",
+          "size": ["default", "default"],
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "text_alignment": "center",
+          "shadow": true,
+          "bindings": [
+            {
+              "binding_name": "#binding_button_text",
+              "binding_type": "collection",
+              "binding_collection_name": "$keymapping_collection"
+            }
+          ]
+        }
+      }
+    ]
+  }/* ,
+
+  "reset_binding_button@button_ui.button": {
+    "layer": 1,
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [-27, 0],
+    "size": [50, 20],
+    "$button_text": "controls.reset",
+    "$pressed_button_name": "button.reset_binding",
+    "$needTxtBind|default": false,
+    "$bindTextName|default": "",
+    "variables": [
+      {
+        "requires": "(not $better_controller_keys_grid)",
+        "$needTxtBind": false
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "$keymapping_collection"
+      },
+      {
+        "ignored": "(not $better_controller_keys_grid)",
+        "binding_name": "$bindName",
+        "binding_type": "collection",
+        "binding_collection_name": "$keymapping_collection",
+        "binding_name_override": "#enabled"
+      },
+      {
+        "ignored": "(not $needTxtBind)",
+        "binding_name": "$bindTextName",
+        "binding_type": "collection",
+        "binding_collection_name": "$keymapping_collection",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  } */
+}

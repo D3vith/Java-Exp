@@ -1,0 +1,149 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "crafting_recipes_ui",
+
+  // Fabulous
+  "book_pages_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "page_number@page_number": {
+          "$page_total_number": "2",
+          "$sourceNames": "(#recipe_book_total_items = 21 or #recipe_book_total_items = 22 or #recipe_book_total_items = 23 or #recipe_book_total_items = 24 or #recipe_book_total_items = 25 or #recipe_book_total_items = 26 or #recipe_book_total_items = 27 or #recipe_book_total_items = 28 or #recipe_book_total_items = 29 or #recipe_book_total_items = 30 or #recipe_book_total_items = 31 or #recipe_book_total_items = 32 or #recipe_book_total_items = 33 or #recipe_book_total_items = 34 or #recipe_book_total_items = 35 or #recipe_book_total_items = 36 or #recipe_book_total_items = 37 or #recipe_book_total_items = 38 or #recipe_book_total_items = 39 or #recipe_book_total_items = 40)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "3",
+          "$sourceNames": "(#recipe_book_total_items = 41 or #recipe_book_total_items = 42 or #recipe_book_total_items = 43 or #recipe_book_total_items = 44 or #recipe_book_total_items = 45 or #recipe_book_total_items = 46 or #recipe_book_total_items = 47 or #recipe_book_total_items = 48 or #recipe_book_total_items = 49 or #recipe_book_total_items = 50 or #recipe_book_total_items = 51 or #recipe_book_total_items = 52 or #recipe_book_total_items = 53 or #recipe_book_total_items = 54 or #recipe_book_total_items = 55 or #recipe_book_total_items = 56 or #recipe_book_total_items = 57 or #recipe_book_total_items = 58 or #recipe_book_total_items = 59 or #recipe_book_total_items = 60)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "4",
+          "$sourceNames": "(#recipe_book_total_items = 61 or #recipe_book_total_items = 62 or #recipe_book_total_items = 63 or #recipe_book_total_items = 64 or #recipe_book_total_items = 65 or #recipe_book_total_items = 66 or #recipe_book_total_items = 67 or #recipe_book_total_items = 68 or #recipe_book_total_items = 69 or #recipe_book_total_items = 70 or #recipe_book_total_items = 71 or #recipe_book_total_items = 72 or #recipe_book_total_items = 73 or #recipe_book_total_items = 74 or #recipe_book_total_items = 75 or #recipe_book_total_items = 76 or #recipe_book_total_items = 77 or #recipe_book_total_items = 78 or #recipe_book_total_items = 79 or #recipe_book_total_items = 80)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "5",
+          "$sourceNames": "(#recipe_book_total_items = 81 or #recipe_book_total_items = 82 or #recipe_book_total_items = 83 or #recipe_book_total_items = 84 or #recipe_book_total_items = 85 or #recipe_book_total_items = 86 or #recipe_book_total_items = 87 or #recipe_book_total_items = 88 or #recipe_book_total_items = 89 or #recipe_book_total_items = 90 or #recipe_book_total_items = 91 or #recipe_book_total_items = 92 or #recipe_book_total_items = 93 or #recipe_book_total_items = 94 or #recipe_book_total_items = 95 or #recipe_book_total_items = 96 or #recipe_book_total_items = 97 or #recipe_book_total_items = 98 or #recipe_book_total_items = 99 or #recipe_book_total_items = 100)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "6",
+          "$sourceNames": "(#recipe_book_total_items = 101 or #recipe_book_total_items = 102 or #recipe_book_total_items = 103 or #recipe_book_total_items = 104 or #recipe_book_total_items = 105 or #recipe_book_total_items = 106 or #recipe_book_total_items = 107 or #recipe_book_total_items = 108 or #recipe_book_total_items = 109 or #recipe_book_total_items = 110 or #recipe_book_total_items= 111 or #recipe_book_total_items= 112 or #recipe_book_total_items= 113 or #recipe_book_total_items= 114 or #recipe_book_total_items= 115 or #recipe_book_total_items= 116 or #recipe_book_total_items= 117 or #recipe_book_total_items= 118 or #recipe_book_total_items= 119 or #recipe_book_total_items = 120)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "7",
+          "$sourceNames": "(#recipe_book_total_items = 121 or #recipe_book_total_items = 122 or #recipe_book_total_items = 123 or #recipe_book_total_items = 124 or #recipe_book_total_items = 125 or #recipe_book_total_items = 126 or #recipe_book_total_items = 127 or #recipe_book_total_items = 128 or #recipe_book_total_items = 129 or #recipe_book_total_items = 130 or #recipe_book_total_items = 131 or #recipe_book_total_items = 132 or #recipe_book_total_items = 133 or #recipe_book_total_items = 134 or #recipe_book_total_items = 135 or #recipe_book_total_items = 136 or #recipe_book_total_items = 137 or #recipe_book_total_items = 138 or #recipe_book_total_items = 139 or #recipe_book_total_items = 140)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "8",
+          "$sourceNames": "(#recipe_book_total_items = 141 or #recipe_book_total_items = 142 or #recipe_book_total_items = 143 or #recipe_book_total_items = 144 or #recipe_book_total_items = 145 or #recipe_book_total_items = 146 or #recipe_book_total_items = 147 or #recipe_book_total_items = 148 or #recipe_book_total_items = 149 or #recipe_book_total_items = 150 or #recipe_book_total_items = 151 or #recipe_book_total_items = 152 or #recipe_book_total_items = 153 or #recipe_book_total_items = 154 or #recipe_book_total_items = 155 or #recipe_book_total_items = 156 or #recipe_book_total_items = 157 or #recipe_book_total_items = 158 or #recipe_book_total_items = 159 or #recipe_book_total_items = 160)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "9",
+          "$sourceNames": "(#recipe_book_total_items = 161 or #recipe_book_total_items = 162 or #recipe_book_total_items = 163 or #recipe_book_total_items = 164 or #recipe_book_total_items = 165 or #recipe_book_total_items = 166 or #recipe_book_total_items = 167 or #recipe_book_total_items = 168 or #recipe_book_total_items = 169 or #recipe_book_total_items = 170 or #recipe_book_total_items = 171 or #recipe_book_total_items = 172 or #recipe_book_total_items = 173 or #recipe_book_total_items = 174 or #recipe_book_total_items = 175 or #recipe_book_total_items = 176 or #recipe_book_total_items = 177 or #recipe_book_total_items = 178 or #recipe_book_total_items = 179 or #recipe_book_total_items = 180)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "10",
+          "$sourceNames": "(#recipe_book_total_items = 181 or #recipe_book_total_items = 182 or #recipe_book_total_items = 183 or #recipe_book_total_items = 184 or #recipe_book_total_items = 185 or #recipe_book_total_items = 186 or #recipe_book_total_items = 187 or #recipe_book_total_items = 188 or #recipe_book_total_items = 189 or #recipe_book_total_items = 190 or #recipe_book_total_items = 191 or #recipe_book_total_items = 192 or #recipe_book_total_items = 193 or #recipe_book_total_items = 194 or #recipe_book_total_items = 195 or #recipe_book_total_items = 196 or #recipe_book_total_items = 197 or #recipe_book_total_items = 198 or #recipe_book_total_items = 199 or #recipe_book_total_items = 200)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "11",
+          "$sourceNames": "(#recipe_book_total_items = 201 or #recipe_book_total_items = 202 or #recipe_book_total_items = 203 or #recipe_book_total_items = 204 or #recipe_book_total_items = 205 or #recipe_book_total_items = 206 or #recipe_book_total_items = 207 or #recipe_book_total_items = 208 or #recipe_book_total_items = 209 or #recipe_book_total_items = 210 or #recipe_book_total_items = 211 or #recipe_book_total_items = 212 or #recipe_book_total_items = 213 or #recipe_book_total_items = 214 or #recipe_book_total_items = 215 or #recipe_book_total_items = 216 or #recipe_book_total_items = 217 or #recipe_book_total_items = 218 or #recipe_book_total_items = 219 or #recipe_book_total_items = 220)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "12",
+          "$sourceNames": "(#recipe_book_total_items = 221 or #recipe_book_total_items = 222 or #recipe_book_total_items = 223 or #recipe_book_total_items = 224 or #recipe_book_total_items = 225 or #recipe_book_total_items = 226 or #recipe_book_total_items = 227 or #recipe_book_total_items = 228 or #recipe_book_total_items = 229 or #recipe_book_total_items = 230 or #recipe_book_total_items = 231 or #recipe_book_total_items = 232 or #recipe_book_total_items = 233 or #recipe_book_total_items = 234 or #recipe_book_total_items = 235 or #recipe_book_total_items = 236 or #recipe_book_total_items = 237 or #recipe_book_total_items = 238 or #recipe_book_total_items = 239 or #recipe_book_total_items = 240)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "13",
+          "$sourceNames": "(#recipe_book_total_items = 241 or #recipe_book_total_items = 242 or #recipe_book_total_items = 243 or #recipe_book_total_items = 244 or #recipe_book_total_items = 245 or #recipe_book_total_items = 246 or #recipe_book_total_items = 247 or #recipe_book_total_items = 248 or #recipe_book_total_items = 249 or #recipe_book_total_items = 250 or #recipe_book_total_items = 251 or #recipe_book_total_items = 252 or #recipe_book_total_items = 253 or #recipe_book_total_items = 254 or #recipe_book_total_items = 255 or #recipe_book_total_items = 256 or #recipe_book_total_items = 257 or #recipe_book_total_items = 258 or #recipe_book_total_items = 259 or #recipe_book_total_items = 260)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "14",
+          "$sourceNames": "(#recipe_book_total_items = 261 or #recipe_book_total_items = 262 or #recipe_book_total_items = 263 or #recipe_book_total_items = 264 or #recipe_book_total_items = 265 or #recipe_book_total_items = 266 or #recipe_book_total_items = 267 or #recipe_book_total_items = 268 or #recipe_book_total_items = 269 or #recipe_book_total_items = 270 or #recipe_book_total_items = 271 or #recipe_book_total_items = 272 or #recipe_book_total_items = 273 or #recipe_book_total_items = 274 or #recipe_book_total_items = 275 or #recipe_book_total_items = 276 or #recipe_book_total_items = 277 or #recipe_book_total_items = 278 or #recipe_book_total_items = 279 or #recipe_book_total_items = 280)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "15",
+          "$sourceNames": "(#recipe_book_total_items  = 281 or #recipe_book_total_items  = 282 or #recipe_book_total_items  = 283 or #recipe_book_total_items  = 284 or #recipe_book_total_items  = 285 or #recipe_book_total_items  = 286 or #recipe_book_total_items  = 287 or #recipe_book_total_items  = 288 or #recipe_book_total_items  = 289 or #recipe_book_total_items = 290 or #recipe_book_total_items = 291 or #recipe_book_total_items = 292 or #recipe_book_total_items = 293 or #recipe_book_total_items = 294 or #recipe_book_total_items = 295 or #recipe_book_total_items = 296 or #recipe_book_total_items = 297 or #recipe_book_total_items = 298 or #recipe_book_total_items = 299 or #recipe_book_total_items = 300)"
+        }
+     /*  },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "16",
+          "$sourceNames": "(#recipe_book_total_items = 181 or #recipe_book_total_items = 182 or #recipe_book_total_items = 183 or #recipe_book_total_items = 184 or #recipe_book_total_items = 185 or #recipe_book_total_items = 186 or #recipe_book_total_items = 187 or #recipe_book_total_items = 188 or #recipe_book_total_items = 189 or #recipe_book_total_items = 190 or #recipe_book_total_items = 191 or #recipe_book_total_items = 192 or #recipe_book_total_items = 193 or #recipe_book_total_items = 194 or #recipe_book_total_items = 195 or #recipe_book_total_items = 196 or #recipe_book_total_items = 197 or #recipe_book_total_items = 198 or #recipe_book_total_items = 199 or #recipe_book_total_items = 320)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "17",
+          "$sourceNames": "(#recipe_book_total_items = 181 or #recipe_book_total_items = 182 or #recipe_book_total_items = 183 or #recipe_book_total_items = 184 or #recipe_book_total_items = 185 or #recipe_book_total_items = 186 or #recipe_book_total_items = 187 or #recipe_book_total_items = 188 or #recipe_book_total_items = 189 or #recipe_book_total_items = 190 or #recipe_book_total_items = 191 or #recipe_book_total_items = 192 or #recipe_book_total_items = 193 or #recipe_book_total_items = 194 or #recipe_book_total_items = 195 or #recipe_book_total_items = 196 or #recipe_book_total_items = 197 or #recipe_book_total_items = 198 or #recipe_book_total_items = 199 or #recipe_book_total_items = 340)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "10",
+          "$sourceNames": "(#recipe_book_total_items = 181 or #recipe_book_total_items = 182 or #recipe_book_total_items = 183 or #recipe_book_total_items = 184 or #recipe_book_total_items = 185 or #recipe_book_total_items = 186 or #recipe_book_total_items = 187 or #recipe_book_total_items = 188 or #recipe_book_total_items = 189 or #recipe_book_total_items = 190 or #recipe_book_total_items = 191 or #recipe_book_total_items = 192 or #recipe_book_total_items = 193 or #recipe_book_total_items = 194 or #recipe_book_total_items = 195 or #recipe_book_total_items = 196 or #recipe_book_total_items = 197 or #recipe_book_total_items = 198 or #recipe_book_total_items = 199 or #recipe_book_total_items = 360)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "19",
+          "$sourceNames": "(#recipe_book_total_items = 181 or #recipe_book_total_items = 182 or #recipe_book_total_items = 183 or #recipe_book_total_items = 184 or #recipe_book_total_items = 185 or #recipe_book_total_items = 186 or #recipe_book_total_items = 187 or #recipe_book_total_items = 188 or #recipe_book_total_items = 189 or #recipe_book_total_items = 190 or #recipe_book_total_items = 191 or #recipe_book_total_items = 192 or #recipe_book_total_items = 193 or #recipe_book_total_items = 194 or #recipe_book_total_items = 195 or #recipe_book_total_items = 196 or #recipe_book_total_items = 197 or #recipe_book_total_items = 198 or #recipe_book_total_items = 199 or #recipe_book_total_items = 380)"
+        }
+      },
+      {
+        "page_number@page_number": {
+          "$page_total_number": "20",
+          "$sourceNames": "(#recipe_book_total_items = 181 or #recipe_book_total_items = 182 or #recipe_book_total_items = 183 or #recipe_book_total_items = 184 or #recipe_book_total_items = 185 or #recipe_book_total_items = 186 or #recipe_book_total_items = 187 or #recipe_book_total_items = 188 or #recipe_book_total_items = 189 or #recipe_book_total_items = 190 or #recipe_book_total_items = 191 or #recipe_book_total_items = 192 or #recipe_book_total_items = 193 or #recipe_book_total_items = 194 or #recipe_book_total_items = 195 or #recipe_book_total_items = 196 or #recipe_book_total_items = 197 or #recipe_book_total_items = 198 or #recipe_book_total_items = 199 or #recipe_book_total_items = 400)"
+        } */
+      }
+    ]
+  },
+
+  "page_number": {
+    "type": "label",
+    "text": "($page_current_number + '/' + $page_total_number)",
+    "shadow": true,
+    "$page_current_number|default": "0",
+    "$page_total_number|default": "0",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [0, -10],
+    "layer": 10,
+    "bindings": [
+      {
+        "binding_name": "#recipe_book_total_items",
+        "binding_type": "collection",
+        "binding_collection_name": "recipe_book"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "$sourceNames",
+        "target_property_name": "#visible"
+      }
+    ]
+  }
+}

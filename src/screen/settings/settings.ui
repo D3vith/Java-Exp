@@ -1,0 +1,346 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "settings_ui",
+
+  "settings_screen_panel": {
+    "type": "panel",
+    "controls": [
+      { "settings@settings_ui.settings_content_panel": {} },
+      {
+        "sections": {
+          "type": "panel",
+          "focus_container": true,
+          "use_last_focus": false,
+          "focus_nagivation_mode_down": "contained",
+          "focus_nagivation_mode_up": "contained",
+          "focus_nagivation_mode_left": "contained",
+          "focus_nagivation_mode_right": "contained",
+          "ttsSectionContainer": true,
+          "controls": [
+            { "debug_screen@debug_ui.debug_screen_panel": { "visible": false, "ignored": "$is_publish" } },
+            { "sound_screen@sound_ui.sound_screen_panel": { "visible": false } },
+            { "language_screen@language_ui.language_screen_panel": { "visible": false } },
+            { "video_screen@video_ui.video_screen_panel": { "visible": false } },
+            { "controls_screen@controls_ui.controls_screen_panel": { "visible": false } },
+            { "mouse_screen@mouse_ui.mouse_screen_panel": { "visible": false } },
+            { "mouse_settings_screen@mouse_settings_ui.mouse_settings_screen_panel": { "visible": false } },
+            { "controller_screen@controller_ui.controller_screen_panel": { "visible": false } },
+            { "controller_settings_screen@controller_settings_ui.controller_settings_screen_panel": { "visible": false } },
+            { "touch_screen@touch_ui.touch_screen_panel": { "visible": false } },
+            { "storage_management_screen@storage_management_ui.storage_management_screen_panel": { "visible": false } },
+            { "global_resource_packs_screen@global_resource_packs_ui.global_resource_packs_screen_panel": { "visible": false } },
+            { "accessibility_screen@accessibility_ui.accessibility_screen_panel": { "visible": false } }
+          ]
+        }
+      }
+    ]
+  },
+
+  "settings_content_panel": {
+    "type": "panel",
+    "focus_container": true,
+    "use_last_focus": true,
+    "focus_nagivation_mode_down": "contained",
+    "focus_nagivation_mode_up": "contained",
+    "focus_nagivation_mode_left": "contained",
+    "focus_nagivation_mode_right": "contained",
+    "controls": [
+      { "title@content_ui.title": { "text": "options.title", "offset": ["50% - 50%x", 15] } },
+      { "fov_slider@settings_ui.fov_slider": { "offset": ["50% - 155px", "16.666666667% - 12px"] } },
+      { "fov_toggle@settings_ui.fov_toggle": { "offset": ["50% + 5px", "16.666666667% - 12px"] } },
+      { "debug@settings_ui.debug_button": { "offset": ["50% - 155px", "16.666666667% + 24px - 6px"] } },
+      { "realms@settings_ui.realms_button": { "offset": ["50% + 5px", "16.666666667% + 24px - 6px"] } },
+      { "user_profile@settings_ui.user_profile_button": { "offset": ["50% - 155px", "16.666666667% + 48px - 6px"] } },
+      { "sound@settings_ui.sound_button": { "offset": ["50% + 5px", "16.666666667% + 48px - 6px"] } },
+      { "video@settings_ui.video_button": { "offset": ["50% - 155px", "16.666666667% + 72px - 6px"] } },
+      { "controls@settings_ui.controls_button": { "offset": ["50% + 5px", "16.666666667% + 72px - 6px"] } }, 
+      { "language@settings_ui.language_button": { "offset": ["50% - 155px", "16.666666667% + 96px - 6px"] } },
+      { "storage@settings_ui.storage_management_button": { "offset": ["50% + 5px", "16.666666667% + 96px - 6px"], "$toggle_index": "$storage_management_forced_index" } },
+      { "global_resource_packs@settings_ui.global_resource_packs_button": { "offset": ["50% - 155px", "16.666666667% + 120px - 6px"] } },
+      { "accessibility@settings_ui.accessibility_button": { "offset": ["50% + 5px", "16.666666667% + 120px - 6px"] } },
+      {
+        "exit_button@button_ui.button": {
+          "$pressed_button_name": "button.menu_exit",
+          "$button_text": "gui.done",
+          "$button_tts_header": "accessibility.button.back",
+          "offset": ["50% - 100px", "16.666666667% + 168px"]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "ignored": "(not $is_realms)",
+        "binding_type": "view",
+        "source_control_name": "realms_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "game_settings_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "ignored": "$is_publish",
+        "binding_type": "view",
+        "source_control_name": "debug_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "user_profile_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "sound_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "video_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "language_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "ignored": "(not $is_pregame)",
+        "binding_type": "view",
+        "source_control_name": "storage_management_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "mouse_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "controller_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "touch_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "global_resource_packs_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      },
+      {
+        "binding_type": "view",
+        "source_control_name": "accessibility_screen",
+        "source_property_name": "(not #visible)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  // Widgets
+  "fov_slider@option_slider_ui.slider": {
+    "enabled": "(not $is_holographic and not $is_reality_mode)",
+    "$widget_text": "#field_of_view_slider_label",
+    "$slider_tts_text_value": "#field_of_view_text_value",
+    "$slider_name": "field_of_view",
+    "$slider_value_binding_name": "#field_of_view",
+    "$slider_enabled_binding_name": "#field_of_view_enabled",
+    "$slider_text_bindings": [ { "binding_name": "$widget_text" } ],
+    "$slider_type_panel": "settings_ui.fov_slider_text_panel"
+  },
+
+  "fov_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.fov.toggle",
+    "$option_binding_name": "#field_of_view_toggle",
+    "$option_enabled_binding_name": "#field_of_view_toggle_enabled",
+    "$toggle_name": "field_of_view_toggle"
+  },
+
+  "open_button@toggle_button_ui.toggle": {
+    "size": [150, 20],
+    "$toggle_name": "navigation_tab",
+    "$toggle_tts_toggle_on_text": "accessibility.state.selected",
+    "$toggle_tts_toggle_off_text": "accessibility.state.unselected",
+    "variables": {
+      "requires": "($widget_control_name = 'this_thing')",
+      "$enabled": false
+    }
+  },
+
+  "back_button@toggle_button_ui.toggle": {
+    "$toggle_index": 99,
+    "size": [200, 20],
+    "$toggle_name": "navigation_tab",
+    "$cancel_mapping": true,
+    "$widget_text": "gui.done"
+  },
+
+  "debug_button@settings_ui.open_button": {
+    "ignored": "$is_publish",
+    "$toggle_index": 100,
+    "$widget_text": "options.debug",
+    "$widget_control_name": "debug_view"
+  },
+
+  "realms_button@settings_ui.open_button": {
+    "ignored": "(not $is_realms)",
+    "$toggle_index": 101,
+    "$widget_text": "selectWorld.tab.realms",
+    "$widget_control_name": "realms_view"
+  },
+
+  "user_profile_button@settings_ui.open_button": {
+    "$toggle_index": "$profile_forced_index",
+    "$widget_text": "options.user_profile",
+    "$widget_control_name": "user_profile_view"
+  },
+  
+  "sound_button@settings_ui.open_button": {
+    "$toggle_index": 103,
+    "$widget_text": "options.sounds",
+    "$widget_control_name": "sound_view"
+  },
+
+  "video_button@settings_ui.open_button": {
+    "$toggle_index": 104,
+    "$widget_text": "options.video",
+    "$widget_control_name": "video_view"
+  },
+
+  "controls_button@settings_ui.open_button": {
+    "$toggle_index": 105,
+    "$widget_text": "options.controls",
+    "$widget_control_name": "controls_view"
+  },
+
+  "mouse_button@settings_ui.open_button": {
+    "$toggle_index": 106,
+    "$widget_text": "options.mouse",
+    "$widget_control_name": "mouse_view"
+  },
+
+  "controller_button@settings_ui.open_button": {
+    "$toggle_index": 107,
+    "$widget_text": "options.controller",
+    "$widget_control_name": "controller_view"
+  },
+
+  "touch_button@settings_ui.open_button": {
+    "$toggle_index": 108,
+    "$widget_text": "options.touch",
+    "$widget_control_name": "touch_view"
+  },
+
+  "language_button@settings_ui.open_button": {
+    "$toggle_index": 107,
+    "$widget_text": "options.language",
+    "$widget_control_name": "language_view"
+  },
+
+  "storage_management_button@settings_ui.open_button": {
+    "$widget_text": "options.storage",
+    "$widget_control_name": "storage_management_button_toggle",
+    "enabled": "(not $trial)",
+    "$toggle_property_bag": { "#panel_title": "menu.storageManagement" }
+  },
+
+  "global_resource_packs_button@settings_ui.open_button": {
+    "$toggle_index": 109,
+    "$widget_text": "options.resourcePacks",
+    "$widget_control_name": "global_resource_packs_view"
+  },
+
+  "accessibility_button@settings_ui.open_button": {
+    "$toggle_index": 110,
+    "$widget_text": "options.accessibility",
+    "$widget_control_name": "accessibility_view"
+  },
+
+  "game_settings_button@settings_ui.open_button": {
+    "$toggle_index": 111,
+    "$widget_text": "selectWorld.settings",
+    "$widget_control_name": "game_settings_view"
+  },
+
+  // FOV Slider Text Content
+
+  "fov_slider_text_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": ["100%c", 10],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [
+      { "option_label@slider_ui.slider_label": { "text": "options.fov.label" } },
+      {
+        "comma": {
+          "type": "label",
+          "color": "$text_color",
+          "shadow": true,
+          "layer": 10,
+          "text": "gui.comma.spaced"
+        }
+      },
+      {
+        "percentage_panel": {
+          "type": "panel",
+          "size": ["100%c", "100%c"],
+          "controls": [
+            { "70@slider_value_text": { "$value": "options.fov.min", "$fovValue": "(#field_of_view_slider_label = '0: 70.00')" } },
+            { "110@slider_value_text": { "$value": "options.fov.max", "$fovValue": "(#field_of_view_slider_label = '0: 110.00')" } },
+            {
+              "option_label": {
+                "type": "panel",
+                "size": ["100%c - 26px", "100%c"],
+                "clips_children": true,
+                "bindings": [
+                  { "binding_name": "#field_of_view_slider_label" },
+                  {
+                    "binding_name": "(not (#field_of_view_slider_label = '0: 70.00' or #field_of_view_slider_label = '0: 110.00'))",
+                    "binding_name_override": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "slider_value_text@slider_value_text": {
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+                      "offset": [-12, 0],
+                      "$value": "#field_of_view_slider_label",
+                      "bindings": [ { "binding_name": "#field_of_view_slider_label" } ]
+                    }
+                  }
+                ]
+              } 
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "slider_value_text": {
+    "type": "panel",
+    "size": ["100%c", 10],
+    "offset": [0, 0],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "controls": [ { "option_label@slider_ui.slider_label": { "text": "$value", "anchor_from": "center", "anchor_to": "center", "offset": [0, 0] } } ],
+    "bindings": [ { "binding_name": "$fovValue", "binding_name_override": "#visible" } ]
+  }
+}

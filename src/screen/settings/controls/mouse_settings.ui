@@ -1,0 +1,140 @@
+/* Version: 2.0.0 */
+/* By @FMarquesPTO. All rights reserved. */
+{
+  "namespace": "mouse_settings_ui",
+  
+  "mouse_settings_screen_panel@content_ui.scroll_screen_panel": {
+    "$top_content": "mouse_settings_ui.top_content",
+    "$middle_content": "mouse_settings_ui.scroll_content",
+    "$bottom_content": "mouse_settings_ui.bottom_content",
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "mouse_settings_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "top_content": {
+    "type": "panel",
+    "controls": [ { "title@content_ui.title": { "offset": ["50% - 50%x", 7.5], "text": "controls.title" } } ]
+  },
+
+  "scroll_content": {
+    "type": "stack_panel",
+    "size": [310, "100%c"],
+    "controls": [
+      { "space_top@content_ui.v4px": {} },
+      {
+        "stack0@content_ui.hstack": {
+          "controls": [
+            { "sensitivity@mouse_settings_ui.sensitivity_slider": {} },
+            { "fill@content_ui.hfill": {} },
+            { "invert_y_axis@mouse_settings_ui.invert_y_axis_toggle": {} }
+          ]
+        }
+      },
+      { "space0@content_ui.v4px": {} },
+      {
+        "stack1@content_ui.hstack": {
+          "ignored": "($is_holographic or $education_edition)",
+          "controls": [
+            { "full_keyboard_gameplay@mouse_settings_ui.full_keyboard_gameplay_toggle": {} },
+            { "fill@content_ui.hfill": {} }
+          ]
+        }
+      },
+      {
+        "stack_2@content_ui.hstack": {
+          "ignored": "($is_holographic or not $education_edition)",
+          "controls": [
+            { "full_keyboard_gameplay@mouse_settings_ui.full_keyboard_gameplay_toggle": {} },
+            { "fill@content_ui.hfill": {} },
+            { "hide_keyboard_tooltips@mouse_settings_ui.hide_keyboard_tooltips_toggle": {} }
+          ]
+        }
+      },
+      {
+        "stack_three@content_ui.hstack": {
+          "ignored": "(not $is_holographic or $education_edition)",
+          "controls": [
+            { "full_keyboard_gameplay@mouse_settings_ui.full_keyboard_gameplay_toggle": {} },
+            { "fill@content_ui.hfill": {} },
+            { "vr_sensitivity@mouse_settings_ui.vr_sensitivity_slider": {} }
+          ]
+        }
+      },
+      {
+        "stack_four@content_ui.hstack": {
+          "ignored": "(not $is_holographic or not $education_edition)",
+          "controls": [
+            { "full_keyboard_gameplay@mouse_settings_ui.full_keyboard_gameplay_toggle": {} },
+            { "fill@content_ui.hfill": {} },
+            { "hide_keyboard_tooltips@mouse_settings_ui.hide_keyboard_tooltips_toggle": {} }
+          ]
+        }
+      },
+      { "space_bottom@content_ui.v2px": {} }
+    ]
+  },
+  
+  "bottom_content": {
+    "type": "panel",
+    "controls": [ { "back@mouse_settings_ui.mouse_button": { "offset": ["50% - 100px", "100% - 29px"] } } ]
+  },
+
+  "mouse_button@settings_ui.back_button": {
+    "$toggle_name": "mouse_settings",
+    "$toggle_index": 0
+  },
+
+  "sensitivity_slider@option_slider_ui.slider": {
+    "$widget_text": "#keyboard_mouse_sensitivity_widget_text",
+    "$slider_name": "keyboard_mouse_sensitivity",
+    "$slider_value_binding_name": "#keyboard_mouse_sensitivity",
+    "$slider_tts_text_value": "#keyboard_mouse_sensitivity_text_value",
+    "$slider_enabled_binding_name": "#keyboard_mouse_sensitivity_enabled",
+    "$widget_text_bindings": [ { "binding_name": "$widget_text" } ]
+  },
+
+  "vr_sensitivity_slider@option_slider_ui.slider": {
+    "$widget_text": "#vr_ui_mouse_sensitivity_widget_text",
+    "$slider_name": "vr_ui_mouse_sensitivity",
+    "$slider_value_binding_name": "#vr_ui_mouse_sensitivity",
+    "$slider_tts_text_value": "#vr_ui_mouse_sensitivity_text_value",
+    "$slider_enabled_binding_name": "#vr_ui_mouse_sensitivity_enabled",
+    "$widget_text_bindings": [ { "binding_name": "$widget_text" } ]
+  },
+
+  "invert_y_axis_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.invertYAxis",
+    "$option_binding_name": "#keyboard_mouse_invert_y_axis",
+    "$option_enabled_binding_name": "#keyboard_mouse_invert_y_axis_enabled",
+    "$toggle_name": "keyboard_mouse_invert_y_axis"
+  },
+
+  "toggle_crouch_toggle@option_toggle_ui.toggle": {
+    "ignored": true,
+    "$widget_text": "options.toggleCrouch",
+    "$option_binding_name": "#keyboard_mouse_toggle_crouch",
+    "$option_enabled_binding_name": "#keyboard_mouse_toggle_crouch_enabled",
+    "$toggle_name": "keyboard_mouse_toggle_crouch"
+  },
+
+  "full_keyboard_gameplay_toggle@option_toggle_ui.toggle": {
+    "$widget_text": "options.fullKeyboardGameplay",
+    "$option_binding_name": "#keyboard_show_full_keyboard_options",
+    "$option_enabled_binding_name": "#keyboard_show_full_keyboard_options_enabled",
+    "$toggle_name": "keyboard_show_full_keyboard_options"
+  },
+
+  "hide_keyboard_tooltips_toggle@option_toggle_ui.toggle": {
+    "ignored": "(not $education_edition)",
+    "$widget_text": "options.hideKeyboardTooltips",
+    "$option_binding_name": "#hide_keyboard_tooltips",
+    "$option_enabled_binding_name": "#hide_keyboard_tooltips_enabled",
+    "$toggle_name": "hide_keyboard_tooltips"
+  }
+}

@@ -1,0 +1,427 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "widget_ui",
+
+  "widget": {
+    "type": "panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    // "$locked_tooltip|default": false,
+    "$control_ref|default": "",
+    "$widget_control_name|default": "control",
+    "controls": [
+      {
+        "$widget_control_name@$control_ref": {
+          // "ignored": "$locked_tooltip"
+        }
+      // },
+      // {
+      //   "locked_tooltip@test_tooltip_ui.locked_tooltip": {
+          /* "ignored": "(not $locked_tooltip)", */
+          // "bindings": [
+          //   {
+          //     "binding_type": "view",
+          //     "source_control_name": "control",
+          //     "source_property_name": "(not #visible)",
+          //     "target_property_name": "#visible"
+          //   }
+          // ]
+        // }
+      }
+    ]
+  },
+  
+  "widget_state_panel": {
+    "type": "panel",
+    "$tooltip_text|default": "",
+    "$tooltip_desc|default": "",
+    "$tooltip_extra|default": "",
+    "$state|default": "",
+    "controls": [
+      {
+        "tooltip@tooltip_ui.tooltip": {
+          "visible": "($state = hover or $state = pressed or $state = checked_hover or $state = unchecked_hover)",
+          "ignored": "($tooltip_text = '' and $tooltip_desc = '' and $tooltip_extra = '')"
+        }
+      },
+      { "bg@$widget_bg": {} },
+      {
+        "content_panel": {
+          "type": "panel",
+          "size": ["100%", "100%"],
+          "layer": 4,
+          "controls": [ { "content@$widget_type_panel": {} } ]
+        }
+      }
+    ]
+  },
+
+  "widget_text_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": ["100%c", "100%cm"],
+    "offset": [1, 0],
+    "$widget_text|default": "",
+    "$comma_text|default": "gui.comma.spaced",
+    "$widget_right_text|default": "",
+    "$widget_right_on_text|default": "",
+    "$widget_right_off_text|default": "",
+    "$widget_text_color|default": [1, 1, 1],
+    "$comma_text_color|default": [1, 1, 1],
+    "$right_text_color|default": [1, 1, 1],
+    "$widget_text_visible|default": true,
+    "$comma_text_visible|default": true,
+    "$right_text_visible|default": true,
+    "variables": [
+      {
+        "requires": "($widget_text = '')",
+        "$comma_text_visible": false,
+        "$widget_text_visible": false
+      },
+      {
+        "requires": "($widget_right_text = '' or $widget_right_on_text = '' or $widget_right_off_text = '')",
+        "$comma_text_visible": false,
+        "$right_text_visible": false
+      },
+      {
+        "requires": "($state = default or $state = checked or $state = unchecked)",
+        "$widget_text_color|default": "$widget_default_text_color",
+        "$comma_text_color|default": "$widget_default_text_color",
+        "$right_text_color|default": "$widget_default_text_color"
+      },
+      {
+        "requires": "($state = hover or $state = pressed or $state = checked_hover or $state = unchecked_hover)",
+        "$widget_text_color|default": "$widget_hover_text_color",
+        "$comma_text_color|default": "$widget_hover_text_color",
+        "$right_text_color|default": "$widget_hover_text_color"
+      },
+      {
+        "requires": "($state = locked or $state = checked_locked or $state = unchecked_locked or $state = checked_locked_hover or $state = unchecked_locked_hover)",
+        "$widget_text_color|default": "$widget_locked_text_color",
+        "$comma_text_color|default": "$widget_locked_text_color",
+        "$right_text_color|default": "$widget_locked_text_color"
+      }
+    ],
+    "controls": [
+      {
+        "left_text@widget_ui.widget_text": {
+          "text": "$widget_text",
+          "color": "$widget_text_color",
+          "ignored": "(not $widget_text_visible)",
+          "bindings": "$widget_text_bindings",
+          "$widget_text_bindings|default": []
+        }
+      },
+      {
+        "comma@widget_ui.widget_text": {
+          "text": "$comma_text",
+          "color": "$comma_text_color",
+          "ignored": "(not $comma_text_visible)"
+        }
+      },
+      {
+        "right_text@widget_ui.widget_text": {
+          "text": "$widget_right_text",
+          "color": "$right_text_color",
+          "ignored": "(not $right_text_visible)",
+          "bindings": "$widget_right_text_bindings",
+          "$widget_right_text_bindings|default": []
+        }
+      }
+    ]
+  },
+
+  "widget_text": {
+    "type": "label",
+    "layer": 4,
+    "shadow": "$text_shadow",
+    "font_type": "$font_type",
+    "font_scale_factor": "$text_font_scale_factor",
+    "offset": "$text_offset",
+    "anchor_from": "$text_anchor",
+    "anchor_to": "$text_anchor",
+    "size": "$text_size",
+    "max_size": "$text_max_size",
+    "text_alignment": "$text_alignment",
+    "$text_shadow|default": true,
+    "$font_type|default": "default",
+    "$text_font_scale_factor|default": 1.0,
+    "$text_offset|default": [1, 0],
+    "$text_anchor|default": "center",
+    "$text_size|default": ["default", "default"],
+    "$text_max_size|default": ["default", 10],
+    "$text_alignment|default": "center"
+  },
+
+  // Type = Button
+  "button": {
+    "type": "button",
+    "size": "$control_ref_size",
+    "$control_ref_size|default": ["100%", "100%"],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "layer": 1,
+    // Focus
+    "default_focus_precedence": "$default_focus_precedence",
+    "focus_identifier": "$focus_id",
+    "focus_change_down": "$focus_override_down",
+    "focus_change_up": "$focus_override_up",
+    "focus_change_left": "$focus_override_left",
+    "focus_change_right": "$focus_override_right",
+    "focus_enabled": "$focus_enabled",
+    "focus_magnet_enabled": "$focus_magnet_enabled",
+    "$default_focus_precedence|default": 0,
+    "$focus_id|default": "",
+    "$focus_override_down|default": "",
+    "$focus_override_up|default": "",
+    "$focus_override_left|default": "",
+    "$focus_override_right|default": "",
+    "$focus_enabled": true,
+    "$focus_magnet_enabled": false,
+    // TTS
+    "tts_name": "$button_tts_name",
+    "tts_control_header": "$button_tts_header",
+    "tts_section_header": "$tts_section_header",
+    "tts_control_type_order_priority": "$button_tts_control_type_order_priority",
+    "tts_index_priority": "$button_tts_index_priority",
+    "$button_tts_name|default": "accessibility.button.tts.title",
+    "$button_tts_header|default": "",
+    "$tts_section_header|default": "",
+    "$button_tts_control_type_order_priority|default": 100,
+    "$button_tts_index_priority|default": 150,
+    // Sound
+    "sound_name": "$sound_name",
+    "sound_volume": "$sound_volume",
+    "sound_pitch": "$sound_pitch",
+    "$sound_name|default": "random.click",
+    "$sound_volume|default": 1.0,
+    "$sound_pitch|default": 1.0,
+    // States Names
+    "default_control": "$default_control_name",
+    "hover_control": "$hover_control_name",
+    "pressed_control": "$pressed_control_name",
+    "locked_control": "$locked_control_name",
+    "$default_control_name|default": "default",
+    "$hover_control_name|default": "hover",
+    "$pressed_control_name|default": "pressed",
+    "$locked_control_name|default": "locked",
+    // Button Mappings
+    "button_mappings": "$button_mappings",
+    "$button_mappings|default": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "focused"
+      }
+    ], 
+    // Focus Mapping
+    "focus_mapping": "$focus_mapping",
+    "$focus_mapping|default": [],
+    // Controls
+    "controls": "$controls",
+    "$controls|default": [],
+    // Bindings
+    "$button_bindings|default": [],
+    "bindings": "$button_bindings"
+  },
+
+  // Type = Toggle
+  "toggle": {
+    "type": "toggle",
+    "radio_toggle_group": "$toggle_group",
+    "toggle_name": "$toggle_name",
+    "toggle_default_state": "$toggle_default_state",
+    "toggle_group_forced_index": "$toggle_index",
+    "toggle_group_default_selected": "$toggle_group_default_selected",
+    "toggle_grid_collection_name": "$toggle_grid_collection_name",
+    "enable_directional_toggling": "$enable_directional_toggling",
+    "toggle_on_button": "$toggle_on_button",
+    "toggle_off_button": "$toggle_off_button",
+    "$toggle_group|default": false,
+    "$toggle_name|default": "",
+    "$toggle_default_state|default": false,
+    "$toggle_index|default": -1,
+    "$toggle_group_default_selected|default": 0,
+    "$toggle_grid_collection_name|default": "",
+    "$enable_directional_toggling|default": false,
+    "$toggle_on_button|default": "toggle.toggle_on",
+    "$toggle_off_button|default": "toggle.toggle_off",
+    "layer": 1,
+    // Focus
+    "default_focus_precedence": "$default_focus_precedence",
+    "focus_identifier": "$focus_id",
+    "focus_change_down": "$focus_override_down",
+    "focus_change_up": "$focus_override_up",
+    "focus_change_left": "$focus_override_left",
+    "focus_change_right": "$focus_override_right",
+    "focus_enabled": "$focus_enabled",
+    "focus_magnet_enabled": "$focus_magnet_enabled",
+    "$default_focus_precedence|default": 0,
+    "$focus_id|default": "",
+    "$focus_override_down|default": "",
+    "$focus_override_up|default": "",
+    "$focus_override_left|default": "",
+    "$focus_override_right|default": "",
+    "$focus_enabled": true,
+    "$focus_magnet_enabled": false,
+    // TTS
+    "tts_toggle_on": "$toggle_tts_toggle_on_text",
+    "tts_toggle_off": "$toggle_tts_toggle_off_text",
+    "tts_name": "$toggle_tts_name",
+    "tts_control_header": "$toggle_tts_header",
+    "tts_section_header": "$tts_section_header",
+    "tts_override_control_value": "$toggle_tts_override_toggle_value",
+    "tts_control_type_order_priority": "$toggle_tts_type_priority",
+    "tts_index_priority": "$toggle_tts_index_priority",
+    "$toggle_tts_name|default": "accessibility.toggle.tts.title",
+    "$toggle_tts_header_binding_type|default": "none",
+    "$toggle_tts_header_binding_condition|default": "visible",
+    "$toggle_tts_header_binding_collection_name|default": "",
+    "$toggle_tts_header|default": "",
+    "$toggle_tts_value_binding_type|default": "none",
+    "$toggle_tts_value_binding_condition|default": "visible",
+    "$toggle_tts_value_binding_collection_name|default": "",
+    "$toggle_tts_override_toggle_value|default": "",
+    "$toggle_tts_toggle_on_text|default": "accessibility.state.on",
+    "$toggle_tts_toggle_off_text|default": "accessibility.state.off",
+    "$toggle_tts_type_priority|default": -100,
+    "$toggle_tts_index_priority|default": 150,
+    "$tts_section_header|default": "",
+    "$toggle_tts_enabled_binding_type|default": "none",
+    // Sound
+    "sound_name": "$sound_name",
+    "sound_volume": "$sound_volume",
+    "sound_pitch": "$sound_pitch",
+    "$sound_name|default": "random.click",
+    "$sound_volume|default": 1.0,
+    "$sound_pitch|default": 1.0,
+    // States Names
+    "checked_control": "checked",
+    "unchecked_control": "unchecked",
+    "checked_hover_control": "checked_hover",
+    "unchecked_hover_control": "unchecked_hover",
+    "checked_locked_control": "checked_locked",
+    "unchecked_locked_control": "unchecked_locked",
+    "checked_locked_hover_control": "checked_locked_hover",
+    "unchecked_locked_hover_control": "unchecked_locked_hover",
+    // Button Mappings
+    "button_mappings": "$button_mappings",
+    "$button_mappings|default": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_select",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "focused"
+      },
+      {
+        "ignored": "(not $cancel_mapping)",
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_ok",
+        "mapping_type": "global"
+      },
+      {
+        "ignored": "(not $double_mapping)",
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$double_mapping_id",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "ignored": "(not $double_mapping)",
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$double_mapping_id",
+        "mapping_type": "double_pressed"
+      },
+      {
+        "ignored": "(not $controller_mapping)",
+        "from_button_id": "$controller_mapping_from_id",
+        "to_button_id": "$controller_mapping_to_id",
+        "mapping_type": "$controller_mapping_type",
+        "scope": "$controller_mapping_scope"
+      },
+      {
+        "ignored": "(not $enable_directional_toggling)",
+        "from_button_id": "button.menu_left",
+        "to_button_id": "$toggle_off_button",
+        "mapping_type": "pressed",
+        "input_mode_condition": "gamepad_and_not_gaze"
+      },
+      {
+        "ignored": "(not $enable_directional_toggling)",
+        "from_button_id": "button.menu_right",
+        "to_button_id": "$toggle_on_button",
+        "mapping_type": "pressed",
+        "input_mode_condition": "gamepad_and_not_gaze"
+      }
+    ],
+    "$cancel_mapping|default": false,
+    "$double_mapping|default": false,
+    "$double_mapping_id|default": "",
+    "$controller_mapping|default": false,
+    "$controller_mapping_from_id|default": "",
+    "$controller_mapping_to_id|default": "",
+    "$controller_mapping_type|default": "global",
+    "$controller_mapping_scope|default": "",
+    // Property Bag
+    "property_bag": "$toggle_property_bag",
+    "$toggle_property_bag|default": { "#toggle_state": true },
+    // Controls
+    "controls": "$controls",
+    "$controls|default": [],
+    // Bindings
+    "bindings": "$button_bindings",
+    "$button_bindings|default": [
+      {
+        "binding_type": "$toggle_binding_type",
+        "binding_condition": "$toggle_binding_condition",
+        "binding_collection_name": "$toggle_grid_collection_name",
+        "binding_name": "$toggle_state_binding_name",
+        "binding_name_override": "#toggle_state"
+      },
+      {
+        "binding_type": "$toggle_enabled_binding_type",
+        "binding_condition": "$toggle_enabled_binding_condition",
+        "binding_collection_name": "$toggle_grid_collection_name",
+        "binding_name": "$toggle_enabled_binding_name",
+        "binding_name_override": "#enabled"
+      },
+      {
+        "binding_type": "$toggle_collection_type",
+        "binding_collection_name": "$toggle_collection_name"
+      },
+      {
+        "binding_type": "$toggle_tts_header_binding_type",
+        "binding_condition": "$toggle_tts_header_binding_condition",
+        "binding_collection_name": "$toggle_tts_header_binding_collection_name",
+        "binding_name": "$toggle_tts_header"
+      },
+      {
+        "binding_type": "$toggle_tts_value_binding_type",
+        "binding_condition": "$toggle_tts_value_binding_condition",
+        "binding_collection_name": "$toggle_tts_value_binding_collection_name",
+        "binding_name": "$toggle_tts_override_toggle_value"
+      },
+      {
+        "binding_type": "$toggle_tts_enabled_binding_type",
+        "binding_name": "#tts_enabled",
+        "binding_name_override": "#focus_enabled"
+      }
+    ],
+    "$toggle_binding_type|default": "global",
+    "$toggle_binding_condition|default": "visible",
+    "$toggle_state_binding_name|default": "#toggle_state",
+    "$toggle_enabled_binding_type|default": "none",
+    "$toggle_enabled_binding_condition|default": "visible",
+    "$toggle_enabled_binding_name|default": "#toggle_enabled",
+    "$toggle_collection_type|default": "none",
+    "$toggle_collection_name|default": ""
+  }
+}

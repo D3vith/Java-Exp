@@ -5,6 +5,7 @@
   "tooltip": {
     "type": "button",
     "size": [0, 0],
+    "offset": [66669, 66669],
     "layer": -10,
     "focus_enabled": false,
     "focus_magnet_enabled": false,
@@ -12,23 +13,38 @@
     "consume_hover_events": false,
     "always_handle_pointer": true,
     "allow_clipping": false,
+    "focus_wrap_enabled": false,
+    "locked_control": "",
     "$tooltip_bg|default": "tooltip_ui.default_tooltip_bg",
-    "$tooltip_text_content|default": "tooltip_ui.tooltip_text",
+    "$custom_tooltip_bg|default": "tooltip_ui.custom_tooltip_bg",
+    "$tooltip_text_content|default": "test_tooltip_ui.tooltip_text_panel",
     "variables": {
-      "requires": "$custom_tooltip_bg",
+      "requires": "$custom_tooltip_background",
       "$tooltip_bg": "$custom_tooltip_bg"
     },
+    "$tooltip_bindings|default": [],
+    "$tooltip_variables|default": [],
     "controls": [
       {
-        "bg@$tooltip_bg": {
-          "size": ["100%c + 8px", "100%c + 6px"],
-          "offset": ["50%c + 12px", "50%c - 12px"],
-          "nineslice_size": 3,
+        "$tooltip_bg@$tooltip_bg": {
+          "size": ["100%sm", "100%sm"],
+          "offset": "$bg_offset",
+          "$bg_offset|default": ["50%c + 8px", "50%c - 15px"],
           "alpha": "$tootlip_bg_alpha",
           "bindings": "$tooltip_bindings",
-          "$tooltip_bindings|default": [],
           "variables": "$tooltip_variables",
-          "$tooltip_variables|default": [],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "layer": 110
+        }
+      },
+      {
+        "tooltip_panel": {
+          "type": "panel",
+          "size": ["100%c + 8px", "100%c + 6px"],
+          "offset": ["50%c + 12px", "50%c - 12px"],
+          "bindings": "$tooltip_bindings",
+          "variables": "$tooltip_variables",
           "layer": 110,
           "controls": [ { "text@$tooltip_text_content": {} } ]
         }
@@ -38,42 +54,40 @@
 
   "default_tooltip_bg": {
     "type": "image",
-    "texture": "assets/fmarquespto/textures/static/tooltip"
+    "texture": "assets/fmarquespto/textures/static/tooltip",
+    "nineslice_size": 3
+  },
+
+  "custom_tooltip_bg": {
+    "type": "image",
+    "texture": "assets/fmarquespto/textures/static/tooltip_background",
+    "color": "$tooltip_background_color",
+    "nineslice_size": 3,
+    "$bg_offset": ["8px", "-15px"],
+    "controls": [
+      {
+        "custom_tooltip_border": {
+          "type": "image",
+          "size": ["100%", "100%"],
+          "texture": "assets/fmarquespto/textures/static/tooltip_border",
+          "color": "$tooltip_border_color",
+          "nineslice_size": 3,
+          "layer": 1
+        }
+      }
+    ]
   },
 
   "tooltip_text": {
     "type": "label",
     "size": ["default", "default"],
+    "max_size": [180, "default"],
     "text": "$tooltip_text",
     "shadow": true,
-    "layer": 10
-  },
-
-  "tooltipBg": {
-    "type": "image",
-    "texture": "assets/fmarquespto/textures/gui/unchanged/tooltip_border",
-    "color": "$tooltipBorderColor",
-    "$border_color|default": [0.1441, 0, 0.3559],
-    "size": ["100%c", "100%c"],
-    "nineslice_size": 4,
-    "offset": ["50%c + 12px", "50%c - 12px"],
-    "follows_cursor": true,
-    "alpha": "$tooltipAlpha",
-    "layer": 100,
-    "controls": [
-      {
-        "tooltipBg": {
-          "type": "image",
-          "texture": "assets/fmarquespto/textures/gui/unchanged/tooltip_background",
-          "color": "$tooltipBackgroundColor",
-          "nineslice_size": 4,
-          "alpha": 0.90,
-          "follows_cursor": true,
-          "size": ["100%c + 8px", "100%c + 6px"],
-          "layer": 2,
-          "controls": "$tooltipBg"
-        }
-      }
-    ]
+    "layer": 10,
+    "color": "$tooltip_text_color",
+    "$tooltip_text_color|default": "$primary_text_color",
+    "bindings": "$tooltip_text_bindings",
+    "$tooltip_text_bindings|default": []
   }
 }

@@ -1,0 +1,313 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "inventory_ui",
+
+  "inventory_screen_panel@container_ui.container_panel": {
+    "$container_bg": "inventory_ui.inventory_bg",
+    "$show_invlabel": false,
+    "variables": {
+      "requires": "$show_crafting_recipe_book",
+      "$root_panel": "inventory_ui.crafting_with_recipe_book"
+    },
+    "$specified_content": "inventory_ui.inventory_content_panel"
+  },
+
+  "crafting_with_recipe_book": {
+    "type": "stack_panel",
+    "size": [325, 166],
+    "orientation": "horizontal",
+    "$root_controls": [
+      { "fill@content_ui.hfill": {} },
+      {
+        "recipe_book@crafting_recipe_book_ui.crafting_recipe_book": {
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_name": "#is_survival_layout",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "with_rb": {
+          "type": "panel",
+          "size": [2, 0],
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_name": "#is_survival_layout",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "inventory_root@common.root_panel": {
+          "size": [176, 166],
+          "controls": [
+            { "bg@$container_bg": {} },
+            { "inventory@$specified_content": {} },
+            { "selected_item_button@container_ui.selected_item_button": {} }
+          ]
+        }
+      },
+      { "fill@content_ui.hfill": {} }
+    ]
+  },
+
+  "inventory_content_panel": {
+    "type": "panel",
+    "$container_title": "container.crafting",
+    "controls": [
+      { "title@container_ui.title": { "offset": [97, 5] } },
+      { "player_renderer@inventory_ui.player_renderer_panel": {} },
+      { "player_armor@inventory_ui.player_armor_panel": {} },
+      { "player_offhand_slot@inventory_ui.player_offhand_slot_panel": {} },
+      { "crafting_grid@inventory_ui.crafting_grid": {} },
+      { "output_slot@inventory_ui.output_slot": {} },
+      { "recipe_book_button@crafting_recipe_book_ui.recipe_book_button": { "offset": [104, 61] } },
+      {
+        "player_inventory@container_ui.player_inventory": {
+          "$button_ref": "slot_crafting_ui.slot_button",
+          "$background_images": "slot_crafting_ui.slot_backgrounds"
+        }
+      },
+      {
+        "player_hotbar@container_ui.player_hotbar": {
+          "$button_ref": "slot_crafting_ui.slot_button",
+          "$background_images": "slot_crafting_ui.slot_backgrounds"
+        }
+      }
+    ]
+  },
+
+  "inventory_bg@content_ui.resource_image": {
+    "texture": "assets/minecraft/textures/gui/container/inventory",
+    "size": [176, 166],
+    "variables": [
+      { "requires": "($inventory_resolution = 256x)", "$uv_size": [176, 166] },
+      { "requires": "($inventory_resolution = 512x)", "$uv_size": [352, 332] },
+      { "requires": "($inventory_resolution = 1024x)", "$uv_size": [704, 664] },
+      { "requires": "($inventory_resolution = 2048x)", "$uv_size": [1408, 1328] },
+      { "requires": "($inventory_resolution = 4096x)", "$uv_size": [2816, 2656] }
+    ]
+  },
+
+  "player_renderer_panel": {
+    "type": "panel",
+    "size": [49, 70],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [26, 8],
+    "controls": [
+      {
+        "player_renderer": {
+          "type": "panel",
+          "size": [30.5, 30.5],
+          "offset": [0, -11],
+          "controls": [
+            {
+              "renderer": {
+                "type": "custom",
+                "renderer": "live_player_renderer",
+                "property_bag": { "#look_at_cursor": true },
+                "anchor_from": "center",
+                "anchor_to": "center",
+                "layer": 20
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "player_armor_panel": {
+    "type": "panel",
+    "size": [87, 72],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [7, 7],
+    "controls": [
+      {
+        "armor_grid": {
+          "type": "grid",
+          "size": [18, 72],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "grid_dimensions": [1, 4],
+          "$item_collection_name": "armor_items",
+          "collection_name": "$item_collection_name",
+          "controls": [
+            {
+              "head_slot@container_ui.slot": {
+                "grid_position": [0, 0],
+                "$slot_overlay_ref": "inventory_ui.armor_overlay_helmet",
+                "$focus_id_binding_type": "none",
+                "$focus_id": "armor_item_head",
+                "$focus_override_right_binding_type": "none",
+                "$focus_override_right": "crafting_input_top_left"
+              }
+            },
+            {
+              "chest_slot@container_ui.slot": {
+                "grid_position": [0, 1],
+                "$slot_overlay_ref": "inventory_ui.armor_overlay_chest",
+                "$focus_id_binding_type": "none",
+                "$focus_id": "armor_item_chest",
+                "$focus_override_right_binding_type": "none",
+                "$focus_override_right": "crafting_input_top_left"
+              }
+            },
+            {
+              "legs_slot@container_ui.slot": {
+                "grid_position": [0, 2],
+                "$slot_overlay_ref": "inventory_ui.armor_overlay_legs",
+                "$focus_id_binding_type": "none",
+                "$focus_id": "armor_item_legs",
+                "$focus_override_right_binding_type": "none",
+                "$focus_override_right": "crafting_input_mid_left"
+              }
+            },
+            {
+              "feet_slot@container_ui.slot": {
+                "grid_position": [0, 3],
+                "$slot_overlay_ref": "inventory_ui.armor_overlay_feet",
+                "$focus_id_binding_type": "none",
+                "$focus_id": "armor_item_feet",
+                "$focus_override_right_binding_type": "none",
+                "$focus_override_right": "offhand_items0"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "player_offhand_slot_panel": {
+    "type": "grid",
+    "size": [18, 18],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [76, 61],
+    "grid_dimensions": [1, 1],
+    "$item_collection_name": "offhand_items",
+    "collection_name": "$item_collection_name",
+    "controls": [
+      {
+        "offhand_grid_item@container_ui.slot": {
+          "grid_position": [0, 0],
+          "$slot_overlay_ref": "inventory_ui.armor_overlay_offhand",
+          "$focus_override_left_binding_type": "none",
+          "$focus_override_left": "armor_item_feet"
+        }
+      }
+    ]
+  },
+
+  "armor_overlay": {
+    "type": "image",
+    "size": [16, 16],
+    "layer": 2,
+    "bindings": [
+      {
+        "binding_name": "#empty_armor_image_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name"
+      }
+    ]
+  },
+
+  "offhand_overlay": {
+    "type": "image",
+    "size": [16, 16],
+    "layer": 2,
+    "bindings": [
+      {
+        "binding_name": "#empty_offhand_image_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "collection",
+        "binding_collection_name": "$item_collection_name"
+      }
+    ]
+  },
+
+  "armor_overlay_helmet@inventory_ui.armor_overlay": { "texture": "assets/minecraft/textures/item/empty_armor_slot_helmet" },
+  "armor_overlay_chest@inventory_ui.armor_overlay": { "texture": "assets/minecraft/textures/item/empty_armor_slot_chestplate" },
+  "armor_overlay_legs@inventory_ui.armor_overlay": { "texture": "assets/minecraft/textures/item/empty_armor_slot_leggings" },
+  "armor_overlay_feet@inventory_ui.armor_overlay": { "texture": "assets/minecraft/textures/item/empty_armor_slot_boots" },
+  "armor_overlay_offhand@inventory_ui.offhand_overlay": { "texture": "assets/minecraft/textures/item/empty_armor_slot_shield" },
+
+  "crafting_grid": {
+    "type": "grid",
+    "size": [36, 36],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [97, 17],
+    "grid_dimensions": [2, 2],
+    "collection_name": "crafting_input_items",
+    "controls": [
+      {
+        "crafting_input_item_top_left@crafting_ui.crafting_grid_item": {
+          "grid_position": [0, 0],
+          "$focus_id_binding_type": "none",
+          "$focus_id": "crafting_input_top_left",
+          "$focus_left_binding_type": "none",
+          "$focus_override_left": "armor_item_head"
+        }
+      },
+      {
+        "crafting_input_item_top_right@crafting_ui.crafting_grid_item": {
+          "grid_position": [1, 0],
+          "$focus_id_binding_type": "none",
+          "$focus_id": "crafting_input_top_right",
+          "$focus_right_binding_type": "none",
+          "$focus_override_right": "crafting_output_item"
+        }
+      },
+      {
+        "crafting_input_item_bot_left@crafting_ui.crafting_grid_item": {
+          "grid_position": [0, 1],
+          "$focus_id_binding_type": "none",
+          "$focus_id": "crafting_input_mid_left",
+          "$focus_left_binding_type": "none",
+          "$focus_override_left": "armor_item_legs"
+        }
+      },
+      {
+        "crafting_input_item_bot_right@crafting_ui.crafting_grid_item": {
+          "grid_position": [1, 1],
+          "$focus_right_binding_type": "none",
+          "$focus_override_right": "crafting_output_item"
+        }
+      }
+    ]
+  },
+
+  "output_slot": {
+    "type": "grid",
+    "grid_dimensions": [1, 1],
+    "collection_name": "crafting_output_items",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [153, 27],
+    "size": [18, 18],
+    "controls": [
+      {
+        "slot@container_ui.slot": {
+          "$item_collection_name": "crafting_output_items",
+          "$item_renderer_binding_condition": "always",
+          "$stack_count_binding_condition": "always",
+          "$focus_id_binding_type": "none",
+          "$focus_id": "crafting_output_item",
+          "$focus_left_binding_type": "none",
+          "$focus_override_left": "crafting_input_top_right",
+          "$focus_up_binding_type": "none"
+        }
+      }
+    ]
+  }
+}

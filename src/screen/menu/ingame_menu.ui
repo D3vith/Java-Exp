@@ -1,0 +1,365 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "ingame_menu_ui",
+
+  "ingame_menu_screen_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "ingame_menu_content_panel": {
+          "type": "panel",
+          "controls": [
+            { "title@content_ui.title": { "offset": ["50% - 50%x", 40], "text": "menu.game" } },
+            { "trial_time@ingame_menu_ui.trial_time": {} },
+            { "menu_panel@ingame_menu_ui.menu_panel": {} },
+            { "gamepad_helpers@pause.gamepad_helpers": {} },
+            { "keyboard_helpers@pause.keyboard_helpers": {} }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "player_list_content_panel",
+              "source_property_name": "(not #visible)",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "player_list_content_panel": {
+          "type": "panel",
+          "visible": false,
+          "controls": [
+            { "trial_time@ingame_menu_ui.trial_time": {} },
+            { "invite_players_button@ingame_menu_ui.invite_players_button": { "offset": ["50% - 155px", "100% - 44px"] } },
+            { "pause_menu_button@ingame_menu_ui.pause_menu_button": { "offset": ["50% + 5px", "100% - 44px"] } },
+            { "gamepad_helpers@pause.gamepad_helpers": {} },
+            { "keyboard_helpers@pause.keyboard_helpers": {} }
+          ],
+          "bindings": [
+            {
+              "binding_type": "view",
+              "source_control_name": "player_list_view",
+              "source_property_name": "#toggle_state",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "trial_time": {
+    "type": "custom",
+    "ignored": "(not $trial)",
+    "renderer": "trial_time_renderer",
+    "size": ["default", 10],
+    "offset": [-2, 2],
+    "layer": 3,
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "bindings": [
+      {
+        "binding_name": "#is_trial_version",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+  "menu_panel": {
+    "type": "input_panel",
+    "focus_container": true,
+    "use_last_focus": true,
+    "controls": [
+      { "return_to_game_button@ingame_menu_ui.return_to_game_button": { "offset": ["50% - 102px", "25% + 24px + -16px"] } },
+      { "change_skin_button@ingame_menu_ui.change_skin_button": { "offset": ["50% - 102px", "25% + 48px + -16px"] } },
+      { "profile_button@ingame_menu_ui.profile_button": { "offset": ["50% - 102px", "25% + 48px + -16px"] } },
+      { "permissions_button@ingame_menu_ui.permissions_button": { "offset": ["50% + 4px", "25% + 48px + -16px"] } },
+      { "default_menu@ingame_menu_ui.default_menu_panel": {} },
+      { "server_menu@ingame_menu_ui.server_menu_panel": {} },
+      { "realms_menu@ingame_menu_ui.realms_menu_panel": {} }
+    ]
+  },
+
+  "default_menu_panel": {
+    "type": "panel",
+    "controls": [
+      { "feedback_button@ingame_menu_ui.feedback_button": { "offset": ["50% - 102px", "25% + 72px + -16px"] } },
+      { "take_screenshot_button@ingame_menu_ui.take_screenshot_button": { "offset": ["50% + 4px", "25% + 72px + -16px"] } },
+      { "settings_button@ingame_menu_ui.settings_button": { "offset": ["50% - 102px", "25% + 96px + -16px"] } },
+      { "player_list_button@ingame_menu_ui.player_list_button": { "offset": ["50% + 4px", "25% + 96px + -16px"] } },
+      { "return_to_menu_button@ingame_menu_ui.return_to_menu_button": { "offset": ["50% - 102px", "25% + 120px + -16px"] } }
+    ],
+    "bindings": [
+      { "binding_name": "#show_clubs" },
+      { "binding_name": "#server_store_button_visible" },
+      {
+        "binding_name": "(not (#show_clubs or #server_store_button_visible))",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+  "server_menu_panel": {
+    "type": "panel",
+    "controls": [
+      { "feedback_button@ingame_menu_ui.feedback_button": { "offset": ["50% - 102px", "25% + 72px + -16px"] } },
+      { "server_store_button@ingame_menu_ui.server_store_button": { "offset": ["50% + 4px", "25% + 72px + -16px"] } },
+      { "take_screenshot_button@ingame_menu_ui.take_screenshot_button": { "offset": ["50% - 102px", "25% + 96px + -16px"], "size": [204, 20] } },
+      { "settings_button@ingame_menu_ui.settings_button": { "offset": ["50% - 102px", "25% + 120px + -16px"] } },
+      { "player_list_button@ingame_menu_ui.player_list_button": { "offset": ["50% + 4px", "25% + 120px + -16px"] } },
+      { "return_to_menu_button@ingame_menu_ui.return_to_menu_button": { "offset": ["50% - 102px", "25% + 144px + -16px"] } }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#server_store_button_visible",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+  "realms_menu_panel": {
+    "type": "panel",
+    "controls": [
+      { "feedback_button@ingame_menu_ui.feedback_button": { "offset": ["50% - 102px", "25% + 72px + -16px"] } },
+      { "feed_button@ingame_menu_ui.feed_button": { "offset": ["50% + 4px", "25% + 72px + -16px"] } },
+      { "take_screenshot_button@ingame_menu_ui.take_screenshot_button": { "offset": ["50% - 102px", "25% + 96px + -16px"], "size": [204, 20] } },
+      { "settings_button@ingame_menu_ui.settings_button": { "offset": ["50% - 102px", "25% + 120px + -16px"] } },
+      { "player_list_button@ingame_menu_ui.player_list_button": { "offset": ["50% + 4px", "25% + 120px + -16px"] } },
+      { "return_to_menu_button@ingame_menu_ui.return_to_menu_button": { "offset": ["50% - 102px", "25% + 144px + -16px"] } }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#show_clubs",
+        "binding_name_override": "#visible",
+        "binding_type": "global"
+      }
+    ]
+  },
+
+  // Buttons
+
+  "button_template@button_ui.button": {
+    "focus_identifier": "$pressed_button_name",
+    "focus_change_right": "$focus_override_right",
+    "focus_change_left": "$pressed_button_name"
+  },
+
+  "return_to_game_button@ingame_menu_ui.button_template": {
+    "size": [204, 20],
+    "$pressed_button_name": "button.menu_continue",
+    "$button_text": "pauseScreen.back",
+    "$button_focus_precedence": 1,
+    "focus_change_up": "button.menu_quit"
+  },
+
+  "change_skin_button": {
+    "type": "panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [98, 20],
+    "controls": [
+      {
+        "button@button_ui.button": {
+          "$pressed_button_name": "button.to_profile_or_skins_screen",
+          "$button_text": "menu.skins",
+          "$button_tts_header": "accessibility.start.skinPicker",
+          "size": [98, 20]
+        }
+      },
+      { "gamepad_skins@ingame_menu_ui.gamepad_skins": {} }
+    ],
+    "bindings": [
+      {
+        "binding_name": "(not #persona_enabled)",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "profile_button": {
+    "type": "panel",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [98, 20],
+    "controls": [
+      {
+        "button@button_ui.button": {
+          "$pressed_button_name": "button.to_profile_or_skins_screen",
+          "$button_text": "profileScreen.header",
+          "$button_tts_header": "accessibility.start.profile",
+          "size": [98, 20]
+        }
+      },
+      { "gamepad_skins@ingame_menu_ui.gamepad_skins": {} }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#persona_enabled",
+        "binding_name_override": "#visible"
+      },
+      {
+        "binding_name": "#can_change_skin",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+  
+  "gamepad_skins": {
+    "type": "panel",
+    "anchor_from": "left_middle",
+    "anchor_to": "left_middle",
+    "offset": [-24, 0],
+    "controls": [
+      {
+        "can_change": {
+          "type": "panel",
+          "controls": [
+            {
+              "button_x@common.gamepad_helper_x": {
+                "$hide_description": true,
+                "$gamepad_helper_visible_binding_type": "none",
+                "layer": 3
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#can_change_skin",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ],
+    "$visibility_binding_type|default": "global",
+    "variables": [
+      {
+        "requires": "$nx_os",
+        "$visibility_binding_type": "none"
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "$visibility_binding_type",
+        "binding_name": "#is_using_gamepad",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "permissions_button@button_ui.button": {
+    "size": [98, 20],
+    "$button_text": "accessibility.pause.permissions",
+    "$button_tts_header": "accessibility.pause.permissions",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.menu_permission",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "button.menu_permission",
+        "mapping_type": "focused"
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "players_collection"
+      },
+      {
+        "binding_name": "#permissions_button_visible",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+
+  "feedback_button@ingame_menu_ui.button_template": {
+    "$pressed_button_name": "button.menu_feedback",
+    "$button_text": "menu.sendFeedback",
+    "size": [98, 20],
+    "enabled": "(not $education_edition)"
+  },
+
+  "feed_button@ingame_menu_ui.button_template": {
+    "$pressed_button_name": "button.menu_feed",
+    "$focus_id": "button.menu_feed",
+    "$button_text": "pauseScreen.feed",
+    "size": [98, 20]
+  },
+
+  "server_store_button@ingame_menu_ui.button_template": {
+    "size": [98, 20],
+    "enabled": "(not $is_secondary_client)",
+    "$pressed_button_name": "button.menu_server_store",
+    "$button_text": "$server_store_button_text"
+  },
+  
+  "take_screenshot_button@button_ui.button": {
+    "$pressed_button_name": "button.screenshot",
+    "$button_tts_header": "key.screenshot",
+    "size": [98, 20],
+    "enabled": "(not $is_holographic)",
+    "$button_text": "key.screenshot",
+    "sound_name": "random.screenshot"
+  },
+
+  "settings_button@ingame_menu_ui.button_template": {
+    "$pressed_button_name": "button.menu_settings",
+    "$button_text": "menu.options",
+    "size": [98, 20]
+  },
+
+  "player_list_button@toggle_button_ui.toggle": {
+    "enabled": false,
+    "size": [98, 20],
+    "$toggle_index": 1,
+    "$widget_text": "menu.playersMenu",
+    "$widget_control_name": "player_list_view",
+    "$toggle_name": "pause_menu"
+  },
+
+  "invite_players_button@button_ui.button": {
+    "$pressed_button_name": "button.menu_invite_players",
+    "$button_text": "pauseScreen.invite",
+    "focus_change_down": "FOCUS_OVERRIDE_STOP",
+    "size": [150, 20],
+    "bindings": [
+      {
+        "binding_name": "#invite_button_visible",
+        "binding_name_override": "#enabled",
+        "binding_type": "global"
+      },
+      {
+        "binding_name": "#invite_button_enabled",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+
+  "pause_menu_button@toggle_button_ui.toggle": {
+    "$toggle_index": 0,
+    "size": [150, 20],
+    "$widget_text": "gui.done",
+    "$toggle_name": "pause_menu",
+    "$cancel_mapping": true
+  },
+
+  "return_to_menu_button@ingame_menu_ui.button_template": {
+    "size": [204, 20],
+    "$pressed_button_name": "button.menu_quit",
+    "$button_text": "menu.returnToMenu",
+    "focus_change_down": "button.menu_continue",
+    "variables": [
+      {
+        "requires": "$is_secondary_client",
+        "$button_text": "menu.disconnect"
+      }
+    ]
+  }
+}

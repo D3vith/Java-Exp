@@ -1,0 +1,159 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "slider_ui",
+
+  "slider@widget_ui.widget": {
+    "size": [150, 20],
+    "$control_ref": "slider_ui.slider_control"
+  },
+
+  "slider_control@common.slider": {
+    "$slider_step_factory_control_ids": {},
+    "size": ["100% - 8px", "100%"],
+    "$slider_state_panel|default": "widget_ui.widget_state_panel",
+    "$slider_type_panel|default": "widget_ui.widget_text_panel",
+    "$default_slider_bg|default": "button_ui.button_locked",
+    "$hover_slider_bg|default": "button_ui.button_locked",
+    "$default_sb_bg|default": "button_ui.button_default",
+    "$hover_sb_bg|default": "button_ui.button_hover",
+    "$locked_sb_bg|default": "button_ui.button_default",
+    "$state|default": "",
+    "$text_locked_color|default": "$button_locked_text_color",
+    "controls": [
+      { "slider_box@slider_ui.slider_box": { "$slider_track_button": "$slider_name" } },
+      {
+        "slider_bar_default@$slider_state_panel": {
+          "size": [ "100% + 8px", "100%" ],
+          "$widget_bg": "$default_slider_bg",
+          "$state": "default",
+          "layer": 2
+        }
+      },
+      {
+        "slider_bar_hover@$slider_state_panel": {
+          "size": [ "100% + 8px", "100%" ],
+          "$widget_bg": "$hover_slider_bg",
+          "$state": "hover",
+          "visible": false,
+          "layer": 3
+        }
+      }
+    ]
+  },
+
+  // Slider Box
+  "slider_box": {
+    "type": "slider_box",
+    "layer": 4,
+    "size": [8, 20],
+    "anchor_to": "center",
+    "anchor_from": "center",
+    "default_control": "default",
+    "hover_control": "hover",
+    "locked_control": "locked",
+    "indent_control": "indent",
+    "$slider_type_panel": "",
+    "$sb_state|default": "",
+    "controls": [
+      {
+        "default@$slider_state_panel": {
+          "$slider_bg": "$default_sb_bg",
+          "$sb_state": "default",
+          "layer": 2
+        }
+      },
+      {
+        "hover@$slider_state_panel": {
+          "$slider_bg": "$hover_sb_bg",
+          "$sb_state": "hover",
+          "layer": 3
+        }
+      },
+      {
+        "indent@$slider_state_panel": {
+          "$slider_bg": "$hover_sb_bg",
+          "$sb_state": "indent",
+          "layer": 4
+        }
+      },
+      {
+        "locked@$slider_state_panel": {
+          "$slider_bg": "$locked_sb_bg",
+          "$sb_state": "locked",
+          "layer": 1
+        }
+      }
+    ]
+  },
+
+  "slider_state_panel": {
+    "type": "panel",
+    "$tooltip_text|default": "null",
+    "controls": [
+      {
+        "tooltip@tooltip_ui.tooltip": {
+          "visible": "($state = hover)",
+          "ignored": "($tooltip_text = null)"
+        }
+      },
+      { "bg@$slider_bg": {} },
+      {
+        "content_panel": {
+          "type": "panel",
+          "size": "$content_panel_size",
+          "$content_panel_size|default": ["100% - 2px", "100% - 2px"],
+          "layer": 4,
+          "controls": [ { "content@$slider_type_panel": {} } ]
+        }
+      }
+    ]
+  },
+
+  "slider_text_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": ["100%c", 10],
+    "anchor_from": "center",
+    "anchor_to": "center",
+    "$slider_percentage|default": false,
+    "$float_decimals_visible|default": true,
+    "controls": [
+      { "option_label@slider_ui.widget_text": { "visible": "$float_decimals_visible" } },
+      {
+        "option_label": {
+          "type": "panel",
+          "size": ["100%c - 13px", "100%c"],
+          "clips_children": true,
+          "visible": "(not $float_decimals_visible)",
+          "controls": [
+            {
+              "widget_text@slider_ui.widget_text": {
+                "anchor_from": "top_left",
+                "anchor_to": "top_left"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "percent": {
+          "type": "label",
+          "color": "$text_color",
+          "shadow": true,
+          "layer": 10,
+          "ignored": "(not $slider_percentage)",
+          "text": "gui.percentage"
+        }
+      }
+    ]
+  },
+
+  "widget_text@button_ui.button_label": {
+    "text": "$widget_text",
+    "bindings": "$widget_text_bindings",
+    "layer": "$text_layer",
+    "$button_text_max_size": ["default", 10],
+    "$widget_text_bindings|default": [],
+    "$text_layer|default": 10
+  }
+}

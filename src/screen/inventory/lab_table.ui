@@ -1,0 +1,114 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "lab_table_ui",
+
+  "lab_table_screen_panel@container_ui.container_panel": {
+    "$container_size": [176, 194],
+    "$container_bg": "lab_table_ui.lab_table_bg",
+    "$specified_content": "lab_table_ui.lab_table_content_panel"
+  },
+
+  "lab_table_bg@content_ui.resource_image": {
+    "texture": "assets/fmarquespto/textures/gui/container/lab_table",
+    "size": [176, 194],
+    "variables": [
+      { "requires": "($lab_table_resolution = 256x)", "$uv_size": [176, 194] },
+      { "requires": "($lab_table_resolution = 512x)", "$uv_size": [352, 388] },
+      { "requires": "($lab_table_resolution = 1024x)", "$uv_size": [704, 776] },
+      { "requires": "($lab_table_resolution = 2048x)", "$uv_size": [1408, 1552] },
+      { "requires": "($lab_table_resolution = 4096x)", "$uv_size": [2816, 3104] }
+    ]
+  },
+
+  "lab_table_content_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "title@container_ui.title": {
+          "text": "labtable.title",
+          "offset": [0, 5],
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle"
+        }
+      },
+      { "input@lab_table_ui.input_grid": {} },
+      { "combine@lab_table_ui.combine_button": {} },
+      { "player_inventory@container_ui.player_inventory": {} },
+      { "player_hotbar@container_ui.player_hotbar": {} }
+    ]
+  },
+
+  "input_grid": {
+    "type": "grid",
+    "size": [162, 18],
+    "grid_dimensions": [9, 1],
+    "offset": [7, 65],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "$item_collection_name": "labtable_input",
+    "grid_item_template": "container_ui.slot",
+    "collection_name": "labtable_input"
+  },
+
+  "combine_button": {
+    "type": "panel",
+    "offset": [-8, 85],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [86, 16],
+    "controls": [
+      {
+        "button@button_ui.button": {
+          "size": [86, 16],
+          "$default_button_bg": "lab_table_ui.lab_button_default",
+          "$hover_button_bg": "lab_table_ui.lab_button_hover",
+          "$pressed_button_bg": "lab_table_ui.lab_button_hover",
+          "$locked_button_bg": "lab_table_ui.lab_button_locked",
+          "$button_text": "labtable.combine",
+          "$text_color": [0.25, 0.25, 0.25],
+          "$text_locked_color": [0.25, 0.25, 0.25],
+          "$text_shadow": false,
+          "$pressed_button_name": "button.combine"
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#combine_enabled",
+        "binding_name_override": "#enabled"
+      }
+    ]
+  },
+
+  "lab_button_default@content_ui.resource_image": {
+    "texture": "assets/fmarquespto/textures/gui/container/lab_table",
+    "size": [86, 16],
+    "variables": [
+      { "requires": "($lab_table_resolution = 256x)", "$uv": [0, 196], "$uv_size": [86, 16] },
+      { "requires": "($lab_table_resolution = 512x)", "$uv": [0, 392], "$uv_size": [172, 32] },
+      { "requires": "($lab_table_resolution = 1024x)", "$uv": [0, 784], "$uv_size": [344, 64] },
+      { "requires": "($lab_table_resolution = 2048x)", "$uv": [0, 1568], "$uv_size": [688, 128] },
+      { "requires": "($lab_table_resolution = 4096x)", "$uv": [0, 3136], "$uv_size": [1376, 256] }
+    ]
+  },
+
+  "lab_button_hover@lab_table_ui.lab_button_default": {
+    "variables": [
+      { "requires": "($lab_table_resolution = 256x)", "$uv": [0, 215], "$uv_size": [86, 16] },
+      { "requires": "($lab_table_resolution = 512x)", "$uv": [0, 430], "$uv_size": [172, 32] },
+      { "requires": "($lab_table_resolution = 1024x)", "$uv": [0, 860], "$uv_size": [344, 64] },
+      { "requires": "($lab_table_resolution = 2048x)", "$uv": [0, 1720], "$uv_size": [688, 128] },
+      { "requires": "($lab_table_resolution = 4096x)", "$uv": [0, 3440], "$uv_size": [1376, 256] }
+    ]
+  },
+
+  "lab_button_locked@lab_table_ui.lab_button_default": {
+    "variables": [
+      { "requires": "($lab_table_resolution = 256x)", "$uv": [0, 234], "$uv_size": [86, 16] },
+      { "requires": "($lab_table_resolution = 512x)", "$uv": [0, 468], "$uv_size": [172, 32] },
+      { "requires": "($lab_table_resolution = 1024x)", "$uv": [0, 936], "$uv_size": [344, 64] },
+      { "requires": "($lab_table_resolution = 2048x)", "$uv": [0, 1872], "$uv_size": [688, 128] },
+      { "requires": "($lab_table_resolution = 4096x)", "$uv": [0, 3744], "$uv_size": [1376, 256] }
+    ]
+  }
+}

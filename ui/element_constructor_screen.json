@@ -1,0 +1,9 @@
+{
+  "namespace": "elemconstruct",
+  
+  "element_constructor@screen_ui.inventory_screen": {
+    "close_on_player_hurt": "$force_close_on_player_hurt",
+    "$screen_content": "element_constructor_ui.element_constructor_screen_panel",
+    "$screen_background": "screen_ui.screen_background"
+  }
+}

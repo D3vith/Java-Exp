@@ -1,0 +1,65 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "sound_ui",
+
+  "sound_screen_panel": {
+    "type": "panel",
+    "controls": [
+      { "title@content_ui.title": { "text": "options.sounds.title", "offset": ["50% - 50%x", 15] } },
+      { "sound@sound_ui.sound_content_panel": {} }
+    ],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "sound_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "sound_content_panel": {
+    "type": "panel",
+    "controls": [
+      { "music_slider@sound_ui.music_slider": { "offset": ["50% - 155px", "16.666666667% - 12px"] } },
+      { "sound_slider@sound_ui.sound_slider": { "offset": ["50% + 5px", "16.666666667% - 12px"] } },
+      { "reset_button@sound_ui.reset_button": { "offset": ["50% - 75px", "16.666666667% + 12px"] } },
+      { "sound@settings_ui.back_button": { "offset": "$back_button_offset" } }
+    ],
+    "$back_button_offset|default": ["50% - 100px", "16.666666667% + 46px"],
+    "variables": {
+      "requires": "(not $is_pregame)",
+      "$back_button_offset": ["50% - 100px", "16.666666667% + 24px"]
+    }
+  },
+
+  // Widgets
+  "music_slider@option_slider_ui.slider": {
+    "$widget_text": "#music_volume_widget_text",
+    "$slider_name": "music_volume",
+    "$slider_value_binding_name": "#music_volume",
+    "$slider_tts_text_value": "#music_volume_text_value",
+    "$slider_enabled_binding_name": "#music_volume_enabled",
+    "$focus_override_up": "FOCUS_OVERRIDE_STOP",
+    "$slider_percentage": true,
+    "$widget_text_bindings": [ { "binding_name": "$widget_text" } ]
+  },
+  
+  "sound_slider@option_slider_ui.slider": {
+    "$widget_text": "#sound_volume_widget_text",
+    "$slider_name": "sound_volume",
+    "$slider_value_binding_name": "#sound_volume",
+    "$slider_tts_text_value": "#sound_volume_text_value",
+    "$slider_enabled_binding_name": "#sound_volume_enabled",
+    "$slider_percentage": true,
+    "$widget_text_bindings": [ { "binding_name": "$widget_text" } ]
+  },
+
+  "reset_button@action_button_ui.button": {
+    "ignored": "(not $is_pregame)",
+    "size": [150, 20],
+    "$pressed_button_name": "button.reset_settings",
+    "$button_text": "options.resetSettings",
+    "property_bag": { "reset_group": "audio" }
+  }
+}

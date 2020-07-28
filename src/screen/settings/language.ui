@@ -1,0 +1,99 @@
+// By @FMarquesPTO. All rights reserved.
+{
+  "namespace": "language_ui",
+
+  "language_screen_panel@content_ui.scroll_screen_panel": {
+    "$top_content": "language_ui.top_content",
+    "$middle_content": "language_ui.language_content",
+    "$bottom_content": "language_ui.bottom_content",
+    "$bottom_content_size": ["100%", 61],
+    "$scroll_bar_offset": ["50% + 144px", 0],
+    "bindings": [
+      {
+        "binding_type": "view",
+        "source_control_name": "language_view",
+        "source_property_name": "#toggle_state",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "top_content": {
+    "type": "panel",
+    "controls": [ { "title@content_ui.title": { "text": "options.language", "offset": ["50% - 50%x", 16] } } ]
+  },
+
+  "language_content": {
+    "type": "panel",
+    "size": ["270px", "100%c + 4px"],
+    "controls": [
+      {
+        "language_list_grid": {
+          "type": "grid",
+          "offset": [0, 1],
+          "size": ["100%", "100%c"],
+          "grid_item_template": "language_ui.language_grid_item",
+          "grid_dimension_binding": "#language_grid_dimension",
+          "collection_name": "languages",
+          "bindings": [ { "binding_name": "#language_grid_dimension" } ]
+        }
+      }
+    ]
+  },
+  
+  "bottom_content": {
+    "type": "panel",
+    "controls": [
+      { "warning@language_ui.warning_text_panel": { "offset": ["50% - 50%x", "100% - 56px"] } },
+      { "back@settings_ui.back_button": { "offset": ["50% - 100px", "100% - 38px"] } }
+    ]
+  },
+
+  // Warning
+  "warning_text": {
+    "type": "label",
+    "color": [0.5, 0.5, 0.5],
+    "layer": 20,
+    "shadow": true
+  },
+
+  "warning_text_panel": {
+    "type": "stack_panel",
+    "size": ["100%c", "100%c"],
+    "orientation": "horizontal",
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "controls": [
+      { "par_left@language_ui.warning_text": { "text": "gui.parenteses.left" } },
+      { "warning@language_ui.warning_text": { "text": "options.languageWarning"} },
+      { "par_right@language_ui.warning_text": { "text": "gui.parenteses.right" } }
+    ]
+  },
+
+  // Language Grid Item
+  "language_grid_item@radio_toggle_ui.toggle": {
+    "$toggle_state_binding_name": "#language_initial_selected",
+    "$toggle_text": "#language_description",
+    "$text_offset": [0, -2],
+    "$text_bindings": [
+      { // Try to use inside lang files
+        "binding_name": "#language_description",
+        "binding_type": "collection",
+        "binding_condition": "once",
+        "binding_collection_name": "languages"
+      }
+    ],
+    "$toggle_binding_type": "collection",
+    "$toggle_name": "languages",
+    "$toggle_grid_collection_name": "languages",
+    "$option_enabled_binding_name": "",
+    "bindings": [
+      {
+        "binding_name": "#default_focus_precedence",
+        "binding_type": "collection",
+        "binding_condition": "visible",
+        "binding_collection_name": "languages"
+      }
+    ]
+  }
+}

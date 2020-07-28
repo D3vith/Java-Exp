@@ -23,6 +23,9 @@ gui.recipebook.search_hint=§oProcurar...
 gui.recipebook.toggleRecipes.all=Mostrar Todas
 gui.recipebook.toggleRecipes.reset=Resetar
 gui.recipebook.toggleRecipes.craftable=Mostrar Contrutiveis
+craftingScreen.tab.search=All
+craftingScreen.tab.survival=Inventory
+
 ##Containers
 container.repair=Reparar & Nomear
 container.repair.cost=Custo de Encantamento: %1$d

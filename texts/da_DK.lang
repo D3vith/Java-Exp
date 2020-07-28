@@ -23,6 +23,9 @@ gui.recipebook.toggleRecipes.all=Zobrazení všech
 gui.recipebook.toggleRecipes.reset=Resetovat
 gui.recipebook.toggleRecipes.craftable=Zobrazení vytvořitelných
 
+craftingScreen.tab.search=All
+craftingScreen.tab.survival=Inventory
+
 ##Containers
 merchant.trades=Nabídky
 
